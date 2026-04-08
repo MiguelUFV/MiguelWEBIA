@@ -388,21 +388,125 @@
     .sec-desc { color: var(--text-2); font-size: 0.93rem; max-width: 460px; line-height: 1.7; }
     .sec-head { margin-bottom: 2.75rem; }
 
-    /* ── DEMO STRIP ──────────────────────────────────────────────── */
-    #demo {
-      background: var(--bg-1); border-top: 1px solid var(--border);
-      padding: 2.5rem 2rem;
+    /* ── DEMOS ───────────────────────────────────────────────────── */
+    #demos {
+      background: var(--bg); border-top: 1px solid var(--border);
     }
-    .demo-inner {
-      max-width: 1080px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 1.5rem; flex-wrap: wrap;
+
+    .demo-tabs {
+      display: flex; gap: 0.4rem;
+      margin-bottom: 2.25rem;
     }
-    .demo-text h3 {
+    .demo-tab {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem; font-weight: 500;
+      padding: 0.45rem 1.1rem; border-radius: 999px;
+      cursor: pointer; transition: all .18s;
+    }
+    .demo-tab:hover { border-color: var(--border-2); color: var(--text); }
+    .demo-tab.active {
+      background: var(--o-dim);
+      border-color: rgba(249,115,22,0.35);
+      color: var(--o);
+    }
+
+    /* Browser mockup */
+    .browser-wrap {
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-2);
+      box-shadow: 0 40px 80px rgba(0,0,0,0.55), 0 0 0 1px var(--border);
+      background: var(--bg-1);
+      position: relative;
+    }
+
+    .browser-chrome {
+      display: flex; align-items: center; gap: 0.9rem;
+      padding: 0 1rem;
+      height: 40px;
+      background: var(--bg-2);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .browser-dots { display: flex; gap: 5px; flex-shrink: 0; }
+    .browser-dots span {
+      width: 10px; height: 10px; border-radius: 50%;
+    }
+    .browser-dots span:nth-child(1) { background: #ff5f57; }
+    .browser-dots span:nth-child(2) { background: #febc2e; }
+    .browser-dots span:nth-child(3) { background: #28c840; }
+
+    .browser-url {
+      flex: 1; background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      height: 24px; padding: 0 0.65rem;
+      display: flex; align-items: center; gap: 0.4rem;
+      font-size: 0.73rem; color: var(--text-3);
+      max-width: 360px; margin: 0 auto;
+    }
+    .browser-url svg { color: var(--text-3); flex-shrink: 0; }
+
+    .browser-body {
+      position: relative;
+      aspect-ratio: 16/9;
+      background: var(--bg-1);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+
+    .demo-video-el {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      cursor: pointer;
+    }
+
+    .video-placeholder {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: var(--bg-1);
+      gap: 1rem;
+      transition: opacity .25s;
+    }
+    .video-placeholder.hidden { opacity: 0; pointer-events: none; }
+
+    .play-ring {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: var(--o);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 0 40px rgba(249,115,22,0.35);
+    }
+    .play-ring:hover { transform: scale(1.08); box-shadow: 0 0 60px rgba(249,115,22,0.5); }
+
+    .play-ring svg { margin-left: 4px; } /* optical center */
+
+    .video-placeholder p {
       font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem;
+      font-size: 0.9rem; font-weight: 600;
+      color: var(--text-2); letter-spacing: 0.02em;
     }
-    .demo-text p { font-size: 0.85rem; color: var(--text-2); }
+
+    /* No-video empty state */
+    .demo-empty {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 0.75rem;
+      color: var(--text-3);
+      font-size: 0.82rem; text-align: center;
+    }
+    .demo-empty-icon {
+      width: 48px; height: 48px; border-radius: 50%;
+      border: 1px dashed var(--border-2);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-3);
+    }
 
     .demo-badge {
       display: inline-flex; align-items: center; gap: 0.5rem;
@@ -415,6 +519,15 @@
       background: var(--o); animation: blink 2s infinite;
     }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.35} }
+
+    .demo-caption {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 1.25rem; flex-wrap: wrap; gap: 0.75rem;
+    }
+    .demo-caption-info h4 {
+      font-size: 0.93rem; font-weight: 700; margin-bottom: 0.2rem;
+    }
+    .demo-caption-info p { font-size: 0.78rem; color: var(--text-2); }
 
     /* ── SERVICIOS ───────────────────────────────────────────────── */
     #servicios { background: var(--bg); border-top: 1px solid var(--border); }
@@ -659,6 +772,7 @@
     WEB Miguel IA
   </a>
   <div class="nav-right">
+    <a href="#demos" class="nav-link">Demos</a>
     <a href="#servicios" class="nav-link">Servicios</a>
     <a href="#proceso" class="nav-link">Proceso</a>
     <a href="#faq" class="nav-link">FAQ</a>
@@ -848,23 +962,121 @@
   </div>
 </section>
 
-<!-- ── DEMO STRIP ─────────────────────────────────────────────────── -->
-<div id="demo">
-  <div class="demo-inner">
-    <div class="demo-text">
-      <h3>Esta web es un ejemplo real del producto</h3>
-      <p>El chat de abajo es un agente IA funcionando en tiempo real. Reserva una reunión y compruébalo.</p>
+<!-- ── DEMOS ────────────────────────────────────────────────────────── -->
+<section id="demos">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-label">Demos reales</span>
+      <h2 class="sec-title">Mira cómo queda el producto final</h2>
+      <p class="sec-desc">Webs reales con IA integrada, creadas para negocios locales. Cada una con su propio asistente y sistema de reservas.</p>
     </div>
-    <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
-      <span class="demo-badge">
-        <span class="demo-dot"></span> Agente activo ahora
-      </span>
-      <a href="#reservar" class="btn-ghost" style="font-size:0.8rem;padding:.4rem 1rem">
-        Ver demo <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
+
+    <!-- Tab switcher -->
+    <div class="demo-tabs" id="demo-tabs">
+      <button class="demo-tab active" onclick="switchDemo(0)">Peluquería</button>
+      <button class="demo-tab" onclick="switchDemo(1)">Restaurante</button>
+      <button class="demo-tab" onclick="switchDemo(2)">Clínica</button>
     </div>
+
+    <!-- Demo 0: Peluquería -->
+    <div class="demo-item" id="demo-item-0">
+      <div class="browser-wrap">
+        <div class="browser-chrome">
+          <div class="browser-dots"><span></span><span></span><span></span></div>
+          <div class="browser-url">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            peluqueria-lucia.vercel.app
+          </div>
+        </div>
+        <div class="browser-body">
+          <!-- Cuando tengas el vídeo: <video class="demo-video-el" id="vid-0" src="demos/peluqueria.mp4" playsinline></video> -->
+          <div class="video-placeholder" id="vp-0">
+            <div class="play-ring" onclick="playDemo(0)">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+            </div>
+            <p>Ver demo — Peluquería Lucía</p>
+          </div>
+          <div class="demo-empty" id="ve-0" style="display:none">
+            <div class="demo-empty-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+            </div>
+            <span>Vídeo próximamente</span>
+          </div>
+        </div>
+      </div>
+      <div class="demo-caption">
+        <div class="demo-caption-info">
+          <h4>Peluquería Lucía — Madrid</h4>
+          <p>Web con chatbot IA · reservas automáticas · integración WhatsApp</p>
+        </div>
+        <span class="demo-badge">
+          <span class="demo-dot"></span> Agente activo
+        </span>
+      </div>
+    </div>
+
+    <!-- Demo 1: Restaurante -->
+    <div class="demo-item" id="demo-item-1" style="display:none">
+      <div class="browser-wrap">
+        <div class="browser-chrome">
+          <div class="browser-dots"><span></span><span></span><span></span></div>
+          <div class="browser-url">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            restaurante-ejemplo.vercel.app
+          </div>
+        </div>
+        <div class="browser-body">
+          <div class="video-placeholder" id="vp-1">
+            <div class="play-ring" onclick="playDemo(1)">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+            </div>
+            <p>Ver demo — Restaurante</p>
+          </div>
+        </div>
+      </div>
+      <div class="demo-caption">
+        <div class="demo-caption-info">
+          <h4>Restaurante — Ejemplo</h4>
+          <p>Web con carta digital · reservas de mesa · asistente IA</p>
+        </div>
+        <span class="demo-badge" style="background:rgba(249,115,22,0.04);border-color:var(--border);color:var(--text-3)">
+          Próximamente
+        </span>
+      </div>
+    </div>
+
+    <!-- Demo 2: Clínica -->
+    <div class="demo-item" id="demo-item-2" style="display:none">
+      <div class="browser-wrap">
+        <div class="browser-chrome">
+          <div class="browser-dots"><span></span><span></span><span></span></div>
+          <div class="browser-url">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            clinica-ejemplo.vercel.app
+          </div>
+        </div>
+        <div class="browser-body">
+          <div class="video-placeholder" id="vp-2">
+            <div class="play-ring" onclick="playDemo(2)">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+            </div>
+            <p>Ver demo — Clínica</p>
+          </div>
+        </div>
+      </div>
+      <div class="demo-caption">
+        <div class="demo-caption-info">
+          <h4>Clínica — Ejemplo</h4>
+          <p>Web médica · citas online · preguntas frecuentes automáticas</p>
+        </div>
+        <span class="demo-badge" style="background:rgba(249,115,22,0.04);border-color:var(--border);color:var(--text-3)">
+          Próximamente
+        </span>
+      </div>
+    </div>
+
   </div>
-</div>
+</section>
 
 <!-- ── SERVICIOS ──────────────────────────────────────────────────── -->
 <section id="servicios">
@@ -1169,6 +1381,45 @@
     const open = item.classList.contains('open');
     document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
     if (!open) item.classList.add('open');
+  }
+
+  // ── Demo switcher ─────────────────────────────────────────────────
+  function switchDemo(idx) {
+    document.querySelectorAll('.demo-item').forEach((el, i) => {
+      el.style.display = i === idx ? 'block' : 'none';
+    });
+    document.querySelectorAll('.demo-tab').forEach((t, i) => {
+      t.classList.toggle('active', i === idx);
+    });
+  }
+
+  // Video playback — replace placeholder with actual video
+  // To add a real video: put the file in /demos/peluqueria.mp4
+  // and uncomment the <video> tag in the HTML
+  function playDemo(idx) {
+    const vp = document.getElementById('vp-' + idx);
+    const item = document.getElementById('demo-item-' + idx);
+    const videoSrc = ['demos/peluqueria.mp4', 'demos/restaurante.mp4', 'demos/clinica.mp4'][idx];
+
+    // Try to create/find a video element
+    let vid = item.querySelector('video.demo-video-el');
+    if (!vid) {
+      vid = document.createElement('video');
+      vid.className = 'demo-video-el';
+      vid.controls = true;
+      vid.playsinline = true;
+      vid.autoplay = true;
+      vid.src = videoSrc;
+      item.querySelector('.browser-body').insertBefore(vid, vp);
+    }
+
+    vp.classList.add('hidden');
+    vid.style.display = 'block';
+    vid.play().catch(() => {
+      // No video file yet — show friendly message
+      vp.classList.remove('hidden');
+      vp.querySelector('p').textContent = 'Vídeo próximamente — reserva una llamada para verlo en vivo';
+    });
   }
 </script>
 
