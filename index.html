@@ -818,21 +818,99 @@
       border-radius: var(--r-lg); overflow: hidden;
     }
 
+    /* ── CARD FLIP ───────────────────────────────────────────────── */
     .pcard {
-      background: var(--bg-1); padding: 2rem;
-      position: relative;
+      padding: 0;
+      background: transparent;
       border-right: 1px solid var(--border);
-      display: flex; flex-direction: column;
+      perspective: 1400px;
+      position: relative;
     }
     .pcard:last-child { border-right: none; }
-    .pcard.featured {
-      background: var(--bg-2);
+
+    .pcard-inner {
+      transform-style: preserve-3d;
+      transition: transform 0.65s cubic-bezier(.4,0,.2,1);
+      height: 100%; position: relative;
     }
-    .pcard.featured::before {
+    .pcard.flipped .pcard-inner { transform: rotateY(180deg); }
+
+    .pcard-front {
+      backface-visibility: hidden; -webkit-backface-visibility: hidden;
+      height: 100%; padding: 2rem;
+      background: var(--bg-1);
+      display: flex; flex-direction: column;
+    }
+    .pcard.featured .pcard-front {
+      background: var(--bg-2);
+      position: relative;
+    }
+    .pcard.featured .pcard-front::before {
       content: '';
       position: absolute; top: 0; left: 0; right: 0; height: 2px;
       background: linear-gradient(90deg, var(--o), #fb923c);
     }
+
+    .pcard-back {
+      position: absolute; inset: 0;
+      backface-visibility: hidden; -webkit-backface-visibility: hidden;
+      transform: rotateY(180deg);
+      padding: 1.75rem; background: #1e1a2a;
+      display: flex; flex-direction: column;
+      overflow: hidden;
+    }
+    .pcard.featured .pcard-back { background: #231e30; }
+
+    .flip-info-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: transparent; border: 1px solid var(--border-2);
+      color: var(--text-3); font-size: 0.72rem; font-weight: 500;
+      padding: 0.3rem 0.75rem; border-radius: 999px;
+      cursor: pointer; transition: all .15s;
+      font-family: 'DM Sans', sans-serif;
+      margin-top: 1rem; align-self: flex-start;
+    }
+    .flip-info-btn:hover { border-color: var(--o); color: var(--o); }
+
+    .flip-back-btn {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      background: transparent; border: none; color: var(--text-3);
+      font-size: 0.73rem; padding: 0; cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      margin-bottom: 1rem; transition: color .15s;
+    }
+    .flip-back-btn:hover { color: var(--text); }
+
+    .back-title {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 0.97rem; font-weight: 700; margin-bottom: 0.2rem;
+    }
+    .back-sub { font-size: 0.74rem; color: var(--text-3); margin-bottom: 1.1rem; }
+
+    .back-section {
+      font-size: 0.66rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--o); margin-bottom: 0.45rem;
+      margin-top: 0.85rem;
+    }
+    .back-list {
+      list-style: none; display: flex; flex-direction: column; gap: 0.35rem;
+    }
+    .back-list li {
+      font-size: 0.76rem; color: var(--text-2);
+      display: flex; gap: 0.4rem; line-height: 1.4;
+    }
+    .back-list li span { color: var(--o); flex-shrink: 0; }
+
+    .back-cta {
+      display: block; text-align: center; margin-top: auto; padding-top: 1rem;
+      padding-bottom: 0.55rem; border-radius: var(--r);
+      font-size: 0.8rem; font-weight: 500; text-decoration: none;
+      font-family: 'DM Sans', sans-serif; transition: all .15s;
+    }
+    .back-cta.primary { background: var(--o); color: #fff; }
+    .back-cta.primary:hover { background: var(--o2); }
+    .back-cta.ghost { border: 1px solid var(--border-2); color: var(--text-2); }
+    .back-cta.ghost:hover { border-color: var(--o); color: var(--o); }
 
     .pcard-top {
       display: flex; align-items: flex-start; justify-content: space-between;
@@ -912,7 +990,7 @@
 
     /* ── WHATSAPP FLOAT ──────────────────────────────────────────── */
     .wa-float {
-      position: fixed; bottom: 28px; right: 28px; z-index: 900;
+      position: fixed; bottom: 28px; left: 28px; z-index: 900;
     }
     .wa-float-btn {
       width: 54px; height: 54px; border-radius: 50%;
@@ -928,7 +1006,7 @@
       box-shadow: 0 8px 32px rgba(37,211,102,0.5);
     }
     .wa-tooltip {
-      position: absolute; right: 64px; top: 50%;
+      position: absolute; left: 64px; top: 50%;
       transform: translateY(-50%);
       background: var(--bg-2); border: 1px solid var(--border-2);
       color: var(--text); font-size: 0.75rem; font-weight: 500;
@@ -1343,10 +1421,55 @@
     <div class="about-layout">
       <div class="about-photo-wrap">
         <div class="about-img-frame">
-          <img src="assets/miguel.jpg" alt="Miguel Martín" />
+          <!-- SVG portrait — reemplaza con <img src="assets/miguel.jpg"> cuando tengas el archivo -->
+          <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <defs>
+              <radialGradient id="abg" cx="50%" cy="30%" r="75%">
+                <stop offset="0%" stop-color="#28222f"/>
+                <stop offset="100%" stop-color="#0d0b11"/>
+              </radialGradient>
+              <radialGradient id="oglow" cx="50%" cy="5%" r="65%">
+                <stop offset="0%" stop-color="rgba(249,115,22,0.22)"/>
+                <stop offset="100%" stop-color="rgba(249,115,22,0)"/>
+              </radialGradient>
+            </defs>
+            <circle cx="200" cy="200" r="200" fill="url(#abg)"/>
+            <circle cx="200" cy="200" r="200" fill="url(#oglow)"/>
+            <!-- shoulders / suit -->
+            <path d="M0 400V295Q0 260 55 245L148 215L200 238L252 215L345 245Q400 260 400 295V400Z" fill="#1b1627"/>
+            <!-- shirt -->
+            <path d="M177 235L200 250L223 235L218 262L200 278L182 262Z" fill="#252038"/>
+            <!-- tie -->
+            <path d="M196 243L204 243L209 257L200 315L191 257Z" fill="#f97316" opacity="0.8"/>
+            <!-- collar left -->
+            <path d="M168 232L200 250L200 238Z" fill="#2c2540"/>
+            <!-- collar right -->
+            <path d="M232 232L200 250L200 238Z" fill="#231e38"/>
+            <!-- neck -->
+            <rect x="184" y="193" width="32" height="46" rx="8" fill="#2b2440"/>
+            <!-- head -->
+            <ellipse cx="200" cy="162" rx="70" ry="76" fill="#2b2440"/>
+            <!-- hair -->
+            <path d="M130 148Q128 82 200 76Q272 82 270 148Q252 112 200 108Q148 112 130 148Z" fill="#181320"/>
+            <!-- face subtle depth -->
+            <ellipse cx="200" cy="172" rx="50" ry="56" fill="#352e4a" opacity="0.35"/>
+            <!-- eyes -->
+            <ellipse cx="180" cy="158" rx="8" ry="6" fill="#19152a"/>
+            <ellipse cx="220" cy="158" rx="8" ry="6" fill="#19152a"/>
+            <circle cx="182" cy="156" r="2.5" fill="#4a4268" opacity="0.7"/>
+            <circle cx="222" cy="156" r="2.5" fill="#4a4268" opacity="0.7"/>
+            <!-- nose -->
+            <path d="M196 167Q198 178 204 180Q200 183 196 180" stroke="#4a4268" stroke-width="1.5" fill="none" opacity="0.5"/>
+            <!-- smile -->
+            <path d="M187 192Q200 203 213 192" stroke="#4a4268" stroke-width="2" fill="none" opacity="0.55" stroke-linecap="round"/>
+            <!-- orange rim light -->
+            <path d="M130 130Q122 162 130 196Q138 218 150 228" stroke="rgba(249,115,22,0.32)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+            <!-- subtle glow base -->
+            <ellipse cx="200" cy="375" rx="100" ry="35" fill="rgba(249,115,22,0.07)"/>
+          </svg>
         </div>
         <div class="about-socials">
-          <a href="#" class="about-social-btn" title="LinkedIn" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/miguel-mart%C3%ADn-caro-mart%C3%ADn-402328208" target="_blank" class="about-social-btn" title="LinkedIn" aria-label="LinkedIn">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
           </a>
           <a href="#" class="about-social-btn" title="Instagram" aria-label="Instagram">
@@ -1391,84 +1514,193 @@
     </div>
 
     <div class="pricing-grid" id="pricingGrid">
-      <!-- Plan Básico -->
+
+      <!-- ── Plan Básico ── -->
       <div class="pcard">
-        <div class="pcard-top">
-          <div class="pcard-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-        </div>
-        <h3>Web Básica</h3>
-        <p class="pcard-sub">Presencia online profesional · 1–2 semanas</p>
-        <div class="pcard-price-block">
-          <div class="pcard-setup">Configuración: <strong>399€</strong> pago único</div>
-          <div class="pcard-monthly">
-            <span class="price-amount" data-monthly="29" data-annual="24">29€</span>
-            <span class="price-period">/mes mantenimiento</span>
+        <div class="pcard-inner">
+          <div class="pcard-front">
+            <div class="pcard-top">
+              <div class="pcard-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+            </div>
+            <h3>Web Básica</h3>
+            <p class="pcard-sub">Presencia online profesional · 1–2 semanas</p>
+            <div class="pcard-price-block">
+              <div class="pcard-setup">Configuración: <strong>199€</strong> pago único</div>
+              <div class="pcard-monthly">
+                <span class="price-amount" data-monthly="15" data-annual="12">15€</span>
+                <span class="price-period">/mes mantenimiento</span>
+              </div>
+              <div class="price-save">Ahorra 36€ al año</div>
+            </div>
+            <div class="pcard-divider"></div>
+            <ul class="pcard-list">
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Hasta 5 secciones personalizadas</li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Diseño adaptado a móvil</li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Formulario de contacto</li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>SEO básico incluido</li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Hosting y dominio el 1er año</li>
+            </ul>
+            <a href="#reservar" class="pcard-cta ghost">Empezar</a>
+            <button class="flip-info-btn" onclick="flipCard(this)">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+              Ver detalles completos
+            </button>
           </div>
-          <div class="price-save">Ahorra 60€ al año</div>
+          <div class="pcard-back">
+            <button class="flip-back-btn" onclick="flipCard(this)">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Volver
+            </button>
+            <div class="back-title">Web Básica — Detalles</div>
+            <div class="back-sub">Todo lo que incluye este plan</div>
+            <div class="back-section">Qué recibes</div>
+            <ul class="back-list">
+              <li><span>·</span>Reunión de briefing para entender tu negocio</li>
+              <li><span>·</span>Diseño 100% personalizado, sin plantillas</li>
+              <li><span>·</span>Mobile-first y carga rápida (&lt;2s)</li>
+              <li><span>·</span>Google Analytics configurado</li>
+              <li><span>·</span>Formulario de contacto a tu email</li>
+              <li><span>·</span>Hosting en CDN global (Vercel)</li>
+              <li><span>·</span>Dominio .es o .com el primer año</li>
+            </ul>
+            <div class="back-section">Mantenimiento mensual (15€)</div>
+            <ul class="back-list">
+              <li><span>·</span>Hosting incluido</li>
+              <li><span>·</span>Actualizaciones de contenido (1/mes)</li>
+              <li><span>·</span>Soporte técnico por WhatsApp</li>
+            </ul>
+            <div class="back-section">Plazo</div>
+            <ul class="back-list">
+              <li><span>·</span>Entrega en 1–2 semanas desde el briefing</li>
+              <li><span>·</span>Sin permanencia — cancela cuando quieras</li>
+            </ul>
+            <a href="#reservar" class="back-cta ghost">Empezar con este plan</a>
+          </div>
         </div>
-        <div class="pcard-divider"></div>
-        <ul class="pcard-list">
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Hasta 5 secciones personalizadas</li>
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Diseño adaptado a móvil</li>
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Formulario de contacto</li>
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>SEO básico incluido</li>
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Hosting y dominio incluido</li>
-        </ul>
-        <a href="#reservar" class="pcard-cta ghost">Empezar</a>
       </div>
 
-      <!-- Plan Profesional -->
+      <!-- ── Plan Profesional ── -->
       <div class="pcard featured">
-        <div class="pcard-top">
-          <div class="pcard-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></div>
-          <span class="pcard-badge">Más popular</span>
-        </div>
-        <h3>Web + Agente IA</h3>
-        <p class="pcard-sub">Tu web trabaja 24/7 · 2–4 semanas</p>
-        <div class="pcard-price-block">
-          <div class="pcard-setup">Configuración: <strong>799€</strong> pago único</div>
-          <div class="pcard-monthly">
-            <span class="price-amount" data-monthly="79" data-annual="66">79€</span>
-            <span class="price-period">/mes mantenimiento</span>
+        <div class="pcard-inner">
+          <div class="pcard-front">
+            <div class="pcard-top">
+              <div class="pcard-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></div>
+              <span class="pcard-badge">Más popular</span>
+            </div>
+            <h3>Web + Agente IA</h3>
+            <p class="pcard-sub">Tu web trabaja 24/7 · 2–4 semanas</p>
+            <div class="pcard-price-block">
+              <div class="pcard-setup">Configuración: <strong>499€</strong> pago único</div>
+              <div class="pcard-monthly">
+                <span class="price-amount" data-monthly="39" data-annual="32">39€</span>
+                <span class="price-period">/mes mantenimiento</span>
+              </div>
+              <div class="price-save">Ahorra 84€ al año</div>
+            </div>
+            <div class="pcard-divider"></div>
+            <ul class="pcard-list">
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Todo lo del plan básico</li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Chatbot IA personalizado para tu negocio</li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Reservas automáticas en Google Calendar</li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Disponible 24/7, sin descanso</li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Soporte mensual incluido</li>
+            </ul>
+            <a href="#reservar" class="pcard-cta primary">Quiero este plan</a>
+            <button class="flip-info-btn" onclick="flipCard(this)">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+              Ver detalles completos
+            </button>
           </div>
-          <div class="price-save">Ahorra 156€ al año</div>
+          <div class="pcard-back">
+            <button class="flip-back-btn" onclick="flipCard(this)">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Volver
+            </button>
+            <div class="back-title">Web + Agente IA — Detalles</div>
+            <div class="back-sub">El plan más completo para empezar</div>
+            <div class="back-section">El agente IA sabe</div>
+            <ul class="back-list">
+              <li><span>·</span>Tus servicios, precios y horarios</li>
+              <li><span>·</span>Cómo responder preguntas frecuentes</li>
+              <li><span>·</span>Cuándo hay disponibilidad real en tu calendario</li>
+              <li><span>·</span>Cómo agendar citas automáticamente</li>
+            </ul>
+            <div class="back-section">Mantenimiento mensual (39€)</div>
+            <ul class="back-list">
+              <li><span>·</span>Hosting + API de IA incluidos</li>
+              <li><span>·</span>Hasta 2 actualizaciones de contenido/mes</li>
+              <li><span>·</span>Monitorización del agente</li>
+              <li><span>·</span>Soporte técnico prioritario</li>
+            </ul>
+            <div class="back-section">Plazo</div>
+            <ul class="back-list">
+              <li><span>·</span>Entrega en 2–4 semanas desde el briefing</li>
+              <li><span>·</span>Sin permanencia — cancela cuando quieras</li>
+            </ul>
+            <a href="#reservar" class="back-cta primary">Quiero este plan</a>
+          </div>
         </div>
-        <div class="pcard-divider"></div>
-        <ul class="pcard-list">
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Todo lo del plan básico</li>
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Chatbot IA personalizado para tu negocio</li>
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Reservas automáticas en Google Calendar</li>
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Disponible 24/7, sin descanso</li>
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Soporte mensual incluido</li>
-        </ul>
-        <a href="#reservar" class="pcard-cta primary">Quiero este plan</a>
       </div>
 
-      <!-- Plan Completo -->
+      <!-- ── Plan Completo ── -->
       <div class="pcard">
-        <div class="pcard-top">
-          <div class="pcard-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-        </div>
-        <h3>Sistema Completo</h3>
-        <p class="pcard-sub">IA + WhatsApp + CRM · 4–6 semanas</p>
-        <div class="pcard-price-block">
-          <div class="pcard-setup">Configuración: <strong>1.299€</strong> pago único</div>
-          <div class="pcard-monthly">
-            <span class="price-amount" data-monthly="129" data-annual="108">129€</span>
-            <span class="price-period">/mes mantenimiento</span>
+        <div class="pcard-inner">
+          <div class="pcard-front">
+            <div class="pcard-top">
+              <div class="pcard-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+            </div>
+            <h3>Sistema Completo</h3>
+            <p class="pcard-sub">IA + WhatsApp + Notificaciones · 4–6 sem.</p>
+            <div class="pcard-price-block">
+              <div class="pcard-setup">Configuración: <strong>799€</strong> pago único</div>
+              <div class="pcard-monthly">
+                <span class="price-amount" data-monthly="69" data-annual="57">69€</span>
+                <span class="price-period">/mes mantenimiento</span>
+              </div>
+              <div class="price-save">Ahorra 144€ al año</div>
+            </div>
+            <div class="pcard-divider"></div>
+            <ul class="pcard-list">
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Todo lo del plan profesional</li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Agente IA también en WhatsApp</li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Notificaciones automáticas al reservar</li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Soporte prioritario</li>
+              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Actualizaciones trimestrales</li>
+            </ul>
+            <a href="#reservar" class="pcard-cta ghost">Empezar</a>
+            <button class="flip-info-btn" onclick="flipCard(this)">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
+              Ver detalles completos
+            </button>
           </div>
-          <div class="price-save">Ahorra 252€ al año</div>
+          <div class="pcard-back">
+            <button class="flip-back-btn" onclick="flipCard(this)">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Volver
+            </button>
+            <div class="back-title">Sistema Completo — Detalles</div>
+            <div class="back-sub">La solución más automatizada</div>
+            <div class="back-section">Adicional al plan profesional</div>
+            <ul class="back-list">
+              <li><span>·</span>El agente también atiende por WhatsApp</li>
+              <li><span>·</span>Te llega un WhatsApp cuando alguien reserva</li>
+              <li><span>·</span>El cliente recibe confirmación automática por WA</li>
+              <li><span>·</span>Integración con Meta WhatsApp Cloud API</li>
+            </ul>
+            <div class="back-section">Mantenimiento mensual (69€)</div>
+            <ul class="back-list">
+              <li><span>·</span>Hosting + API IA + WhatsApp API incluidos</li>
+              <li><span>·</span>Hasta 3 actualizaciones de contenido/mes</li>
+              <li><span>·</span>Soporte técnico prioritario (&lt;12h respuesta)</li>
+              <li><span>·</span>Revisión trimestral del agente IA</li>
+            </ul>
+            <div class="back-section">Plazo</div>
+            <ul class="back-list">
+              <li><span>·</span>Entrega en 4–6 semanas desde el briefing</li>
+              <li><span>·</span>Sin permanencia — cancela cuando quieras</li>
+            </ul>
+            <a href="#reservar" class="back-cta ghost">Empezar con este plan</a>
+          </div>
         </div>
-        <div class="pcard-divider"></div>
-        <ul class="pcard-list">
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Todo lo del plan profesional</li>
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Agente IA en WhatsApp</li>
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Notificaciones automáticas por WhatsApp</li>
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Soporte prioritario</li>
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Actualizaciones trimestrales</li>
-        </ul>
-        <a href="#reservar" class="pcard-cta ghost">Empezar</a>
       </div>
+
     </div>
     <p class="pricing-note">El mantenimiento es opcional. Incluye hosting, API de IA, actualizaciones y soporte. Sin permanencia.</p>
   </div>
@@ -1599,7 +1831,7 @@
       </div>
       <p class="footer-tagline">Webs profesionales con IA integrada<br>para negocios locales. Madrid · España.</p>
       <div class="footer-socials" style="margin-top:1rem">
-        <a href="#" class="footer-social-icon" title="LinkedIn">
+        <a href="https://www.linkedin.com/in/miguel-mart%C3%ADn-caro-mart%C3%ADn-402328208" target="_blank" class="footer-social-icon" title="LinkedIn">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
         </a>
         <a href="#" class="footer-social-icon" title="Instagram">
@@ -1763,6 +1995,11 @@
     const open = item.classList.contains('open');
     document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
     if (!open) item.classList.add('open');
+  }
+
+  // ── Card flip ────────────────────────────────────────────────────
+  function flipCard(btn) {
+    btn.closest('.pcard').classList.toggle('flipped');
   }
 
   // ── Billing toggle ───────────────────────────────────────────────
