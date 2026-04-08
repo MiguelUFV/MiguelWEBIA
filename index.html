@@ -6,165 +6,222 @@
   <title>WEB Miguel IA — Páginas web con IA para negocios locales</title>
   <meta name="description" content="Diseño webs profesionales con IA integrada para negocios locales. Tu web atiende clientes y agenda citas 24/7. Primera consulta gratis. Madrid y toda España." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #07070c;
-      --bg-1:      #0e0e16;
-      --bg-2:      #15151f;
-      --bg-3:      #1c1c28;
-      --border:    #232330;
-      --border-2:  #32324a;
-      --v:         #6d28d9;
-      --v2:        #7c3aed;
-      --v-dim:     rgba(109,40,217,0.12);
-      --v-glow:    rgba(109,40,217,0.25);
-      --fg:        #a78bfa;
-      --teal:      #0d9488;
-      --teal-fg:   #2dd4bf;
-      --text:      #f2f2f8;
-      --text-2:    #8888a8;
-      --text-3:    #55556e;
-      --r:         8px;
-      --r-lg:      14px;
+      --bg:      #09080b;
+      --bg-1:    #110f14;
+      --bg-2:    #1a1720;
+      --bg-3:    #231f2c;
+      --border:  #26222f;
+      --border-2:#38334a;
+      --o:       #f97316;
+      --o2:      #ea580c;
+      --o-dim:   rgba(249,115,22,0.1);
+      --o-glow:  rgba(249,115,22,0.18);
+      --text:    #f5f2f0;
+      --text-2:  #9e99b0;
+      --text-3:  #5c5870;
+      --r:       8px;
+      --r-lg:    14px;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Outfit', sans-serif;
+      font-family: 'DM Sans', sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
+    /* Grain overlay */
+    body::after {
+      content: '';
+      position: fixed; inset: -50%; z-index: 1000; pointer-events: none;
+      opacity: 0.032;
+      background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='300' height='300' filter='url(%23n)'/></svg>");
+      animation: grain .4s steps(1) infinite;
+    }
+    @keyframes grain {
+      0%   { transform: translate(0,0); }
+      20%  { transform: translate(-2%,-3%); }
+      40%  { transform: translate(3%,1%); }
+      60%  { transform: translate(-1%,4%); }
+      80%  { transform: translate(2%,-2%); }
+      100% { transform: translate(-3%,2%); }
+    }
+
+    h1,h2,h3,h4,h5 { font-family: 'Bricolage Grotesque', sans-serif; }
 
     /* ── NAVBAR ─────────────────────────────────────────────────── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
       height: 58px;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 2rem;
-      background: rgba(7,7,12,0.88);
+      background: rgba(9,8,11,0.85);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
 
     .logo {
-      font-family: 'Syne', sans-serif;
-      font-size: 1rem; font-weight: 700; letter-spacing: -0.01em;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 0.95rem; font-weight: 700; letter-spacing: -0.01em;
       color: var(--text); text-decoration: none;
       display: flex; align-items: center; gap: 0.6rem;
     }
 
     .logo-mark {
-      width: 26px; height: 26px; border-radius: 6px;
-      background: var(--v);
+      width: 28px; height: 28px; border-radius: 7px;
+      background: var(--o);
       display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
+      flex-shrink: 0; font-size: 0.8rem; font-weight: 800; color: #fff;
+      font-family: 'Bricolage Grotesque', sans-serif;
     }
-    .logo-mark svg { width: 14px; height: 14px; }
 
-    .nav-right { display: flex; gap: 0.25rem; align-items: center; }
+    .nav-right { display: flex; gap: 0.2rem; align-items: center; }
 
     .nav-link {
       color: var(--text-2); text-decoration: none;
-      font-size: 0.875rem; font-weight: 400;
+      font-size: 0.85rem; font-weight: 400;
       padding: 0.4rem 0.75rem; border-radius: var(--r);
       transition: color .15s, background .15s;
     }
     .nav-link:hover { color: var(--text); background: var(--bg-2); }
 
     .nav-cta {
-      background: var(--v); color: #fff;
-      font-weight: 500; font-size: 0.875rem;
+      background: var(--o); color: #fff;
+      font-weight: 500; font-size: 0.85rem;
       padding: 0.45rem 1.1rem; border-radius: var(--r);
-      text-decoration: none; border: 1px solid rgba(255,255,255,0.08);
-      transition: background .15s;
+      text-decoration: none;
+      transition: background .15s, transform .1s;
     }
-    .nav-cta:hover { background: var(--v2); }
+    .nav-cta:hover { background: var(--o2); transform: translateY(-1px); }
 
-    /* ── QUIZ HERO ───────────────────────────────────────────────── */
-    #inicio {
-      min-height: 100vh;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      padding: 6rem 1.5rem 4rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    #inicio::before {
-      content: '';
-      position: absolute; inset: 0; pointer-events: none;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(109,40,217,0.18) 0%, transparent 60%);
-    }
-
-    /* Progress bar */
+    /* ── PROGRESS BAR ────────────────────────────────────────────── */
     .quiz-progress-bar {
-      position: fixed; top: 58px; left: 0; right: 0; z-index: 199;
+      position: fixed; top: 58px; left: 0; right: 0; z-index: 499;
       height: 2px; background: var(--border);
     }
     .quiz-progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, var(--v), var(--fg));
+      background: linear-gradient(90deg, var(--o), #fb923c);
       transition: width .5s cubic-bezier(.4,0,.2,1);
       width: 0%;
     }
 
-    /* Quiz wrapper */
-    .quiz-wrap {
-      width: 100%; max-width: 680px;
-      text-align: center;
+    /* ── HERO ────────────────────────────────────────────────────── */
+    #inicio {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center;
+      padding: 100px 1.5rem 5rem;
+      position: relative; overflow: hidden;
     }
 
-    .quiz-eyebrow {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em;
-      text-transform: uppercase; color: var(--text-3);
-      margin-bottom: 0.5rem;
+    /* Atmospheric background */
+    #inicio::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 50% -5%, rgba(249,115,22,0.14) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 30% at 75% 60%, rgba(234,88,12,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse 35% 25% at 20% 70%, rgba(249,115,22,0.05) 0%, transparent 50%);
     }
+
+    #inicio > * { position: relative; z-index: 1; }
+
+    /* Logo display */
+    .hero-brand {
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; margin-bottom: 1rem;
+    }
+
+    .hero-logo-mark {
+      width: 64px; height: 64px; border-radius: 16px;
+      background: var(--o);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 1.8rem; font-weight: 800; color: #fff;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 0 60px rgba(249,115,22,0.3);
+    }
+
+    .hero-title {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: clamp(3rem, 9vw, 7rem);
+      font-weight: 800; letter-spacing: -0.04em;
+      line-height: 0.95; text-align: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title .accent { color: var(--o); }
+
+    .hero-tagline {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: var(--text-2); font-weight: 300;
+      letter-spacing: 0.01em; margin-bottom: 3rem;
+      max-width: 480px; text-align: center;
+    }
+
+    .hero-divider {
+      width: 100%; max-width: 640px;
+      height: 1px; background: var(--border);
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    .hero-divider::after {
+      content: 'CONFIGURA TU WEB';
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--bg); padding: 0 1rem;
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em;
+      color: var(--text-3);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    /* ── QUIZ ────────────────────────────────────────────────────── */
+    .quiz-wrap { width: 100%; max-width: 640px; }
 
     .quiz-step-indicator {
-      font-size: 0.8rem; color: var(--text-3); margin-bottom: 2.5rem;
-      transition: opacity .3s;
+      font-size: 0.78rem; color: var(--text-3);
+      margin-bottom: 1.75rem; text-align: center;
+      font-family: 'DM Sans', sans-serif; letter-spacing: 0.04em;
     }
 
-    /* Individual steps */
     .quiz-step {
       display: none;
-      animation: stepIn .35s cubic-bezier(.4,0,.2,1);
+      animation: stepIn .3s cubic-bezier(.4,0,.2,1);
     }
     .quiz-step.active { display: block; }
 
     @keyframes stepIn {
-      from { opacity: 0; transform: translateY(16px); }
+      from { opacity: 0; transform: translateY(12px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
     .quiz-question {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: clamp(1.4rem, 3.5vw, 2rem);
       font-weight: 700; letter-spacing: -0.025em;
-      line-height: 1.2; margin-bottom: 0.5rem;
+      line-height: 1.2; margin-bottom: 0.4rem; text-align: center;
     }
 
     .quiz-sub {
-      font-size: 0.9rem; color: var(--text-3);
-      margin-bottom: 2rem;
+      font-size: 0.85rem; color: var(--text-3);
+      margin-bottom: 1.75rem; text-align: center;
     }
 
-    /* Option grid */
     .opts {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 0.75rem; margin-bottom: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 0.6rem; margin-bottom: 2rem;
     }
     .opts.cols-3 { grid-template-columns: repeat(3, 1fr); }
 
@@ -172,73 +229,67 @@
       background: var(--bg-1);
       border: 1.5px solid var(--border-2);
       border-radius: var(--r-lg);
-      padding: 1.1rem 1rem;
+      padding: 1rem 0.9rem;
       cursor: pointer; text-align: left;
-      transition: all .18s cubic-bezier(.4,0,.2,1);
-      position: relative; overflow: hidden;
-      user-select: none;
+      transition: all .15s cubic-bezier(.4,0,.2,1);
+      position: relative; user-select: none;
     }
     .opt:hover {
-      border-color: var(--v);
-      background: var(--v-dim);
+      border-color: var(--o);
+      background: var(--o-dim);
       transform: translateY(-2px);
     }
     .opt.selected {
-      border-color: var(--v);
-      background: rgba(109,40,217,0.15);
+      border-color: var(--o);
+      background: rgba(249,115,22,0.12);
     }
     .opt.selected .opt-check { opacity: 1; transform: scale(1); }
 
     .opt-check {
-      position: absolute; top: 0.6rem; right: 0.6rem;
-      width: 18px; height: 18px; border-radius: 50%;
-      background: var(--v);
+      position: absolute; top: 0.55rem; right: 0.55rem;
+      width: 17px; height: 17px; border-radius: 50%;
+      background: var(--o);
       display: flex; align-items: center; justify-content: center;
-      opacity: 0; transform: scale(0.5);
-      transition: all .2s cubic-bezier(.34,1.56,.64,1);
+      opacity: 0; transform: scale(0.4);
+      transition: all .18s cubic-bezier(.34,1.56,.64,1);
     }
-    .opt-check svg { width: 10px; height: 10px; }
+    .opt-check svg { width: 9px; height: 9px; }
 
     .opt-label {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.9rem; font-weight: 600; color: var(--text);
-      line-height: 1.3;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 0.88rem; font-weight: 600; color: var(--text); line-height: 1.3;
     }
-    .opt.selected .opt-label { color: var(--fg); }
+    .opt.selected .opt-label { color: var(--o); }
+    .opt-desc { font-size: 0.75rem; color: var(--text-3); margin-top: 0.2rem; }
 
-    .opt-desc {
-      font-size: 0.78rem; color: var(--text-3); margin-top: 0.25rem;
-    }
-
-    /* Quiz navigation */
     .quiz-nav {
       display: flex; align-items: center; justify-content: center; gap: 1rem;
     }
 
     .btn-quiz-next {
-      background: var(--v); color: #fff;
+      background: var(--o); color: #fff;
       padding: 0.75rem 2rem; border-radius: var(--r);
-      font-family: 'Syne', sans-serif;
-      font-weight: 600; font-size: 0.95rem;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 700; font-size: 0.9rem;
       border: none; cursor: pointer;
       display: inline-flex; align-items: center; gap: 0.5rem;
+      opacity: 0.35; pointer-events: none;
       transition: background .15s, transform .15s, opacity .2s;
-      opacity: 0.4; pointer-events: none;
     }
     .btn-quiz-next.ready { opacity: 1; pointer-events: all; }
-    .btn-quiz-next.ready:hover { background: var(--v2); transform: translateY(-1px); }
+    .btn-quiz-next.ready:hover { background: var(--o2); transform: translateY(-1px); }
 
     .btn-quiz-back {
       background: none; border: none; cursor: pointer;
-      color: var(--text-3); font-size: 0.85rem;
-      display: flex; align-items: center; gap: 0.35rem;
+      color: var(--text-3); font-size: 0.82rem;
+      display: flex; align-items: center; gap: 0.3rem;
       padding: 0.5rem; border-radius: var(--r);
       transition: color .15s;
-      font-family: 'Outfit', sans-serif;
+      font-family: 'DM Sans', sans-serif;
     }
     .btn-quiz-back:hover { color: var(--text-2); }
 
-    /* ── RESULT SCREEN ───────────────────────────────────────────── */
+    /* ── RESULT ──────────────────────────────────────────────────── */
     #quiz-result {
       display: none;
       animation: stepIn .4s cubic-bezier(.4,0,.2,1);
@@ -249,154 +300,134 @@
       background: var(--bg-1);
       border: 1px solid var(--border-2);
       border-radius: var(--r-lg);
-      padding: 2rem; margin-bottom: 1.5rem;
+      padding: 1.75rem; margin-bottom: 1.5rem;
       text-align: left;
     }
 
     .result-header {
       display: flex; align-items: center; gap: 0.75rem;
-      margin-bottom: 1.5rem; padding-bottom: 1.5rem;
+      margin-bottom: 1.25rem; padding-bottom: 1.25rem;
       border-bottom: 1px solid var(--border);
     }
 
     .result-icon {
-      width: 44px; height: 44px; border-radius: var(--r);
-      background: rgba(109,40,217,0.15);
-      border: 1px solid rgba(109,40,217,0.25);
+      width: 40px; height: 40px; border-radius: var(--r);
+      background: var(--o-dim); border: 1px solid rgba(249,115,22,0.25);
       display: flex; align-items: center; justify-content: center;
-      color: var(--fg); flex-shrink: 0;
+      color: var(--o); flex-shrink: 0;
     }
 
-    .result-header-text h3 {
-      font-size: 1rem; font-weight: 700; margin-bottom: 0.1rem;
+    .result-header h3 {
+      font-size: 0.95rem; font-weight: 700; margin-bottom: 0.1rem;
     }
-    .result-header-text p {
-      font-size: 0.8rem; color: var(--text-3);
-    }
+    .result-header p { font-size: 0.78rem; color: var(--text-3); }
 
-    .result-rows { display: flex; flex-direction: column; gap: 0.75rem; }
+    .result-rows { display: flex; flex-direction: column; gap: 0.7rem; }
 
-    .result-row {
-      display: flex; align-items: flex-start; gap: 0.75rem;
-    }
+    .result-row { display: flex; align-items: flex-start; gap: 0.75rem; }
     .result-row-label {
-      font-size: 0.78rem; color: var(--text-3); width: 90px; flex-shrink: 0;
-      padding-top: 0.1rem;
+      font-size: 0.75rem; color: var(--text-3); width: 80px; flex-shrink: 0;
+      padding-top: 0.15rem; font-weight: 500;
     }
     .result-row-value {
-      font-size: 0.88rem; color: var(--text); font-weight: 500;
-      flex: 1; display: flex; flex-wrap: wrap; gap: 0.35rem;
+      font-size: 0.85rem; color: var(--text); font-weight: 500;
+      flex: 1; display: flex; flex-wrap: wrap; gap: 0.3rem;
     }
 
     .result-tag {
-      background: var(--v-dim); border: 1px solid rgba(109,40,217,0.2);
-      color: var(--fg); font-size: 0.75rem; font-weight: 500;
-      padding: 0.2rem 0.6rem; border-radius: 999px;
+      background: var(--o-dim); border: 1px solid rgba(249,115,22,0.2);
+      color: var(--o); font-size: 0.72rem; font-weight: 600;
+      padding: 0.18rem 0.55rem; border-radius: 999px;
     }
 
     .result-cta-wrap { text-align: center; }
 
     .btn-hazlo {
-      background: linear-gradient(135deg, var(--v), #9333ea);
+      background: var(--o);
       color: #fff; padding: 0.9rem 2.5rem;
       border-radius: var(--r);
-      font-family: 'Syne', sans-serif;
-      font-weight: 700; font-size: 1.05rem;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 700; font-size: 1rem;
       text-decoration: none; display: inline-flex;
       align-items: center; gap: 0.5rem;
       border: none; cursor: pointer;
-      box-shadow: 0 0 40px rgba(109,40,217,0.3);
-      transition: transform .15s, box-shadow .2s;
+      box-shadow: 0 0 50px rgba(249,115,22,0.25);
+      transition: transform .15s, background .15s, box-shadow .2s;
     }
     .btn-hazlo:hover {
+      background: var(--o2);
       transform: translateY(-2px);
-      box-shadow: 0 8px 50px rgba(109,40,217,0.45);
+      box-shadow: 0 8px 50px rgba(249,115,22,0.4);
     }
 
     .result-restart {
-      margin-top: 1rem; font-size: 0.8rem; color: var(--text-3);
+      margin-top: 1rem; font-size: 0.78rem; color: var(--text-3);
     }
     .result-restart button {
       background: none; border: none; cursor: pointer;
       color: var(--text-3); text-decoration: underline;
-      font-family: 'Outfit', sans-serif; font-size: 0.8rem;
+      font-family: 'DM Sans', sans-serif; font-size: 0.78rem;
     }
     .result-restart button:hover { color: var(--text-2); }
 
-    /* ── SECTIONS ────────────────────────────────────────────────── */
+    /* ── SHARED LAYOUT ───────────────────────────────────────────── */
     .container { max-width: 1080px; margin: 0 auto; }
     section:not(#inicio) { padding: 5rem 2rem; }
 
     .sec-label {
-      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--fg);
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--o);
       margin-bottom: 0.6rem; display: block;
-      font-family: 'Outfit', sans-serif;
     }
-
     .sec-title {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
       font-weight: 700; letter-spacing: -0.025em; line-height: 1.2;
       margin-bottom: 0.75rem;
     }
-
-    .sec-desc {
-      color: var(--text-2); font-size: 0.95rem; max-width: 480px; line-height: 1.7;
-    }
-
+    .sec-desc { color: var(--text-2); font-size: 0.93rem; max-width: 460px; line-height: 1.7; }
     .sec-head { margin-bottom: 2.75rem; }
 
-    /* ── DEMO CALLOUT ────────────────────────────────────────────── */
+    /* ── DEMO STRIP ──────────────────────────────────────────────── */
     #demo {
-      background: var(--bg); border-top: 1px solid var(--border);
-      padding: 3rem 2rem;
+      background: var(--bg-1); border-top: 1px solid var(--border);
+      padding: 2.5rem 2rem;
     }
-
     .demo-inner {
       max-width: 1080px; margin: 0 auto;
       display: flex; align-items: center; justify-content: space-between;
-      gap: 2rem; flex-wrap: wrap;
+      gap: 1.5rem; flex-wrap: wrap;
     }
-
     .demo-text h3 {
-      font-size: 1.1rem; font-weight: 700; margin-bottom: 0.4rem;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem;
     }
-    .demo-text p { font-size: 0.875rem; color: var(--text-2); }
+    .demo-text p { font-size: 0.85rem; color: var(--text-2); }
 
     .demo-badge {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      background: rgba(13,148,136,0.1); border: 1px solid rgba(13,148,136,0.25);
-      color: var(--teal-fg); font-size: 0.75rem; font-weight: 600;
-      padding: 0.3rem 0.75rem; border-radius: 999px; flex-shrink: 0;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(249,115,22,0.08); border: 1px solid rgba(249,115,22,0.2);
+      color: var(--o); font-size: 0.75rem; font-weight: 600;
+      padding: 0.3rem 0.8rem; border-radius: 999px; flex-shrink: 0;
     }
-    .demo-badge-dot {
+    .demo-dot {
       width: 6px; height: 6px; border-radius: 50%;
-      background: var(--teal-fg);
-      animation: pulse 2s infinite;
+      background: var(--o); animation: blink 2s infinite;
     }
-    @keyframes pulse {
-      0%,100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.35} }
 
     /* ── SERVICIOS ───────────────────────────────────────────────── */
-    #servicios {
-      background: var(--bg-1); border-top: 1px solid var(--border);
-    }
+    #servicios { background: var(--bg); border-top: 1px solid var(--border); }
 
     .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: grid; grid-template-columns: repeat(3,1fr);
       border: 1px solid var(--border);
-      border-radius: var(--r-lg);
-      overflow: hidden;
+      border-radius: var(--r-lg); overflow: hidden;
     }
 
     .card {
       background: var(--bg-1); padding: 2rem;
-      position: relative;
-      transition: background .2s;
+      position: relative; transition: background .2s;
       border-right: 1px solid var(--border);
     }
     .card:last-child { border-right: none; }
@@ -405,142 +436,120 @@
 
     .card-top {
       display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.4rem;
     }
 
     .card-icon {
-      width: 38px; height: 38px; border-radius: var(--r);
+      width: 36px; height: 36px; border-radius: var(--r);
       background: var(--bg); border: 1px solid var(--border-2);
       display: flex; align-items: center; justify-content: center;
-      color: var(--fg);
+      color: var(--o);
     }
-    .card.featured .card-icon { color: var(--teal-fg); }
+    .card.featured .card-icon { color: var(--o); }
 
     .card-badge {
-      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.05em;
-      text-transform: uppercase; color: var(--fg);
-      background: var(--v-dim);
-      border: 1px solid rgba(109,40,217,0.2);
+      font-size: 0.66rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--o);
+      background: var(--o-dim); border: 1px solid rgba(249,115,22,0.2);
       padding: 0.18rem 0.55rem; border-radius: 999px;
     }
 
-    .card h3 {
-      font-family: 'Syne', sans-serif;
-      font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem;
-    }
-    .card-price { font-size: 0.78rem; color: var(--text-3); margin-bottom: 1rem; }
-    .card p { color: var(--text-2); font-size: 0.85rem; line-height: 1.65; margin-bottom: 1.25rem; }
+    .card h3 { font-size: 0.97rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .card-price { font-size: 0.76rem; color: var(--text-3); margin-bottom: 0.9rem; }
+    .card p { color: var(--text-2); font-size: 0.84rem; line-height: 1.6; margin-bottom: 1.2rem; }
 
-    .card-list { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+    .card-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
     .card-list li {
-      font-size: 0.8rem; color: var(--text-2);
-      display: flex; align-items: flex-start; gap: 0.45rem;
+      font-size: 0.79rem; color: var(--text-2);
+      display: flex; align-items: flex-start; gap: 0.4rem;
     }
-    .card-list li svg { color: var(--teal-fg); flex-shrink: 0; margin-top: 1px; }
+    .card-list li svg { color: var(--o); flex-shrink: 0; margin-top: 1px; opacity: 0.8; }
 
     /* ── PROCESO ─────────────────────────────────────────────────── */
-    #proceso { background: var(--bg); border-top: 1px solid var(--border); }
+    #proceso { background: var(--bg-1); border-top: 1px solid var(--border); }
 
     .steps-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      border: 1px solid var(--border);
-      border-radius: var(--r-lg); overflow: hidden;
+      display: grid; grid-template-columns: repeat(3,1fr);
+      border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden;
     }
-
     .step {
       padding: 2rem; border-right: 1px solid var(--border);
     }
     .step:last-child { border-right: none; }
-
     .step-n {
-      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
       text-transform: uppercase; color: var(--text-3);
       margin-bottom: 1.25rem;
       display: flex; align-items: center; gap: 0.5rem;
     }
     .step-n::after { content: ''; height: 1px; flex: 1; background: var(--border); }
-
     .step-ico {
-      width: 38px; height: 38px;
-      background: var(--bg-1); border: 1px solid var(--border-2);
+      width: 36px; height: 36px;
+      background: var(--bg); border: 1px solid var(--border-2);
       border-radius: var(--r);
       display: flex; align-items: center; justify-content: center;
-      color: var(--fg); margin-bottom: 1rem;
+      color: var(--o); margin-bottom: 1rem; opacity: 0.85;
     }
-
-    .step h3 {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.97rem; font-weight: 700; margin-bottom: 0.4rem;
-    }
-    .step p { color: var(--text-2); font-size: 0.84rem; line-height: 1.6; }
+    .step h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .step p { color: var(--text-2); font-size: 0.82rem; line-height: 1.6; }
 
     /* ── FAQ ─────────────────────────────────────────────────────── */
-    #faq { background: var(--bg-1); border-top: 1px solid var(--border); }
+    #faq { background: var(--bg); border-top: 1px solid var(--border); }
 
     .faq-grid {
       display: grid; grid-template-columns: 1fr 1fr;
       border: 1px solid var(--border); border-radius: var(--r-lg);
       overflow: hidden; max-width: 900px; margin: 0 auto;
     }
-
     .faq-item {
       border-right: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
     .faq-item:nth-child(even) { border-right: none; }
     .faq-item:nth-last-child(-n+2) { border-bottom: none; }
-
     .faq-q {
-      width: 100%; padding: 1.5rem;
+      width: 100%; padding: 1.4rem 1.5rem;
       display: flex; justify-content: space-between; align-items: flex-start;
       background: none; border: none; cursor: pointer;
-      color: var(--text); font-size: 0.875rem; font-weight: 500;
-      text-align: left; gap: 1rem;
-      transition: background .15s;
-      font-family: 'Outfit', sans-serif;
+      color: var(--text); font-size: 0.85rem; font-weight: 500;
+      text-align: left; gap: 1rem; transition: background .15s;
+      font-family: 'DM Sans', sans-serif;
     }
-    .faq-q:hover { background: var(--bg-2); }
-
+    .faq-q:hover { background: var(--bg-1); }
     .faq-chevron {
-      flex-shrink: 0; width: 16px; height: 16px;
-      color: var(--text-3); transition: transform .2s, color .2s;
-      margin-top: 2px;
+      flex-shrink: 0; width: 15px; height: 15px;
+      color: var(--text-3); transition: transform .2s, color .2s; margin-top: 2px;
     }
-    .faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--fg); }
-
+    .faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--o); }
     .faq-a { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
     .faq-item.open .faq-a { max-height: 220px; }
-
     .faq-a p {
-      padding: 0 1.5rem 1.5rem; border-top: 1px solid var(--border);
-      padding-top: 1rem; color: var(--text-2); font-size: 0.84rem; line-height: 1.65;
+      padding: 0 1.5rem 1.4rem; border-top: 1px solid var(--border);
+      padding-top: 0.9rem; color: var(--text-2); font-size: 0.82rem; line-height: 1.65;
     }
 
     /* ── RESERVAR ────────────────────────────────────────────────── */
-    #reservar { background: var(--bg); border-top: 1px solid var(--border); }
+    #reservar { background: var(--bg-1); border-top: 1px solid var(--border); }
 
     .reservar-layout {
       display: grid; grid-template-columns: 1fr 2fr;
       gap: 4rem; align-items: start;
     }
-
     .reservar-copy h2 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(1.4rem, 2.8vw, 1.9rem);
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: clamp(1.3rem, 2.8vw, 1.8rem);
       font-weight: 700; letter-spacing: -0.025em;
       line-height: 1.25; margin-bottom: 1rem;
     }
-    .reservar-copy p { color: var(--text-2); font-size: 0.875rem; line-height: 1.7; margin-bottom: 1.25rem; }
-
-    .reservar-items { display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 1.5rem; }
+    .reservar-copy p { color: var(--text-2); font-size: 0.85rem; line-height: 1.7; margin-bottom: 1.25rem; }
+    .reservar-items { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.5rem; }
     .reservar-item {
-      display: flex; align-items: center; gap: 0.65rem;
-      font-size: 0.84rem; color: var(--text-2);
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.82rem; color: var(--text-2);
     }
-    .reservar-item svg { color: var(--teal-fg); flex-shrink: 0; }
-
-    .reservar-wa { font-size: 0.78rem; color: var(--text-3); }
-    .reservar-wa a { color: var(--fg); text-decoration: none; }
+    .reservar-item svg { color: var(--o); flex-shrink: 0; opacity: 0.85; }
+    .reservar-wa { font-size: 0.76rem; color: var(--text-3); }
+    .reservar-wa a { color: var(--o); text-decoration: none; }
     .reservar-wa a:hover { text-decoration: underline; }
 
     #chat-inline {
@@ -552,64 +561,69 @@
 
     /* ── CTA ─────────────────────────────────────────────────────── */
     #cta {
-      background: var(--bg-1); border-top: 1px solid var(--border);
+      background: var(--bg); border-top: 1px solid var(--border);
       text-align: center; padding: 5rem 2rem;
+      position: relative; overflow: hidden;
+    }
+    #cta::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 60% 60% at 50% 100%, rgba(249,115,22,0.08) 0%, transparent 65%);
     }
     #cta h2 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(1.5rem, 3.5vw, 2.3rem);
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
       font-weight: 700; letter-spacing: -0.025em; margin-bottom: 0.75rem;
+      position: relative;
     }
-    #cta p { color: var(--text-2); font-size: 0.9rem; max-width: 380px; margin: 0 auto 2rem; line-height: 1.7; }
+    #cta p {
+      color: var(--text-2); font-size: 0.9rem; max-width: 380px;
+      margin: 0 auto 2rem; line-height: 1.7; position: relative;
+    }
+
+    /* ── BUTTONS ─────────────────────────────────────────────────── */
+    .btn-primary {
+      background: var(--o); color: #fff;
+      padding: 0.65rem 1.5rem; border-radius: var(--r);
+      font-weight: 500; font-size: 0.875rem; text-decoration: none;
+      border: none; cursor: pointer;
+      transition: background .15s, transform .15s;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-family: 'DM Sans', sans-serif; position: relative;
+    }
+    .btn-primary:hover { background: var(--o2); transform: translateY(-1px); }
+
+    .btn-ghost {
+      background: transparent; color: var(--text-2);
+      padding: 0.65rem 1.5rem; border-radius: var(--r);
+      font-weight: 400; font-size: 0.875rem; text-decoration: none;
+      border: 1px solid var(--border-2);
+      transition: color .15s, background .15s;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .btn-ghost:hover { color: var(--text); background: var(--bg-2); }
 
     /* ── FOOTER ──────────────────────────────────────────────────── */
     footer {
-      background: var(--bg);
-      border-top: 1px solid var(--border);
+      background: var(--bg-1); border-top: 1px solid var(--border);
       padding: 1.5rem 2rem;
       display: flex; align-items: center; justify-content: space-between;
       flex-wrap: wrap; gap: 1rem;
     }
-
     .footer-brand {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 0.875rem; font-weight: 700;
       color: var(--text); display: flex; align-items: center; gap: 0.5rem;
     }
-    .footer-brand .logo-mark { width: 20px; height: 20px; border-radius: 4px; }
-    .footer-brand .logo-mark svg { width: 10px; height: 10px; }
-
+    .footer-brand .logo-mark { width: 22px; height: 22px; border-radius: 5px; font-size: 0.65rem; }
     .footer-links { display: flex; gap: 1.5rem; }
     .footer-links a {
       color: var(--text-3); text-decoration: none;
       font-size: 0.78rem; transition: color .15s;
     }
     .footer-links a:hover { color: var(--text-2); }
-
     .footer-copy { color: var(--text-3); font-size: 0.75rem; }
-
-    /* ── BUTTONS (reusable) ──────────────────────────────────────── */
-    .btn-primary {
-      background: var(--v); color: #fff;
-      padding: 0.65rem 1.5rem; border-radius: var(--r);
-      font-weight: 500; font-size: 0.875rem; text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.06); cursor: pointer;
-      transition: background .15s, transform .15s;
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      font-family: 'Outfit', sans-serif;
-    }
-    .btn-primary:hover { background: var(--v2); transform: translateY(-1px); }
-
-    .btn-ghost {
-      background: transparent; color: var(--text-2);
-      padding: 0.65rem 1.5rem; border-radius: var(--r);
-      font-weight: 500; font-size: 0.875rem; text-decoration: none;
-      border: 1px solid var(--border-2);
-      transition: color .15s, background .15s;
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      font-family: 'Outfit', sans-serif;
-    }
-    .btn-ghost:hover { color: var(--text); background: var(--bg-2); }
 
     /* ── RESPONSIVE ──────────────────────────────────────────────── */
     @media (max-width: 900px) {
@@ -626,12 +640,13 @@
       #chat-inline { height: 500px; position: static; }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 600px) {
       nav { padding: 0 1rem; }
       .nav-link { display: none; }
-      .opts.cols-3 { grid-template-columns: 1fr; }
+      .opts.cols-3 { grid-template-columns: 1fr 1fr; }
       .opts { grid-template-columns: 1fr 1fr; }
       footer { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+      .hero-title { font-size: clamp(2.5rem, 14vw, 4rem); }
     }
   </style>
 </head>
@@ -640,11 +655,7 @@
 <!-- ── NAVBAR ─────────────────────────────────────────────────────── -->
 <nav>
   <a href="#inicio" class="logo">
-    <span class="logo-mark">
-      <svg viewBox="0 0 14 14" fill="none" stroke="white" stroke-width="2">
-        <path d="M2 7h3l2-4 2 8 2-4h1"/>
-      </svg>
-    </span>
+    <span class="logo-mark">M</span>
     WEB Miguel IA
   </a>
   <div class="nav-right">
@@ -655,155 +666,156 @@
   </div>
 </nav>
 
-<!-- Progress bar (controlled by quiz JS) -->
 <div class="quiz-progress-bar">
   <div class="quiz-progress-fill" id="progressFill"></div>
 </div>
 
-<!-- ── QUIZ HERO ──────────────────────────────────────────────────── -->
+<!-- ── HERO + QUIZ ────────────────────────────────────────────────── -->
 <section id="inicio">
-  <div class="quiz-wrap">
 
-    <!-- Step indicator -->
-    <div class="quiz-eyebrow">Crea tu web en 3 pasos</div>
+  <!-- Logo + tagline -->
+  <div class="hero-brand">
+    <div class="hero-logo-mark">M</div>
+    <h1 class="hero-title">WEB<br><span class="accent">MIGUEL</span> IA</h1>
+    <p class="hero-tagline">Tu negocio online. Con inteligencia.</p>
+  </div>
+
+  <div class="hero-divider"></div>
+
+  <!-- Quiz -->
+  <div class="quiz-wrap">
     <div class="quiz-step-indicator" id="stepIndicator">Paso 1 de 3</div>
 
-    <!-- ── STEP 1: Tipo de negocio ── -->
+    <!-- Step 1 -->
     <div class="quiz-step active" id="step-1">
-      <h1 class="quiz-question">¿Qué tipo de negocio tienes?</h1>
-      <p class="quiz-sub">Elige la opción que más se acerque a tu actividad</p>
+      <h2 class="quiz-question">¿Qué tipo de negocio tienes?</h2>
+      <p class="quiz-sub">Elige la opción que más se acerque</p>
       <div class="opts" data-step="1" data-type="single">
         <div class="opt" data-value="Restaurante / Bar">
-          <span class="opt-check"><svg viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></span>
+          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
           <div class="opt-label">Restaurante / Bar</div>
         </div>
         <div class="opt" data-value="Peluquería / Estética">
-          <span class="opt-check"><svg viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></span>
+          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
           <div class="opt-label">Peluquería / Estética</div>
         </div>
         <div class="opt" data-value="Tienda / Comercio">
-          <span class="opt-check"><svg viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></span>
+          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
           <div class="opt-label">Tienda / Comercio</div>
         </div>
         <div class="opt" data-value="Clínica / Salud">
-          <span class="opt-check"><svg viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></span>
+          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
           <div class="opt-label">Clínica / Salud</div>
         </div>
         <div class="opt" data-value="Fitness / Deporte">
-          <span class="opt-check"><svg viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></span>
+          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
           <div class="opt-label">Fitness / Deporte</div>
         </div>
         <div class="opt" data-value="Servicios profesionales">
-          <span class="opt-check"><svg viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></span>
+          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
           <div class="opt-label">Servicios profesionales</div>
         </div>
         <div class="opt" data-value="Otro tipo de negocio">
-          <span class="opt-check"><svg viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></span>
+          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
           <div class="opt-label">Otro</div>
         </div>
       </div>
       <div class="quiz-nav">
         <button class="btn-quiz-next" id="next-1" onclick="goNext(1)">
-          Siguiente
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Siguiente <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
       </div>
     </div>
 
-    <!-- ── STEP 2: Funcionalidades ── -->
+    <!-- Step 2 -->
     <div class="quiz-step" id="step-2">
       <h2 class="quiz-question">¿Qué necesita tu web?</h2>
       <p class="quiz-sub">Puedes elegir varias opciones</p>
       <div class="opts" data-step="2" data-type="multi">
         <div class="opt" data-value="Mostrar servicios y precios">
-          <span class="opt-check"><svg viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></span>
+          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
           <div class="opt-label">Mostrar servicios y precios</div>
-          <div class="opt-desc">Página de servicios clara y visual</div>
+          <div class="opt-desc">Página clara y visual</div>
         </div>
         <div class="opt" data-value="Reservas online">
-          <span class="opt-check"><svg viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></span>
+          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
           <div class="opt-label">Reservas online</div>
-          <div class="opt-desc">Los clientes agendan citas solos</div>
+          <div class="opt-desc">Los clientes agendan solos</div>
         </div>
         <div class="opt" data-value="Chatbot IA 24/7">
-          <span class="opt-check"><svg viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></span>
+          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
           <div class="opt-label">Chatbot IA 24/7</div>
-          <div class="opt-desc">Atiende preguntas automáticamente</div>
+          <div class="opt-desc">Atiende preguntas solo</div>
         </div>
         <div class="opt" data-value="Tienda online">
-          <span class="opt-check"><svg viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></span>
+          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
           <div class="opt-label">Tienda online</div>
-          <div class="opt-desc">Vende productos desde la web</div>
+          <div class="opt-desc">Vende desde la web</div>
         </div>
         <div class="opt" data-value="Galería de fotos">
-          <span class="opt-check"><svg viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></span>
+          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
           <div class="opt-label">Galería de fotos</div>
-          <div class="opt-desc">Muestra tu trabajo visualmente</div>
+          <div class="opt-desc">Muestra tu trabajo</div>
         </div>
         <div class="opt" data-value="Blog / Noticias">
-          <span class="opt-check"><svg viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></span>
+          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
           <div class="opt-label">Blog / Noticias</div>
-          <div class="opt-desc">Contenido para posicionarte en Google</div>
+          <div class="opt-desc">Posicionarte en Google</div>
         </div>
       </div>
       <div class="quiz-nav">
         <button class="btn-quiz-back" onclick="goBack(2)">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-          Atrás
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Atrás
         </button>
         <button class="btn-quiz-next" id="next-2" onclick="goNext(2)">
-          Siguiente
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Siguiente <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
       </div>
     </div>
 
-    <!-- ── STEP 3: Plazo ── -->
+    <!-- Step 3 -->
     <div class="quiz-step" id="step-3">
       <h2 class="quiz-question">¿Cuándo quieres empezar?</h2>
       <p class="quiz-sub">Sin compromiso, solo para orientarme</p>
       <div class="opts cols-3" data-step="3" data-type="single">
         <div class="opt" data-value="Lo antes posible">
-          <span class="opt-check"><svg viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></span>
+          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
           <div class="opt-label">Lo antes posible</div>
-          <div class="opt-desc">Empezamos esta semana</div>
+          <div class="opt-desc">Esta semana</div>
         </div>
         <div class="opt" data-value="En 1–2 meses">
-          <span class="opt-check"><svg viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></span>
+          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
           <div class="opt-label">En 1–2 meses</div>
           <div class="opt-desc">Estoy planificando</div>
         </div>
         <div class="opt" data-value="Solo explorando">
-          <span class="opt-check"><svg viewBox="0 0 12 12" fill="none" stroke="white" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></span>
+          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
           <div class="opt-label">Solo explorando</div>
           <div class="opt-desc">Quiero saber más</div>
         </div>
       </div>
       <div class="quiz-nav">
         <button class="btn-quiz-back" onclick="goBack(3)">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-          Atrás
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Atrás
         </button>
         <button class="btn-quiz-next" id="next-3" onclick="showResult()">
-          Ver mi propuesta
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Ver mi propuesta <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
       </div>
     </div>
 
-    <!-- ── RESULTADO ── -->
+    <!-- Result -->
     <div id="quiz-result">
-      <h2 class="quiz-question" style="margin-bottom:0.5rem">Tu web está lista para construirse</h2>
-      <p class="quiz-sub" style="margin-bottom:1.75rem">Esto es lo que vamos a crear juntos</p>
-
+      <h2 class="quiz-question" style="margin-bottom:.4rem">Tu web está lista para construirse</h2>
+      <p class="quiz-sub" style="margin-bottom:1.5rem">Esto es lo que haremos juntos</p>
       <div class="result-card">
         <div class="result-header">
           <div class="result-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
           </div>
-          <div class="result-header-text">
+          <div>
             <h3>Propuesta personalizada</h3>
-            <p>Basada en tu negocio y necesidades</p>
+            <p style="font-size:.76rem;color:var(--text-3)">Basada en tu negocio y necesidades</p>
           </div>
         </div>
         <div class="result-rows">
@@ -821,11 +833,10 @@
           </div>
         </div>
       </div>
-
       <div class="result-cta-wrap">
         <a href="#reservar" class="btn-hazlo" onclick="scrollToReserva()">
           Hazlo realidad
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
         <p class="result-restart">
           ¿Quieres cambiar algo?
@@ -837,21 +848,19 @@
   </div>
 </section>
 
-<!-- ── DEMO EN VIVO ───────────────────────────────────────────────── -->
+<!-- ── DEMO STRIP ─────────────────────────────────────────────────── -->
 <div id="demo">
   <div class="demo-inner">
     <div class="demo-text">
       <h3>Esta web es un ejemplo real del producto</h3>
-      <p>El chat que ves abajo es un agente de IA funcionando en tiempo real. Reserva una reunión y compruébalo tú mismo.</p>
+      <p>El chat de abajo es un agente IA funcionando en tiempo real. Reserva una reunión y compruébalo.</p>
     </div>
     <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
       <span class="demo-badge">
-        <span class="demo-badge-dot"></span>
-        Agente activo ahora
+        <span class="demo-dot"></span> Agente activo ahora
       </span>
-      <a href="#reservar" class="btn-ghost" style="font-size:0.8rem;padding:0.4rem 1rem">
-        Ver demo
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      <a href="#reservar" class="btn-ghost" style="font-size:0.8rem;padding:.4rem 1rem">
+        Ver demo <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
   </div>
@@ -866,59 +875,49 @@
       <p class="sec-desc">Desde una web de presentación hasta un sistema que atiende y reserva por ti, sin que tengas que hacer nada.</p>
     </div>
     <div class="cards-grid">
-
       <div class="card">
         <div class="card-top">
-          <div class="card-icon">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          </div>
+          <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
         </div>
         <h3>Web Básica</h3>
         <div class="card-price">Precio a consultar · 1–2 semanas</div>
         <p>Presencia profesional online. Diseño limpio, adaptado a móvil y visible en Google.</p>
         <ul class="card-list">
-          <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Hasta 5 secciones personalizadas</li>
-          <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Diseño adaptado a móvil</li>
-          <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Formulario de contacto</li>
-          <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> SEO básico incluido</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Hasta 5 secciones personalizadas</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Diseño adaptado a móvil</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Formulario de contacto</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>SEO básico incluido</li>
         </ul>
       </div>
-
       <div class="card featured">
         <div class="card-top">
-          <div class="card-icon">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-          </div>
+          <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></div>
           <span class="card-badge">Más popular</span>
         </div>
         <h3>Web con IA Integrada</h3>
         <div class="card-price">Precio a consultar · 2–4 semanas</div>
         <p>Todo lo de la web básica, más un asistente que responde y agenda reuniones mientras duermes.</p>
         <ul class="card-list">
-          <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Todo lo del plan básico</li>
-          <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Chatbot IA personalizado</li>
-          <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Reservas automáticas en tu calendario</li>
-          <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Disponible 24/7, sin descanso</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Todo lo del plan básico</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Chatbot IA personalizado</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Reservas automáticas en tu calendario</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Disponible 24/7, sin descanso</li>
         </ul>
       </div>
-
       <div class="card">
         <div class="card-top">
-          <div class="card-icon" style="color:var(--teal-fg)">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          </div>
+          <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
         </div>
         <h3>Consulta Inicial</h3>
         <div class="card-price">Gratis · 1 hora</div>
         <p>Hablamos de tu negocio sin compromiso. Te propongo la solución más adecuada con precio claro.</p>
         <ul class="card-list">
-          <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Análisis de tus necesidades</li>
-          <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Propuesta personalizada</li>
-          <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Online o presencial (Madrid)</li>
-          <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Sin coste, sin letra pequeña</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Análisis de tus necesidades</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Propuesta personalizada</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Online o presencial (Madrid)</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Sin coste, sin letra pequeña</li>
         </ul>
       </div>
-
     </div>
   </div>
 </section>
@@ -934,25 +933,19 @@
     <div class="steps-grid">
       <div class="step">
         <div class="step-n">01</div>
-        <div class="step-ico">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
-        </div>
+        <div class="step-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg></div>
         <h3>Reunión gratuita</h3>
         <p>1 hora para entender tu negocio, tus clientes y lo que necesitas. Sin coste ni compromiso.</p>
       </div>
       <div class="step">
         <div class="step-n">02</div>
-        <div class="step-ico">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-        </div>
+        <div class="step-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
         <h3>Propuesta a medida</h3>
         <p>Plan claro: qué incluye, cuánto cuesta y cuándo estará listo. Precio cerrado desde el principio.</p>
       </div>
       <div class="step">
         <div class="step-n">03</div>
-        <div class="step-ico">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
+        <div class="step-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg></div>
         <h3>Entrega y soporte</h3>
         <p>Tu web lista y funcionando. Te explico cómo usarla y me quedo disponible para cualquier ajuste.</p>
       </div>
@@ -968,47 +961,34 @@
       <h2 class="sec-title">Resuelve tus dudas</h2>
     </div>
     <div class="faq-grid">
-
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
           ¿Cuánto cuesta una web?
           <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-a">
-          <p>Depende de lo que necesites: número de secciones, funcionalidades, si lleva IA... La reunión inicial es gratis y al acabar te doy un precio cerrado y claro.</p>
-        </div>
+        <div class="faq-a"><p>Depende de lo que necesites. La reunión inicial es gratis y al acabar te doy un precio cerrado y claro.</p></div>
       </div>
-
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
           ¿Necesito saber de tecnología?
           <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-a">
-          <p>No. Solo tienes que contarme cómo funciona tu negocio. El resto lo configuro yo y lo entrego funcionando.</p>
-        </div>
+        <div class="faq-a"><p>No. Solo tienes que contarme cómo funciona tu negocio. El resto lo configuro yo y lo entrego funcionando.</p></div>
       </div>
-
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
           ¿Solo trabajas en Madrid?
           <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-a">
-          <p>Trabajo con clientes de toda España de forma online. Si estás en Madrid también podemos vernos en persona.</p>
-        </div>
+        <div class="faq-a"><p>Trabajo con clientes de toda España de forma online. Si estás en Madrid también podemos vernos en persona.</p></div>
       </div>
-
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
           ¿Puedo ver algún ejemplo real?
           <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-a">
-          <p>Esta misma página es un ejemplo: el chat de abajo es un asistente real que responde y agenda reuniones. Escríbele para verlo en acción.</p>
-        </div>
+        <div class="faq-a"><p>Esta misma página es un ejemplo: el chat de abajo es un asistente real que responde y agenda reuniones.</p></div>
       </div>
-
     </div>
   </div>
 </section>
@@ -1023,15 +1003,15 @@
         <p>Habla con el asistente. Te buscará un hueco y lo confirmará en tu calendario al instante.</p>
         <div class="reservar-items">
           <div class="reservar-item">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            1 hora, sin compromiso de compra
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            1 hora, sin compromiso
           </div>
           <div class="reservar-item">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             Online o presencial (Madrid)
           </div>
           <div class="reservar-item">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             Confirmación inmediata
           </div>
         </div>
@@ -1045,14 +1025,14 @@
   </div>
 </section>
 
-<!-- ── CTA FINAL ──────────────────────────────────────────────────── -->
+<!-- ── CTA ────────────────────────────────────────────────────────── -->
 <section id="cta">
   <div class="container">
     <h2>¿Hablamos de tu proyecto?</h2>
-    <p>La reunión es gratis y sin compromiso. En 1 hora sabes exactamente qué necesitas y cuánto cuesta.</p>
+    <p>La reunión es gratis y sin compromiso. En 1 hora sabes qué necesitas y cuánto cuesta.</p>
     <a href="#reservar" class="btn-primary">
       Reservar reunión gratuita
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
   </div>
 </section>
@@ -1060,11 +1040,7 @@
 <!-- ── FOOTER ─────────────────────────────────────────────────────── -->
 <footer>
   <div class="footer-brand">
-    <span class="logo-mark">
-      <svg viewBox="0 0 14 14" fill="none" stroke="white" stroke-width="2">
-        <path d="M2 7h3l2-4 2 8 2-4h1"/>
-      </svg>
-    </span>
+    <span class="logo-mark">M</span>
     WEB Miguel IA
   </div>
   <div class="footer-links">
@@ -1079,142 +1055,120 @@
 <style>
   #chat-inline .n8n-chat { height: 100% !important; }
   :root {
-    --chat--color-primary: #6d28d9;
-    --chat--color-primary-shade-50: #5b21b6;
-    --chat--color-secondary: #0d9488;
-    --chat--color-background: #0e0e16;
-    --chat--color-font: #f2f2f8;
-    --chat--color-font-light: #8888a8;
+    --chat--color-primary: #f97316;
+    --chat--color-primary-shade-50: #ea580c;
+    --chat--color-secondary: #f97316;
+    --chat--color-background: #110f14;
+    --chat--color-font: #f5f2f0;
+    --chat--color-font-light: #9e99b0;
     --chat--border-radius: 10px;
-    --chat--header-background: #15151f;
-    --chat--message-bot-background: #15151f;
-    --chat--message-user-background: #6d28d9;
-    --chat--input-background: #15151f;
-    --chat--input-border-color: #232330;
+    --chat--header-background: #1a1720;
+    --chat--message-bot-background: #1a1720;
+    --chat--message-user-background: #f97316;
+    --chat--input-background: #1a1720;
+    --chat--input-border-color: #26222f;
   }
 </style>
 <script type="module">
   import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
-  const WEBHOOK = 'http://localhost:5678/webhook/4231de75-fa03-45ab-a576-a7228895d25f/chat';
-  const MSGS = [
-    'Hola, soy el asistente de WEB Miguel IA.',
-    '¿En qué puedo ayudarte? Puedo informarte sobre los servicios o reservarte una reunión inicial gratuita.'
-  ];
-  const I18N = { en: { title: 'WEB Miguel IA', subtitle: 'Asistente virtual', inputPlaceholder: 'Escribe tu mensaje...', getStarted: 'Iniciar conversación', footer: '' }};
-  createChat({ webhookUrl: WEBHOOK, target: '#chat-inline', mode: 'fullscreen', showWelcomeScreen: false, chatInputKey: 'chatInput', chatSessionKey: 'sessionId', initialMessages: MSGS, i18n: I18N });
-  createChat({ webhookUrl: WEBHOOK, mode: 'window', showWelcomeScreen: false, chatInputKey: 'chatInput', chatSessionKey: 'sessionId', initialMessages: MSGS, i18n: I18N });
+  const WH = 'http://localhost:5678/webhook/4231de75-fa03-45ab-a576-a7228895d25f/chat';
+  const MS = ['Hola, soy el asistente de WEB Miguel IA.', '¿En qué puedo ayudarte? Puedo informarte sobre los servicios o reservarte una reunión inicial gratuita.'];
+  const I18 = { en: { title: 'WEB Miguel IA', subtitle: 'Asistente virtual', inputPlaceholder: 'Escribe tu mensaje...', getStarted: 'Iniciar conversación', footer: '' }};
+  createChat({ webhookUrl: WH, target: '#chat-inline', mode: 'fullscreen', showWelcomeScreen: false, chatInputKey: 'chatInput', chatSessionKey: 'sessionId', initialMessages: MS, i18n: I18 });
+  createChat({ webhookUrl: WH, mode: 'window', showWelcomeScreen: false, chatInputKey: 'chatInput', chatSessionKey: 'sessionId', initialMessages: MS, i18n: I18 });
 </script>
 
-<!-- ── QUIZ JS ─────────────────────────────────────────────────────── -->
+<!-- ── JS ────────────────────────────────────────────────────────── -->
 <script>
-  const answers = { tipo: null, features: [], plazo: null };
+  const A = { tipo: null, features: [], plazo: null };
 
-  // Attach click handlers to all options
-  document.querySelectorAll('.opts').forEach(grid => {
-    const type = grid.dataset.type;
-    grid.querySelectorAll('.opt').forEach(opt => {
-      opt.addEventListener('click', () => {
-        const step = grid.dataset.step;
+  document.querySelectorAll('.opts').forEach(g => {
+    const type = g.dataset.type;
+    g.querySelectorAll('.opt').forEach(o => {
+      o.addEventListener('click', () => {
+        const step = g.dataset.step;
         if (type === 'single') {
-          grid.querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
-          opt.classList.add('selected');
-          if (step === '1') answers.tipo = opt.dataset.value;
-          if (step === '3') answers.plazo = opt.dataset.value;
+          g.querySelectorAll('.opt').forEach(x => x.classList.remove('selected'));
+          o.classList.add('selected');
+          if (step === '1') A.tipo = o.dataset.value;
+          if (step === '3') A.plazo = o.dataset.value;
         } else {
-          opt.classList.toggle('selected');
-          answers.features = Array.from(grid.querySelectorAll('.opt.selected')).map(o => o.dataset.value);
+          o.classList.toggle('selected');
+          A.features = Array.from(g.querySelectorAll('.opt.selected')).map(x => x.dataset.value);
         }
-        updateNextBtn(parseInt(step));
+        setReady(parseInt(step));
       });
     });
   });
 
-  function updateNextBtn(step) {
-    const btn = document.getElementById('next-' + step);
-    if (!btn) return;
-    let ready = false;
-    if (step === 1) ready = !!answers.tipo;
-    if (step === 2) ready = answers.features.length > 0;
-    if (step === 3) ready = !!answers.plazo;
-    btn.classList.toggle('ready', ready);
+  function setReady(s) {
+    const b = document.getElementById('next-' + s);
+    if (!b) return;
+    const ok = s===1 ? !!A.tipo : s===2 ? A.features.length>0 : !!A.plazo;
+    b.classList.toggle('ready', ok);
   }
 
-  function goNext(currentStep) {
-    document.getElementById('step-' + currentStep).classList.remove('active');
-    document.getElementById('step-' + (currentStep + 1)).classList.add('active');
-    updateProgress(currentStep + 1);
-    updateStepIndicator(currentStep + 1);
+  function goNext(s) {
+    document.getElementById('step-' + s).classList.remove('active');
+    document.getElementById('step-' + (s+1)).classList.add('active');
+    setProgress(s+1); setIndicator(s+1);
   }
 
-  function goBack(currentStep) {
-    document.getElementById('step-' + currentStep).classList.remove('active');
-    document.getElementById('step-' + (currentStep - 1)).classList.add('active');
-    updateProgress(currentStep - 1);
-    updateStepIndicator(currentStep - 1);
+  function goBack(s) {
+    document.getElementById('step-' + s).classList.remove('active');
+    document.getElementById('step-' + (s-1)).classList.add('active');
+    setProgress(s-1); setIndicator(s-1);
   }
 
   function showResult() {
     document.getElementById('step-3').classList.remove('active');
-    const result = document.getElementById('quiz-result');
-    result.classList.add('active');
-    updateProgress(4);
+    document.getElementById('quiz-result').classList.add('active');
+    setProgress(4);
     document.getElementById('stepIndicator').style.opacity = '0';
-
-    // Fill result card
-    document.getElementById('res-tipo').textContent = answers.tipo || '—';
-    const featEl = document.getElementById('res-features');
-    featEl.innerHTML = answers.features.length
-      ? answers.features.map(f => `<span class="result-tag">${f}</span>`).join('')
+    document.getElementById('res-tipo').textContent = A.tipo || '—';
+    const fe = document.getElementById('res-features');
+    fe.innerHTML = A.features.length
+      ? A.features.map(f => `<span class="result-tag">${f}</span>`).join('')
       : '<span style="color:var(--text-3)">—</span>';
-    document.getElementById('res-plazo').textContent = answers.plazo || '—';
+    document.getElementById('res-plazo').textContent = A.plazo || '—';
   }
 
   function scrollToReserva() {
-    setTimeout(() => {
-      document.getElementById('reservar').scrollIntoView({ behavior: 'smooth' });
-    }, 100);
+    setTimeout(() => document.getElementById('reservar').scrollIntoView({ behavior: 'smooth' }), 100);
   }
 
   function restartQuiz() {
-    // Reset answers
-    answers.tipo = null; answers.features = []; answers.plazo = null;
-    // Clear selections
+    A.tipo = null; A.features = []; A.plazo = null;
     document.querySelectorAll('.opt.selected').forEach(o => o.classList.remove('selected'));
-    // Reset buttons
     [1,2,3].forEach(i => { const b = document.getElementById('next-'+i); if(b) b.classList.remove('ready'); });
-    // Show step 1
     document.getElementById('quiz-result').classList.remove('active');
     document.getElementById('step-1').classList.add('active');
-    updateProgress(1);
+    setProgress(1); setIndicator(1);
     document.getElementById('stepIndicator').style.opacity = '1';
-    updateStepIndicator(1);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  function updateProgress(step) {
-    const pct = step === 4 ? 100 : ((step - 1) / 3) * 100;
-    document.getElementById('progressFill').style.width = pct + '%';
+  function setProgress(s) {
+    document.getElementById('progressFill').style.width = (s===4 ? 100 : (s-1)/3*100) + '%';
   }
 
-  function updateStepIndicator(step) {
-    const el = document.getElementById('stepIndicator');
-    if (step <= 3) el.textContent = 'Paso ' + step + ' de 3';
+  function setIndicator(s) {
+    if (s <= 3) document.getElementById('stepIndicator').textContent = 'Paso ' + s + ' de 3';
   }
 
-  // Lock scroll position when pressing Enter inside the chat widget
-  document.getElementById('chat-inline').addEventListener('keydown', function(e) {
+  // Prevent page scroll on Enter in chat
+  document.getElementById('chat-inline').addEventListener('keydown', e => {
     if (e.key === 'Enter' && !e.shiftKey) {
-      const savedY = window.scrollY;
-      requestAnimationFrame(() => window.scrollTo({ top: savedY, behavior: 'instant' }));
+      const y = window.scrollY;
+      requestAnimationFrame(() => window.scrollTo({ top: y, behavior: 'instant' }));
     }
   }, true);
 
-  // FAQ
   function toggleFaq(btn) {
     const item = btn.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
+    const open = item.classList.contains('open');
     document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
+    if (!open) item.classList.add('open');
   }
 </script>
 
