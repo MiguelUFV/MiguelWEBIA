@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WEB Miguel IA — Páginas web con IA para negocios locales</title>
-  <meta name="description" content="Diseño webs profesionales con IA integrada para negocios locales. Tu web atiende clientes y agenda citas 24/7. Primera consulta gratis. Madrid y toda España." />
+  <title>WEB-IA — Páginas web con IA para negocios locales</title>
+  <meta name="description" content="WEB-IA: webs profesionales con inteligencia artificial para negocios locales. Tu web atiende clientes y agenda citas 24/7. Primera consulta gratis. Madrid y toda España." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 
@@ -75,14 +75,29 @@
       font-size: 0.95rem; font-weight: 700; letter-spacing: -0.01em;
       color: var(--text); text-decoration: none;
       display: flex; align-items: center; gap: 0.6rem;
+      transition: transform .25s cubic-bezier(.34,1.56,.64,1), filter .25s;
     }
-
+    .logo:hover {
+      transform: scale(1.08);
+      filter: drop-shadow(0 0 14px rgba(249,115,22,0.55));
+    }
     .logo-mark {
       width: 28px; height: 28px; border-radius: 7px;
       background: var(--o);
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0; font-size: 0.8rem; font-weight: 800; color: #fff;
       font-family: 'Bricolage Grotesque', sans-serif;
+      transition: background .25s, box-shadow .25s;
+    }
+    .logo:hover .logo-mark {
+      background: linear-gradient(135deg, #f97316, #fb923c, #fbbf24);
+      box-shadow: 0 0 22px rgba(249,115,22,0.55);
+    }
+    .logo-text { transition: background .25s, -webkit-text-fill-color .25s; }
+    .logo:hover .logo-text {
+      background: linear-gradient(90deg, #f97316, #fb923c, #fbbf24);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .nav-right { display: flex; gap: 0.2rem; align-items: center; }
@@ -91,9 +106,12 @@
       color: var(--text-2); text-decoration: none;
       font-size: 0.85rem; font-weight: 400;
       padding: 0.4rem 0.75rem; border-radius: var(--r);
-      transition: color .15s, background .15s;
+      transition: color .15s, background .15s, transform .18s cubic-bezier(.34,1.56,.64,1);
     }
-    .nav-link:hover { color: var(--text); background: var(--bg-2); }
+    .nav-link:hover {
+      color: var(--text); background: var(--bg-2);
+      transform: translateY(-2px) scale(1.05);
+    }
 
     .nav-cta {
       background: var(--o); color: #fff;
@@ -1071,6 +1089,33 @@
     }
     .footer-legal a:hover { color: var(--text-2); }
 
+    /* ── CANVAS BACKGROUND ──────────────────────────────────────── */
+    #hero-canvas {
+      position: absolute !important; inset: 0;
+      width: 100%; height: 100%;
+      z-index: 0 !important;
+      pointer-events: none;
+    }
+
+    /* ── SCROLL REVEAL ───────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── ABOUT PHOTO FIX ─────────────────────────────────────────── */
+    .about-img-frame img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+      display: block;
+    }
+
     /* ── RESPONSIVE ──────────────────────────────────────────────── */
     @media (max-width: 900px) {
       .pricing-grid { grid-template-columns: 1fr; }
@@ -1106,7 +1151,7 @@
 <nav>
   <a href="#inicio" class="logo">
     <span class="logo-mark">M</span>
-    WEB Miguel IA
+    <span class="logo-text">WEB-IA</span>
   </a>
   <div class="nav-right">
     <a href="#demos" class="nav-link">Demos</a>
@@ -1123,11 +1168,12 @@
 
 <!-- ── HERO + QUIZ ────────────────────────────────────────────────── -->
 <section id="inicio">
+  <canvas id="hero-canvas"></canvas>
 
   <!-- Logo + tagline -->
   <div class="hero-brand">
     <div class="hero-logo-mark">M</div>
-    <h1 class="hero-title">WEB<br><span class="accent">MIGUEL</span> IA</h1>
+    <h1 class="hero-title">WEB-<span class="accent">IA</span></h1>
     <p class="hero-tagline">Tu negocio online. Con inteligencia.</p>
   </div>
 
@@ -1421,52 +1467,7 @@
     <div class="about-layout">
       <div class="about-photo-wrap">
         <div class="about-img-frame">
-          <!-- SVG portrait — reemplaza con <img src="assets/miguel.jpg"> cuando tengas el archivo -->
-          <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-            <defs>
-              <radialGradient id="abg" cx="50%" cy="30%" r="75%">
-                <stop offset="0%" stop-color="#28222f"/>
-                <stop offset="100%" stop-color="#0d0b11"/>
-              </radialGradient>
-              <radialGradient id="oglow" cx="50%" cy="5%" r="65%">
-                <stop offset="0%" stop-color="rgba(249,115,22,0.22)"/>
-                <stop offset="100%" stop-color="rgba(249,115,22,0)"/>
-              </radialGradient>
-            </defs>
-            <circle cx="200" cy="200" r="200" fill="url(#abg)"/>
-            <circle cx="200" cy="200" r="200" fill="url(#oglow)"/>
-            <!-- shoulders / suit -->
-            <path d="M0 400V295Q0 260 55 245L148 215L200 238L252 215L345 245Q400 260 400 295V400Z" fill="#1b1627"/>
-            <!-- shirt -->
-            <path d="M177 235L200 250L223 235L218 262L200 278L182 262Z" fill="#252038"/>
-            <!-- tie -->
-            <path d="M196 243L204 243L209 257L200 315L191 257Z" fill="#f97316" opacity="0.8"/>
-            <!-- collar left -->
-            <path d="M168 232L200 250L200 238Z" fill="#2c2540"/>
-            <!-- collar right -->
-            <path d="M232 232L200 250L200 238Z" fill="#231e38"/>
-            <!-- neck -->
-            <rect x="184" y="193" width="32" height="46" rx="8" fill="#2b2440"/>
-            <!-- head -->
-            <ellipse cx="200" cy="162" rx="70" ry="76" fill="#2b2440"/>
-            <!-- hair -->
-            <path d="M130 148Q128 82 200 76Q272 82 270 148Q252 112 200 108Q148 112 130 148Z" fill="#181320"/>
-            <!-- face subtle depth -->
-            <ellipse cx="200" cy="172" rx="50" ry="56" fill="#352e4a" opacity="0.35"/>
-            <!-- eyes -->
-            <ellipse cx="180" cy="158" rx="8" ry="6" fill="#19152a"/>
-            <ellipse cx="220" cy="158" rx="8" ry="6" fill="#19152a"/>
-            <circle cx="182" cy="156" r="2.5" fill="#4a4268" opacity="0.7"/>
-            <circle cx="222" cy="156" r="2.5" fill="#4a4268" opacity="0.7"/>
-            <!-- nose -->
-            <path d="M196 167Q198 178 204 180Q200 183 196 180" stroke="#4a4268" stroke-width="1.5" fill="none" opacity="0.5"/>
-            <!-- smile -->
-            <path d="M187 192Q200 203 213 192" stroke="#4a4268" stroke-width="2" fill="none" opacity="0.55" stroke-linecap="round"/>
-            <!-- orange rim light -->
-            <path d="M130 130Q122 162 130 196Q138 218 150 228" stroke="rgba(249,115,22,0.32)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-            <!-- subtle glow base -->
-            <ellipse cx="200" cy="375" rx="100" ry="35" fill="rgba(249,115,22,0.07)"/>
-          </svg>
+          <img src="assets/miguel.jpg" alt="Miguel Martín" />
         </div>
         <div class="about-socials">
           <a href="https://www.linkedin.com/in/miguel-mart%C3%ADn-caro-mart%C3%ADn-402328208" target="_blank" class="about-social-btn" title="LinkedIn" aria-label="LinkedIn">
@@ -1827,7 +1828,7 @@
     <div>
       <div class="footer-brand">
         <span class="logo-mark">M</span>
-        WEB Miguel IA
+        WEB-IA
       </div>
       <p class="footer-tagline">Webs profesionales con IA integrada<br>para negocios locales. Madrid · España.</p>
       <div class="footer-socials" style="margin-top:1rem">
@@ -1858,7 +1859,7 @@
   </div>
 
   <div class="footer-bottom">
-    <span class="footer-copy">© 2025 WEB Miguel IA · Miguel Martín Caro · Madrid, España</span>
+    <span class="footer-copy">© 2025 WEB-IA · Miguel Martín Caro · Madrid, España</span>
     <div class="footer-legal">
       <a href="#">Política de privacidad</a>
       <a href="#">Aviso legal</a>
@@ -1898,8 +1899,8 @@
 <script type="module">
   import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
   const WH = 'http://localhost:5678/webhook/4231de75-fa03-45ab-a576-a7228895d25f/chat';
-  const MS = ['Hola, soy el asistente de WEB Miguel IA.', '¿En qué puedo ayudarte? Puedo informarte sobre los servicios o reservarte una reunión inicial gratuita.'];
-  const I18 = { en: { title: 'WEB Miguel IA', subtitle: 'Asistente virtual', inputPlaceholder: 'Escribe tu mensaje...', getStarted: 'Iniciar conversación', footer: '' }};
+  const MS = ['Hola, soy el asistente de WEB-IA.', '¿En qué puedo ayudarte? Puedo informarte sobre los servicios o reservarte una reunión inicial gratuita.'];
+  const I18 = { en: { title: 'WEB-IA', subtitle: 'Asistente virtual', inputPlaceholder: 'Escribe tu mensaje...', getStarted: 'Iniciar conversación', footer: '' }};
   createChat({ webhookUrl: WH, target: '#chat-inline', mode: 'fullscreen', showWelcomeScreen: false, chatInputKey: 'chatInput', chatSessionKey: 'sessionId', initialMessages: MS, i18n: I18 });
   createChat({ webhookUrl: WH, mode: 'window', showWelcomeScreen: false, chatInputKey: 'chatInput', chatSessionKey: 'sessionId', initialMessages: MS, i18n: I18 });
 </script>
@@ -2001,6 +2002,98 @@
   function flipCard(btn) {
     btn.closest('.pcard').classList.toggle('flipped');
   }
+
+  // ── Canvas flow field background ────────────────────────────────
+  (function() {
+    const canvas = document.getElementById('hero-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let W, H, particles, mouse = { x: -9999, y: -9999 };
+
+    function noise(x, y, t) {
+      return Math.sin(x * 0.007 + t * 0.35) * Math.cos(y * 0.007 + t * 0.28) * Math.PI * 2.5
+           + Math.sin(x * 0.013 - y * 0.011 + t * 0.18) * Math.PI
+           + Math.cos(x * 0.004 + y * 0.009 - t * 0.12) * 0.8;
+    }
+
+    function init() {
+      W = canvas.width  = canvas.offsetWidth;
+      H = canvas.height = canvas.offsetHeight;
+      particles = Array.from({ length: 140 }, () => ({
+        x: Math.random() * W,   y: Math.random() * H,
+        vx: 0,                   vy: 0,
+        life: Math.random(),
+        speed: 0.35 + Math.random() * 0.65,
+        size:  0.7  + Math.random() * 1.4,
+        hue:   18   + Math.random() * 22
+      }));
+    }
+
+    let t = 0;
+    function draw() {
+      ctx.fillStyle = 'rgba(9,8,11,0.16)';
+      ctx.fillRect(0, 0, W, H);
+      t += 0.0038;
+
+      for (const p of particles) {
+        const angle = noise(p.x, p.y, t);
+        const dx = p.x - mouse.x, dy = p.y - mouse.y;
+        const dist = Math.sqrt(dx*dx + dy*dy) || 1;
+        const pull = dist < 130 ? (1 - dist/130) * 0.9 : 0;
+
+        p.vx = p.vx * 0.87 + Math.cos(angle) * p.speed * 0.13 + (dx/dist) * pull * 0.35;
+        p.vy = p.vy * 0.87 + Math.sin(angle) * p.speed * 0.13 + (dy/dist) * pull * 0.35;
+        p.x += p.vx;  p.y += p.vy;
+        p.life -= 0.0025;
+
+        if (p.life <= 0 || p.x < -5 || p.x > W+5 || p.y < -5 || p.y > H+5) {
+          p.x = Math.random() * W;  p.y = Math.random() * H;
+          p.vx = 0;  p.vy = 0;
+          p.life = 0.5 + Math.random() * 0.5;
+        }
+
+        const alpha = Math.min(p.life, 0.55) * 0.75;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${p.hue}, 92%, 62%, ${alpha})`;
+        ctx.fill();
+      }
+      requestAnimationFrame(draw);
+    }
+
+    const hero = document.getElementById('inicio');
+    hero.addEventListener('mousemove', e => {
+      const r = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - r.left;
+      mouse.y = e.clientY - r.top;
+    });
+    hero.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
+
+    let raf;
+    window.addEventListener('resize', () => { clearTimeout(raf); raf = setTimeout(init, 150); });
+    init(); draw();
+  })();
+
+  // ── Scroll reveal (IntersectionObserver) ─────────────────────────
+  (function() {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+
+    // Stagger pricing cards
+    document.querySelectorAll('.pricing-grid .pcard').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 110}ms`;
+    });
+    // Stagger steps
+    document.querySelectorAll('.steps-grid .step').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 90}ms`;
+    });
+
+    document.querySelectorAll('section:not(#inicio), .step, .pcard, .faq-item, .demo-item, .browser-wrap')
+      .forEach(el => { el.classList.add('reveal'); obs.observe(el); });
+  })();
 
   // ── Billing toggle ───────────────────────────────────────────────
   let isAnnual = false;
