@@ -717,32 +717,289 @@
     }
     .btn-ghost:hover { color: var(--text); background: var(--bg-2); }
 
+    /* ── SOBRE MÍ ────────────────────────────────────────────────── */
+    #sobre-mi { background: var(--bg-1); border-top: 1px solid var(--border); }
+
+    .about-layout {
+      display: grid; grid-template-columns: 300px 1fr;
+      gap: 5rem; align-items: center;
+    }
+
+    .about-photo-wrap {
+      display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+    }
+
+    .about-img-frame {
+      width: 220px; height: 220px; border-radius: 50%;
+      border: 2px solid var(--border-2);
+      box-shadow: 0 0 60px rgba(249,115,22,0.12);
+      overflow: hidden; flex-shrink: 0;
+      background: var(--bg-2);
+    }
+    .about-img-frame img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+    }
+
+    .about-socials {
+      display: flex; gap: 0.6rem;
+    }
+    .about-social-btn {
+      width: 36px; height: 36px; border-radius: var(--r);
+      background: var(--bg-2); border: 1px solid var(--border-2);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-3); text-decoration: none;
+      transition: color .15s, border-color .15s, background .15s;
+    }
+    .about-social-btn:hover {
+      color: var(--text); border-color: var(--o);
+      background: var(--o-dim);
+    }
+
+    .about-content { max-width: 520px; }
+    .about-content h2 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700; letter-spacing: -0.03em;
+      line-height: 1.2; margin-bottom: 1.1rem;
+    }
+    .about-content h2 em {
+      font-style: normal; color: var(--o);
+    }
+    .about-content p {
+      color: var(--text-2); font-size: 0.9rem; line-height: 1.75;
+      margin-bottom: 0.9rem;
+    }
+    .about-tags {
+      display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.5rem;
+    }
+    .about-tag {
+      background: var(--bg-2); border: 1px solid var(--border);
+      color: var(--text-2); font-size: 0.75rem; font-weight: 500;
+      padding: 0.3rem 0.75rem; border-radius: 999px;
+    }
+
+    /* ── PRICING ─────────────────────────────────────────────────── */
+    #servicios { background: var(--bg); border-top: 1px solid var(--border); }
+
+    .pricing-toggle-wrap {
+      display: flex; align-items: center; gap: 0.85rem;
+      margin-bottom: 2.5rem; flex-wrap: wrap;
+    }
+    .pricing-toggle-label {
+      font-size: 0.84rem; color: var(--text-2); font-weight: 500;
+    }
+    .pricing-toggle-label.active { color: var(--text); }
+
+    .toggle-pill {
+      width: 44px; height: 24px; border-radius: 999px;
+      background: var(--bg-2); border: 1px solid var(--border-2);
+      position: relative; cursor: pointer;
+      transition: background .2s;
+    }
+    .toggle-pill.on { background: var(--o); border-color: var(--o); }
+    .toggle-knob {
+      position: absolute; top: 3px; left: 3px;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: #fff; transition: transform .2s;
+    }
+    .toggle-pill.on .toggle-knob { transform: translateX(20px); }
+
+    .save-pill {
+      background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.25);
+      color: #4ade80; font-size: 0.7rem; font-weight: 600;
+      padding: 0.2rem 0.6rem; border-radius: 999px;
+    }
+
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg); overflow: hidden;
+    }
+
+    .pcard {
+      background: var(--bg-1); padding: 2rem;
+      position: relative;
+      border-right: 1px solid var(--border);
+      display: flex; flex-direction: column;
+    }
+    .pcard:last-child { border-right: none; }
+    .pcard.featured {
+      background: var(--bg-2);
+    }
+    .pcard.featured::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--o), #fb923c);
+    }
+
+    .pcard-top {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+    .pcard-icon {
+      width: 36px; height: 36px; border-radius: var(--r);
+      background: var(--bg); border: 1px solid var(--border-2);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--o);
+    }
+    .pcard-badge {
+      font-size: 0.66rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--o);
+      background: var(--o-dim); border: 1px solid rgba(249,115,22,0.2);
+      padding: 0.18rem 0.55rem; border-radius: 999px;
+    }
+
+    .pcard h3 {
+      font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem;
+    }
+    .pcard-sub { font-size: 0.78rem; color: var(--text-3); margin-bottom: 1.4rem; }
+
+    .pcard-price-block { margin-bottom: 0.6rem; }
+    .pcard-setup {
+      font-size: 0.75rem; color: var(--text-3); margin-bottom: 0.4rem;
+    }
+    .pcard-setup strong { color: var(--text-2); }
+    .pcard-monthly {
+      display: flex; align-items: baseline; gap: 0.3rem;
+    }
+    .price-amount {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 2rem; font-weight: 800;
+      color: var(--text); letter-spacing: -0.04em;
+      transition: opacity .2s;
+    }
+    .price-period { font-size: 0.78rem; color: var(--text-3); }
+    .price-save {
+      font-size: 0.72rem; color: #4ade80;
+      margin-top: 0.25rem; display: none;
+    }
+    .annual-mode .price-save { display: block; }
+
+    .pcard-divider {
+      height: 1px; background: var(--border);
+      margin: 1.25rem 0;
+    }
+
+    .pcard-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
+    .pcard-list li {
+      font-size: 0.8rem; color: var(--text-2);
+      display: flex; align-items: flex-start; gap: 0.45rem; line-height: 1.4;
+    }
+    .pcard-list li svg { color: var(--o); flex-shrink: 0; margin-top: 1px; }
+
+    .pcard-cta {
+      display: block; text-align: center; margin-top: 1.75rem;
+      padding: 0.6rem; border-radius: var(--r);
+      font-size: 0.82rem; font-weight: 500;
+      text-decoration: none; font-family: 'DM Sans', sans-serif;
+      transition: all .15s;
+    }
+    .pcard-cta.primary {
+      background: var(--o); color: #fff;
+    }
+    .pcard-cta.primary:hover { background: var(--o2); }
+    .pcard-cta.ghost {
+      border: 1px solid var(--border-2); color: var(--text-2);
+    }
+    .pcard-cta.ghost:hover { border-color: var(--o); color: var(--o); }
+
+    .pricing-note {
+      text-align: center; margin-top: 1.5rem;
+      font-size: 0.75rem; color: var(--text-3);
+    }
+
+    /* ── WHATSAPP FLOAT ──────────────────────────────────────────── */
+    .wa-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 900;
+    }
+    .wa-float-btn {
+      width: 54px; height: 54px; border-radius: 50%;
+      background: #25D366;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 24px rgba(37,211,102,0.35);
+      cursor: pointer; text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+      border: none;
+    }
+    .wa-float-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 32px rgba(37,211,102,0.5);
+    }
+    .wa-tooltip {
+      position: absolute; right: 64px; top: 50%;
+      transform: translateY(-50%);
+      background: var(--bg-2); border: 1px solid var(--border-2);
+      color: var(--text); font-size: 0.75rem; font-weight: 500;
+      padding: 0.4rem 0.75rem; border-radius: 8px;
+      white-space: nowrap;
+      opacity: 0; pointer-events: none;
+      transition: opacity .2s;
+    }
+    .wa-float:hover .wa-tooltip { opacity: 1; }
+
     /* ── FOOTER ──────────────────────────────────────────────────── */
     footer {
       background: var(--bg-1); border-top: 1px solid var(--border);
-      padding: 1.5rem 2rem;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 1rem;
+      padding: 0;
+    }
+    .footer-main {
+      padding: 2.5rem 2rem;
+      display: grid; grid-template-columns: 1fr auto 1fr;
+      align-items: start; gap: 2rem;
     }
     .footer-brand {
       font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 0.875rem; font-weight: 700;
+      font-size: 0.9rem; font-weight: 700;
       color: var(--text); display: flex; align-items: center; gap: 0.5rem;
+      margin-bottom: 0.5rem;
     }
-    .footer-brand .logo-mark { width: 22px; height: 22px; border-radius: 5px; font-size: 0.65rem; }
-    .footer-links { display: flex; gap: 1.5rem; }
-    .footer-links a {
+    .footer-brand .logo-mark { width: 24px; height: 24px; border-radius: 6px; font-size: 0.7rem; }
+    .footer-tagline { font-size: 0.77rem; color: var(--text-3); line-height: 1.5; }
+
+    .footer-links-col { display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-col-title {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--text-3); margin-bottom: 0.25rem;
+    }
+    .footer-links-col a {
       color: var(--text-3); text-decoration: none;
       font-size: 0.78rem; transition: color .15s;
     }
-    .footer-links a:hover { color: var(--text-2); }
-    .footer-copy { color: var(--text-3); font-size: 0.75rem; }
+    .footer-links-col a:hover { color: var(--text-2); }
+
+    .footer-socials { display: flex; gap: 0.5rem; }
+    .footer-social-icon {
+      width: 32px; height: 32px; border-radius: var(--r);
+      background: var(--bg-2); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-3); text-decoration: none;
+      transition: color .15s, border-color .15s;
+    }
+    .footer-social-icon:hover { color: var(--text); border-color: var(--border-2); }
+
+    .footer-bottom {
+      padding: 1rem 2rem;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 0.75rem;
+    }
+    .footer-copy { color: var(--text-3); font-size: 0.72rem; }
+    .footer-legal { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+    .footer-legal a {
+      color: var(--text-3); text-decoration: none;
+      font-size: 0.72rem; transition: color .15s;
+    }
+    .footer-legal a:hover { color: var(--text-2); }
 
     /* ── RESPONSIVE ──────────────────────────────────────────────── */
     @media (max-width: 900px) {
-      .cards-grid { grid-template-columns: 1fr; }
-      .card { border-right: none; border-bottom: 1px solid var(--border); }
-      .card:last-child { border-bottom: none; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .pcard { border-right: none; border-bottom: 1px solid var(--border); }
+      .pcard:last-child { border-bottom: none; }
+      .about-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-photo-wrap { flex-direction: row; gap: 2rem; align-items: center; }
       .steps-grid { grid-template-columns: 1fr; }
       .step { border-right: none; border-bottom: 1px solid var(--border); }
       .step:last-child { border-bottom: none; }
@@ -751,6 +1008,7 @@
       .faq-item:last-child { border-bottom: none !important; }
       .reservar-layout { grid-template-columns: 1fr; gap: 2rem; }
       #chat-inline { height: 500px; position: static; }
+      .footer-main { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 600px) {
@@ -758,8 +1016,9 @@
       .nav-link { display: none; }
       .opts.cols-3 { grid-template-columns: 1fr 1fr; }
       .opts { grid-template-columns: 1fr 1fr; }
-      footer { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
       .hero-title { font-size: clamp(2.5rem, 14vw, 4rem); }
+      .about-photo-wrap { flex-direction: column; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; }
     }
   </style>
 </head>
@@ -773,8 +1032,8 @@
   </a>
   <div class="nav-right">
     <a href="#demos" class="nav-link">Demos</a>
-    <a href="#servicios" class="nav-link">Servicios</a>
-    <a href="#proceso" class="nav-link">Proceso</a>
+    <a href="#servicios" class="nav-link">Precios</a>
+    <a href="#sobre-mi" class="nav-link">Sobre mí</a>
     <a href="#faq" class="nav-link">FAQ</a>
     <a href="#reservar" class="nav-cta">Reservar gratis</a>
   </div>
@@ -1078,59 +1337,140 @@
   </div>
 </section>
 
-<!-- ── SERVICIOS ──────────────────────────────────────────────────── -->
+<!-- ── SOBRE MÍ ─────────────────────────────────────────────────────── -->
+<section id="sobre-mi">
+  <div class="container">
+    <div class="about-layout">
+      <div class="about-photo-wrap">
+        <div class="about-img-frame">
+          <img src="assets/miguel.jpg" alt="Miguel Martín" />
+        </div>
+        <div class="about-socials">
+          <a href="#" class="about-social-btn" title="LinkedIn" aria-label="LinkedIn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" class="about-social-btn" title="Instagram" aria-label="Instagram">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="about-content">
+        <span class="sec-label">Quién hay detrás</span>
+        <h2>Hola, soy <em>Miguel</em></h2>
+        <p>Desarrollador y consultor especializado en webs con IA para negocios locales. Trabajo con negocios reales en Madrid y toda España para que su presencia online les genere clientes de forma automática, sin que tengan que hacer nada técnico.</p>
+        <p>Combino diseño limpio con automatización real: tu web no solo tiene buena pinta, también trabaja por ti cuando estás cerrado.</p>
+        <div class="about-tags">
+          <span class="about-tag">Diseño web</span>
+          <span class="about-tag">Agentes IA</span>
+          <span class="about-tag">Automatización</span>
+          <span class="about-tag">WhatsApp API</span>
+          <span class="about-tag">Google Calendar</span>
+          <span class="about-tag">n8n · Claude AI</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICIOS / PRECIOS ─────────────────────────────────────────── -->
 <section id="servicios">
   <div class="container">
     <div class="sec-head">
-      <span class="sec-label">Servicios</span>
-      <h2 class="sec-title">¿Qué puedo hacer por tu negocio?</h2>
-      <p class="sec-desc">Desde una web de presentación hasta un sistema que atiende y reserva por ti, sin que tengas que hacer nada.</p>
+      <span class="sec-label">Planes y precios</span>
+      <h2 class="sec-title">Precio claro desde el principio</h2>
+      <p class="sec-desc">Sin letra pequeña. Pago único de configuración + mantenimiento mensual opcional. Cancela cuando quieras.</p>
     </div>
-    <div class="cards-grid">
-      <div class="card">
-        <div class="card-top">
-          <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+
+    <!-- Billing toggle -->
+    <div class="pricing-toggle-wrap">
+      <span class="pricing-toggle-label active" id="lbl-monthly">Mensual</span>
+      <div class="toggle-pill" id="billingToggle" onclick="toggleBilling()">
+        <div class="toggle-knob"></div>
+      </div>
+      <span class="pricing-toggle-label" id="lbl-annual">Anual <span class="save-pill">2 meses gratis</span></span>
+    </div>
+
+    <div class="pricing-grid" id="pricingGrid">
+      <!-- Plan Básico -->
+      <div class="pcard">
+        <div class="pcard-top">
+          <div class="pcard-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
         </div>
         <h3>Web Básica</h3>
-        <div class="card-price">Precio a consultar · 1–2 semanas</div>
-        <p>Presencia profesional online. Diseño limpio, adaptado a móvil y visible en Google.</p>
-        <ul class="card-list">
+        <p class="pcard-sub">Presencia online profesional · 1–2 semanas</p>
+        <div class="pcard-price-block">
+          <div class="pcard-setup">Configuración: <strong>399€</strong> pago único</div>
+          <div class="pcard-monthly">
+            <span class="price-amount" data-monthly="29" data-annual="24">29€</span>
+            <span class="price-period">/mes mantenimiento</span>
+          </div>
+          <div class="price-save">Ahorra 60€ al año</div>
+        </div>
+        <div class="pcard-divider"></div>
+        <ul class="pcard-list">
           <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Hasta 5 secciones personalizadas</li>
           <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Diseño adaptado a móvil</li>
           <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Formulario de contacto</li>
           <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>SEO básico incluido</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Hosting y dominio incluido</li>
         </ul>
+        <a href="#reservar" class="pcard-cta ghost">Empezar</a>
       </div>
-      <div class="card featured">
-        <div class="card-top">
-          <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></div>
-          <span class="card-badge">Más popular</span>
+
+      <!-- Plan Profesional -->
+      <div class="pcard featured">
+        <div class="pcard-top">
+          <div class="pcard-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></div>
+          <span class="pcard-badge">Más popular</span>
         </div>
-        <h3>Web con IA Integrada</h3>
-        <div class="card-price">Precio a consultar · 2–4 semanas</div>
-        <p>Todo lo de la web básica, más un asistente que responde y agenda reuniones mientras duermes.</p>
-        <ul class="card-list">
+        <h3>Web + Agente IA</h3>
+        <p class="pcard-sub">Tu web trabaja 24/7 · 2–4 semanas</p>
+        <div class="pcard-price-block">
+          <div class="pcard-setup">Configuración: <strong>799€</strong> pago único</div>
+          <div class="pcard-monthly">
+            <span class="price-amount" data-monthly="79" data-annual="66">79€</span>
+            <span class="price-period">/mes mantenimiento</span>
+          </div>
+          <div class="price-save">Ahorra 156€ al año</div>
+        </div>
+        <div class="pcard-divider"></div>
+        <ul class="pcard-list">
           <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Todo lo del plan básico</li>
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Chatbot IA personalizado</li>
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Reservas automáticas en tu calendario</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Chatbot IA personalizado para tu negocio</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Reservas automáticas en Google Calendar</li>
           <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Disponible 24/7, sin descanso</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Soporte mensual incluido</li>
         </ul>
+        <a href="#reservar" class="pcard-cta primary">Quiero este plan</a>
       </div>
-      <div class="card">
-        <div class="card-top">
-          <div class="card-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+
+      <!-- Plan Completo -->
+      <div class="pcard">
+        <div class="pcard-top">
+          <div class="pcard-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
         </div>
-        <h3>Consulta Inicial</h3>
-        <div class="card-price">Gratis · 1 hora</div>
-        <p>Hablamos de tu negocio sin compromiso. Te propongo la solución más adecuada con precio claro.</p>
-        <ul class="card-list">
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Análisis de tus necesidades</li>
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Propuesta personalizada</li>
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Online o presencial (Madrid)</li>
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Sin coste, sin letra pequeña</li>
+        <h3>Sistema Completo</h3>
+        <p class="pcard-sub">IA + WhatsApp + CRM · 4–6 semanas</p>
+        <div class="pcard-price-block">
+          <div class="pcard-setup">Configuración: <strong>1.299€</strong> pago único</div>
+          <div class="pcard-monthly">
+            <span class="price-amount" data-monthly="129" data-annual="108">129€</span>
+            <span class="price-period">/mes mantenimiento</span>
+          </div>
+          <div class="price-save">Ahorra 252€ al año</div>
+        </div>
+        <div class="pcard-divider"></div>
+        <ul class="pcard-list">
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Todo lo del plan profesional</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Agente IA en WhatsApp</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Notificaciones automáticas por WhatsApp</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Soporte prioritario</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Actualizaciones trimestrales</li>
         </ul>
+        <a href="#reservar" class="pcard-cta ghost">Empezar</a>
       </div>
     </div>
+    <p class="pricing-note">El mantenimiento es opcional. Incluye hosting, API de IA, actualizaciones y soporte. Sin permanencia.</p>
   </div>
 </section>
 
@@ -1251,16 +1591,58 @@
 
 <!-- ── FOOTER ─────────────────────────────────────────────────────── -->
 <footer>
-  <div class="footer-brand">
-    <span class="logo-mark">M</span>
-    WEB Miguel IA
+  <div class="footer-main">
+    <div>
+      <div class="footer-brand">
+        <span class="logo-mark">M</span>
+        WEB Miguel IA
+      </div>
+      <p class="footer-tagline">Webs profesionales con IA integrada<br>para negocios locales. Madrid · España.</p>
+      <div class="footer-socials" style="margin-top:1rem">
+        <a href="#" class="footer-social-icon" title="LinkedIn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="#" class="footer-social-icon" title="Instagram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-links-col">
+      <span class="footer-col-title">Servicios</span>
+      <a href="#servicios">Web Básica</a>
+      <a href="#servicios">Web + Agente IA</a>
+      <a href="#servicios">Sistema Completo</a>
+      <a href="#reservar">Consulta gratuita</a>
+    </div>
+
+    <div class="footer-links-col">
+      <span class="footer-col-title">Contacto</span>
+      <a href="https://wa.me/34685101194" target="_blank">+34 685 101 194</a>
+      <a href="mailto:miguelmartincaro@gmail.com">miguelmartincaro@gmail.com</a>
+      <a href="#demos">Ver demos</a>
+      <a href="#proceso">Cómo funciona</a>
+    </div>
   </div>
-  <div class="footer-links">
-    <a href="https://wa.me/34685101194" target="_blank">+34 685 101 194</a>
-    <a href="mailto:miguelmartincaro@gmail.com">miguelmartincaro@gmail.com</a>
+
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 WEB Miguel IA · Miguel Martín Caro · Madrid, España</span>
+    <div class="footer-legal">
+      <a href="#">Política de privacidad</a>
+      <a href="#">Aviso legal</a>
+      <a href="#">Política de cookies</a>
+      <a href="#">Condiciones de uso</a>
+    </div>
   </div>
-  <span class="footer-copy">Madrid · España</span>
 </footer>
+
+<!-- ── WHATSAPP FLOTANTE ───────────────────────────────────────────── -->
+<div class="wa-float">
+  <span class="wa-tooltip">Escríbeme por WhatsApp</span>
+  <a href="https://wa.me/34685101194?text=Hola%20Miguel%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20tu%20servicio%20de%20webs%20con%20IA" target="_blank" class="wa-float-btn" aria-label="WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  </a>
+</div>
 
 <!-- ── CHAT WIDGET ────────────────────────────────────────────────── -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" />
@@ -1381,6 +1763,26 @@
     const open = item.classList.contains('open');
     document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
     if (!open) item.classList.add('open');
+  }
+
+  // ── Billing toggle ───────────────────────────────────────────────
+  let isAnnual = false;
+  function toggleBilling() {
+    isAnnual = !isAnnual;
+    const grid = document.getElementById('pricingGrid');
+    const toggle = document.getElementById('billingToggle');
+    const lblM = document.getElementById('lbl-monthly');
+    const lblA = document.getElementById('lbl-annual');
+
+    toggle.classList.toggle('on', isAnnual);
+    grid.classList.toggle('annual-mode', isAnnual);
+    lblM.classList.toggle('active', !isAnnual);
+    lblA.classList.toggle('active', isAnnual);
+
+    document.querySelectorAll('.price-amount').forEach(el => {
+      const val = isAnnual ? el.dataset.annual : el.dataset.monthly;
+      el.textContent = val + '€';
+    });
   }
 
   // ── Demo switcher ─────────────────────────────────────────────────
