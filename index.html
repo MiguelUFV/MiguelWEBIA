@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WEB-IA — Páginas web con IA para negocios locales</title>
   <meta name="description" content="WEB-IA: webs profesionales con inteligencia artificial para negocios locales. Tu web atiende clientes y agenda citas 24/7. Primera consulta gratis. Madrid y toda España." />
+  <meta name="google-site-verification" content="N-nMWRoItJf7UJkpTNDFHOh5LKkkJV45Gb6LTDLopDE" />
+  <meta name="google-site-verification" content="RG1GCa9X8iX0cRjtRYejLO1hgtfebGz0P8L5Ah1J7dY" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 
@@ -93,11 +95,10 @@
       background: linear-gradient(135deg, #f97316, #fb923c, #fbbf24);
       box-shadow: 0 0 22px rgba(249,115,22,0.55);
     }
-    .logo-text { transition: background .25s, -webkit-text-fill-color .25s; }
+    .logo-text { transition: color .2s, text-shadow .2s; }
     .logo:hover .logo-text {
-      background: linear-gradient(90deg, #f97316, #fb923c, #fbbf24);
-      -webkit-background-clip: text; background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--o);
+      text-shadow: 0 0 18px rgba(249,115,22,0.5);
     }
 
     .nav-right { display: flex; gap: 0.2rem; align-items: center; }
@@ -605,8 +606,16 @@
     }
     .step {
       padding: 2rem; border-right: 1px solid var(--border);
+      transition: background .2s;
+      cursor: default;
     }
     .step:last-child { border-right: none; }
+    .step:hover { background: rgba(249,115,22,0.04); }
+    .step:hover .step-ico {
+      background: var(--o-dim);
+      border-color: rgba(249,115,22,0.35);
+      opacity: 1;
+    }
     .step-n {
       font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
       text-transform: uppercase; color: var(--text-3);
@@ -635,7 +644,9 @@
     .faq-item {
       border-right: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
+      transition: background .2s;
     }
+    .faq-item:hover { background: rgba(249,115,22,0.03); }
     .faq-item:nth-child(even) { border-right: none; }
     .faq-item:nth-last-child(-n+2) { border-bottom: none; }
     .faq-q {
@@ -796,6 +807,14 @@
       background: var(--bg-2); border: 1px solid var(--border);
       color: var(--text-2); font-size: 0.75rem; font-weight: 500;
       padding: 0.3rem 0.75rem; border-radius: 999px;
+      transition: background .18s, border-color .18s, color .18s, transform .18s;
+      cursor: default;
+    }
+    .about-tag:hover {
+      background: var(--o-dim);
+      border-color: rgba(249,115,22,0.4);
+      color: var(--o);
+      transform: translateY(-2px);
     }
 
     /* ── PRICING ─────────────────────────────────────────────────── */
@@ -1091,10 +1110,12 @@
 
     /* ── CANVAS BACKGROUND ──────────────────────────────────────── */
     #hero-canvas {
-      position: absolute !important; inset: 0;
-      width: 100%; height: 100%;
-      z-index: 0 !important;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      z-index: 998;
       pointer-events: none;
+      mix-blend-mode: screen;
     }
 
     /* ── SCROLL REVEAL ───────────────────────────────────────────── */
@@ -1150,7 +1171,6 @@
 <!-- ── NAVBAR ─────────────────────────────────────────────────────── -->
 <nav>
   <a href="#inicio" class="logo">
-    <span class="logo-mark">M</span>
     <span class="logo-text">WEB-IA</span>
   </a>
   <div class="nav-right">
@@ -1168,11 +1188,10 @@
 
 <!-- ── HERO + QUIZ ────────────────────────────────────────────────── -->
 <section id="inicio">
-  <canvas id="hero-canvas"></canvas>
 
   <!-- Logo + tagline -->
   <div class="hero-brand">
-    <div class="hero-logo-mark">M</div>
+    <div class="hero-logo-mark" style="display:none"></div>
     <h1 class="hero-title">WEB-<span class="accent">IA</span></h1>
     <p class="hero-tagline">Tu negocio online. Con inteligencia.</p>
   </div>
@@ -1356,9 +1375,9 @@
 
     <!-- Tab switcher -->
     <div class="demo-tabs" id="demo-tabs">
-      <button class="demo-tab active" onclick="switchDemo(0)">Peluquería</button>
-      <button class="demo-tab" onclick="switchDemo(1)">Restaurante</button>
-      <button class="demo-tab" onclick="switchDemo(2)">Clínica</button>
+      <button class="demo-tab active" onclick="switchDemo(0)">DEMO 1</button>
+      <button class="demo-tab" onclick="switchDemo(1)">DEMO 2</button>
+      <button class="demo-tab" onclick="switchDemo(2)">DEMO 3</button>
     </div>
 
     <!-- Demo 0: Peluquería -->
@@ -1413,17 +1432,17 @@
             <div class="play-ring" onclick="playDemo(1)">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
             </div>
-            <p>Ver demo — Restaurante</p>
+            <p>Ver demo — Taberna</p>
           </div>
         </div>
       </div>
       <div class="demo-caption">
         <div class="demo-caption-info">
-          <h4>Restaurante — Ejemplo</h4>
+          <h4>Taberna — Madrid</h4>
           <p>Web con carta digital · reservas de mesa · asistente IA</p>
         </div>
-        <span class="demo-badge" style="background:rgba(249,115,22,0.04);border-color:var(--border);color:var(--text-3)">
-          Próximamente
+        <span class="demo-badge">
+          <span class="demo-dot"></span> Agente activo
         </span>
       </div>
     </div>
@@ -1898,12 +1917,14 @@
 </style>
 <script type="module">
   import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
-  const WH = 'http://localhost:5678/webhook/4231de75-fa03-45ab-a576-a7228895d25f/chat';
+  const WH = 'https://n8n.srv1572708.hstgr.cloud/webhook/4231de75-fa03-45ab-a576-a7228895d25f/chat';
   const MS = ['Hola, soy el asistente de WEB-IA.', '¿En qué puedo ayudarte? Puedo informarte sobre los servicios o reservarte una reunión inicial gratuita.'];
   const I18 = { en: { title: 'WEB-IA', subtitle: 'Asistente virtual', inputPlaceholder: 'Escribe tu mensaje...', getStarted: 'Iniciar conversación', footer: '' }};
   createChat({ webhookUrl: WH, target: '#chat-inline', mode: 'fullscreen', showWelcomeScreen: false, chatInputKey: 'chatInput', chatSessionKey: 'sessionId', initialMessages: MS, i18n: I18 });
   createChat({ webhookUrl: WH, mode: 'window', showWelcomeScreen: false, chatInputKey: 'chatInput', chatSessionKey: 'sessionId', initialMessages: MS, i18n: I18 });
 </script>
+
+<canvas id="hero-canvas"></canvas>
 
 <!-- ── JS ────────────────────────────────────────────────────────── -->
 <script>
@@ -2003,12 +2024,13 @@
     btn.closest('.pcard').classList.toggle('flipped');
   }
 
-  // ── Canvas flow field background ────────────────────────────────
+  // ── Canvas flow field background (full page) ────────────────────
   (function() {
     const canvas = document.getElementById('hero-canvas');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     let W, H, particles, mouse = { x: -9999, y: -9999 };
+    let scrollVel = 0, lastScrollY = window.scrollY;
 
     function noise(x, y, t) {
       return Math.sin(x * 0.007 + t * 0.35) * Math.cos(y * 0.007 + t * 0.28) * Math.PI * 2.5
@@ -2017,23 +2039,24 @@
     }
 
     function init() {
-      W = canvas.width  = canvas.offsetWidth;
-      H = canvas.height = canvas.offsetHeight;
-      particles = Array.from({ length: 140 }, () => ({
+      W = canvas.width  = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+      particles = Array.from({ length: 200 }, () => ({
         x: Math.random() * W,   y: Math.random() * H,
         vx: 0,                   vy: 0,
         life: Math.random(),
-        speed: 0.35 + Math.random() * 0.65,
-        size:  0.7  + Math.random() * 1.4,
-        hue:   18   + Math.random() * 22
+        speed: 0.4 + Math.random() * 0.7,
+        size:  0.8  + Math.random() * 1.6,
+        hue:   18   + Math.random() * 24
       }));
     }
 
     let t = 0;
     function draw() {
-      ctx.fillStyle = 'rgba(9,8,11,0.16)';
+      ctx.fillStyle = 'rgba(0,0,0,0.18)';
       ctx.fillRect(0, 0, W, H);
       t += 0.0038;
+      scrollVel *= 0.9;
 
       for (const p of particles) {
         const angle = noise(p.x, p.y, t);
@@ -2042,7 +2065,7 @@
         const pull = dist < 130 ? (1 - dist/130) * 0.9 : 0;
 
         p.vx = p.vx * 0.87 + Math.cos(angle) * p.speed * 0.13 + (dx/dist) * pull * 0.35;
-        p.vy = p.vy * 0.87 + Math.sin(angle) * p.speed * 0.13 + (dy/dist) * pull * 0.35;
+        p.vy = p.vy * 0.87 + Math.sin(angle) * p.speed * 0.13 + (dy/dist) * pull * 0.35 + scrollVel;
         p.x += p.vx;  p.y += p.vy;
         p.life -= 0.0025;
 
@@ -2052,7 +2075,7 @@
           p.life = 0.5 + Math.random() * 0.5;
         }
 
-        const alpha = Math.min(p.life, 0.55) * 0.75;
+        const alpha = Math.min(p.life, 0.65) * 0.85;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fillStyle = `hsla(${p.hue}, 92%, 62%, ${alpha})`;
@@ -2061,13 +2084,13 @@
       requestAnimationFrame(draw);
     }
 
-    const hero = document.getElementById('inicio');
-    hero.addEventListener('mousemove', e => {
-      const r = canvas.getBoundingClientRect();
-      mouse.x = e.clientX - r.left;
-      mouse.y = e.clientY - r.top;
-    });
-    hero.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
+    document.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+    document.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
+    window.addEventListener('scroll', () => {
+      const sy = window.scrollY;
+      scrollVel += (sy - lastScrollY) * 0.045;
+      lastScrollY = sy;
+    }, { passive: true });
 
     let raf;
     window.addEventListener('resize', () => { clearTimeout(raf); raf = setTimeout(init, 150); });
@@ -2091,8 +2114,12 @@
       el.style.transitionDelay = `${i * 90}ms`;
     });
 
-    document.querySelectorAll('section:not(#inicio), .step, .pcard, .faq-item, .demo-item, .browser-wrap')
-      .forEach(el => { el.classList.add('reveal'); obs.observe(el); });
+    // Add .reveal first so browser paints hidden state, then start observing
+    const revealEls = document.querySelectorAll('section:not(#inicio), .step, .pcard, .faq-item, .demo-item, .browser-wrap');
+    revealEls.forEach(el => el.classList.add('reveal'));
+    requestAnimationFrame(() => {
+      revealEls.forEach(el => obs.observe(el));
+    });
   })();
 
   // ── Billing toggle ───────────────────────────────────────────────
@@ -2154,6 +2181,7 @@
     });
   }
 </script>
+
 
 </body>
 </html>
