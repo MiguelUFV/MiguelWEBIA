@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G00TCQQY14"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-G00TCQQY14');
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WEB-IA — Páginas web con IA para negocios locales</title>
   <meta name="description" content="WEB-IA: webs profesionales con inteligencia artificial para negocios locales. Tu web atiende clientes y agenda citas 24/7. Primera consulta gratis. Madrid y toda España." />
   <meta name="google-site-verification" content="N-nMWRoItJf7UJkpTNDFHOh5LKkkJV45Gb6LTDLopDE" />
   <meta name="google-site-verification" content="RG1GCa9X8iX0cRjtRYejLO1hgtfebGz0P8L5Ah1J7dY" />
+  <link rel="canonical" href="https://paginawebcreator.com/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@300;400;500&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -138,9 +147,10 @@
     /* ── HERO ────────────────────────────────────────────────────── */
     #inicio {
       min-height: 100vh;
-      display: flex; flex-direction: column;
+      display: flex;
       align-items: center;
-      padding: 100px 1.5rem 5rem;
+      justify-content: center;
+      padding: 100px 2rem 5rem;
       position: relative; overflow: hidden;
     }
 
@@ -898,16 +908,15 @@
     }
     .pcard.featured .pcard-back { background: #231e30; }
 
-    .flip-info-btn {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      background: transparent; border: 1px solid var(--border-2);
-      color: var(--text-3); font-size: 0.72rem; font-weight: 500;
-      padding: 0.3rem 0.75rem; border-radius: 999px;
-      cursor: pointer; transition: all .15s;
-      font-family: 'DM Sans', sans-serif;
-      margin-top: 1rem; align-self: flex-start;
+    .pcard-front { cursor: pointer; }
+    .flip-hint {
+      display: flex; align-items: center; gap: 0.4rem;
+      font-size: 0.69rem; color: var(--text-3);
+      margin-top: auto; padding-top: 0.9rem;
+      border-top: 1px solid var(--border);
+      user-select: none;
     }
-    .flip-info-btn:hover { border-color: var(--o); color: var(--o); }
+    .flip-hint svg { opacity: 0.55; flex-shrink: 0; }
 
     .flip-back-btn {
       display: inline-flex; align-items: center; gap: 0.35rem;
@@ -982,8 +991,12 @@
     .price-amount {
       font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 2rem; font-weight: 800;
-      color: var(--text); letter-spacing: -0.04em;
+      letter-spacing: -0.04em;
       transition: opacity .2s;
+      background: linear-gradient(120deg, #f97316 0%, #fde68a 40%, #f97316 65%, #c2410c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
     .price-period { font-size: 0.78rem; color: var(--text-3); }
     .price-save {
@@ -1160,9 +1173,155 @@
       .nav-link { display: none; }
       .opts.cols-3 { grid-template-columns: 1fr 1fr; }
       .opts { grid-template-columns: 1fr 1fr; }
-      .hero-title { font-size: clamp(2.5rem, 14vw, 4rem); }
       .about-photo-wrap { flex-direction: column; }
       .footer-bottom { flex-direction: column; gap: 0.5rem; }
+    }
+
+    /* ── HERO NEW LAYOUT ─────────────────────────────────────────── */
+    .hero-layout {
+      width: 100%; max-width: 1100px;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--o-dim);
+      border: 1px solid rgba(249,115,22,0.25);
+      color: var(--o);
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.85rem; border-radius: 999px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-hl {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.75rem, 3.5vw, 2.8rem);
+      font-weight: 700; letter-spacing: -0.01em;
+      line-height: 1.2; margin-bottom: 1.25rem;
+    }
+    .hero-price {
+      display: block;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+      font-weight: 800; letter-spacing: -0.03em;
+      margin-top: 0.55rem;
+      background: linear-gradient(120deg, #f97316 0%, #fde68a 40%, #f97316 65%, #c2410c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-copy {
+      font-size: 1rem; color: var(--text-2);
+      line-height: 1.75; margin-bottom: 2rem; max-width: 480px;
+    }
+
+    .hero-feats {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 0.7rem;
+    }
+    .hero-feats li {
+      display: flex; align-items: center; gap: 0.65rem;
+      font-size: 0.9rem; color: var(--text-2);
+    }
+    .hero-feats li svg { color: var(--o); flex-shrink: 0; }
+
+    /* Contact card */
+    .hero-card {
+      background: var(--bg-1);
+      border: 1px solid var(--border-2);
+      border-radius: var(--r-lg);
+      padding: 1.75rem;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+    }
+
+    .hcard-phone {
+      display: flex; align-items: center; gap: 0.55rem;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 1.35rem; font-weight: 700; color: var(--o);
+      margin-bottom: 0.35rem;
+    }
+
+    .hcard-sub {
+      font-size: 0.78rem; color: var(--text-3); margin-bottom: 1.5rem;
+    }
+
+    .hcard-field { margin-bottom: 0.7rem; }
+    .hcard-field input {
+      width: 100%;
+      background: var(--bg-2);
+      border: 1px solid var(--border-2);
+      border-radius: var(--r);
+      padding: 0.7rem 0.9rem;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .hcard-field input:focus { border-color: var(--o); }
+    .hcard-field input::placeholder { color: var(--text-3); }
+    .hcard-field select {
+      width: 100%;
+      background: var(--bg-2);
+      border: 1px solid var(--border-2);
+      border-radius: var(--r);
+      padding: 0.7rem 0.9rem;
+      color: var(--text-3);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      outline: none;
+      appearance: none;
+      cursor: pointer;
+      transition: border-color .15s;
+    }
+    .hcard-field select:focus { border-color: var(--o); }
+    .hcard-field select option { background: var(--bg-2); color: var(--text); }
+    .hcard-field textarea {
+      width: 100%;
+      background: var(--bg-2);
+      border: 1px solid var(--border-2);
+      border-radius: var(--r);
+      padding: 0.7rem 0.9rem;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      outline: none;
+      resize: none;
+      transition: border-color .15s;
+      line-height: 1.5;
+    }
+    .hcard-field textarea:focus { border-color: var(--o); }
+    .hcard-field textarea::placeholder { color: var(--text-3); }
+
+    .hcard-check {
+      display: flex; align-items: flex-start; gap: 0.5rem;
+      font-size: 0.73rem; color: var(--text-3);
+      line-height: 1.55; margin-bottom: 1rem; cursor: pointer;
+    }
+    .hcard-check input { margin-top: 3px; flex-shrink: 0; accent-color: var(--o); }
+    .hcard-check a { color: var(--o); text-decoration: none; }
+    .hcard-check a:hover { text-decoration: underline; }
+
+    .hcard-btn {
+      width: 100%; background: var(--o); color: #fff;
+      border: none; cursor: pointer; border-radius: var(--r);
+      padding: 0.85rem 1.5rem;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 700; font-size: 0.95rem;
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      transition: background .15s, transform .15s;
+      box-shadow: 0 0 40px rgba(249,115,22,0.2);
+    }
+    .hcard-btn:hover { background: var(--o2); transform: translateY(-1px); }
+
+    @media (max-width: 900px) {
+      .hero-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-card { max-width: 480px; }
     }
   </style>
 </head>
@@ -1182,24 +1341,80 @@
   </div>
 </nav>
 
-<div class="quiz-progress-bar">
-  <div class="quiz-progress-fill" id="progressFill"></div>
-</div>
-
-<!-- ── HERO + QUIZ ────────────────────────────────────────────────── -->
+<!-- ── HERO ────────────────────────────────────────────────────────── -->
 <section id="inicio">
+  <div class="hero-layout">
 
-  <!-- Logo + tagline -->
-  <div class="hero-brand">
-    <div class="hero-logo-mark" style="display:none"></div>
-    <h1 class="hero-title">WEB-<span class="accent">IA</span></h1>
-    <p class="hero-tagline">Tu negocio online. Con inteligencia.</p>
+    <!-- Izquierda: copy -->
+    <div class="hero-left">
+      <span class="hero-badge">Madrid y toda España · Webs profesionales con IA</span>
+      <h1 class="hero-hl">
+        Diseñamos tu web profesional con <span class="accent">inteligencia artificial</span> integrada.
+        <span class="hero-price">desde 10 euros al mes</span>
+      </h1>
+      <p class="hero-copy">Hosting, dominio, SEO y un agente IA que atiende a tus clientes y agenda citas automáticamente, 24/7. Sin permanencia, cancela cuando quieras.</p>
+      <ul class="hero-feats">
+        <li>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Diseño 100% personalizado para tu negocio
+        </li>
+        <li>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Agente IA que responde y agenda citas 24/7
+        </li>
+        <li>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Primera consulta gratuita sin compromiso
+        </li>
+      </ul>
+    </div>
+
+    <!-- Derecha: formulario de contacto -->
+    <div class="hero-card">
+      <div class="hcard-phone">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +34 685 101 194
+      </div>
+      <p class="hcard-sub">Te llamamos gratis, sin compromiso</p>
+      <form id="hero-form" onsubmit="submitHeroForm(event)">
+        <div class="hcard-field">
+          <input type="text" id="hf-nombre" placeholder="Nombre o empresa" required>
+        </div>
+        <div class="hcard-field">
+          <input type="tel" id="hf-tel" placeholder="Teléfono" required>
+        </div>
+        <div class="hcard-field">
+          <input type="email" id="hf-email" placeholder="Correo electrónico">
+        </div>
+        <div class="hcard-field">
+          <select id="hf-tipo">
+            <option value="" disabled selected>Tipo de negocio</option>
+            <option value="Peluquería / Estética">Peluquería / Estética</option>
+            <option value="Restaurante / Bar">Restaurante / Bar</option>
+            <option value="Clínica / Salud">Clínica / Salud</option>
+            <option value="Tienda / Comercio">Tienda / Comercio</option>
+            <option value="Consultoría / Servicios">Consultoría / Servicios</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+        <div class="hcard-field">
+          <textarea id="hf-mensaje" rows="3" placeholder="Cuéntanos algo sobre tu negocio (opcional)"></textarea>
+        </div>
+        <label class="hcard-check">
+          <input type="checkbox" required>
+          <span>He leído y acepto la <a href="#">política de privacidad</a> y el posible envío de comunicaciones comerciales</span>
+        </label>
+        <button type="submit" class="hcard-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Te llamamos
+        </button>
+      </form>
+    </div>
+
   </div>
 
-  <div class="hero-divider"></div>
-
-  <!-- Quiz -->
-  <div class="quiz-wrap">
+  <!-- Placeholder para que el quiz-wrap quede oculto -->
+  <div class="quiz-wrap" style="display:none">
     <div class="quiz-step-indicator" id="stepIndicator">Paso 1 de 3</div>
 
     <!-- Step 1 -->
@@ -1387,7 +1602,7 @@
           <div class="browser-dots"><span></span><span></span><span></span></div>
           <div class="browser-url">
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            peluqueria-lucia.vercel.app
+            demo-1.paginawebcreator.com
           </div>
         </div>
         <div class="browser-body">
@@ -1396,7 +1611,7 @@
             <div class="play-ring" onclick="playDemo(0)">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
             </div>
-            <p>Ver demo — Peluquería Lucía</p>
+            <p>Ver Demo 1</p>
           </div>
           <div class="demo-empty" id="ve-0" style="display:none">
             <div class="demo-empty-icon">
@@ -1408,7 +1623,7 @@
       </div>
       <div class="demo-caption">
         <div class="demo-caption-info">
-          <h4>Peluquería Lucía — Madrid</h4>
+          <h4>Demo 1</h4>
           <p>Web con chatbot IA · reservas automáticas · integración WhatsApp</p>
         </div>
         <span class="demo-badge">
@@ -1424,7 +1639,7 @@
           <div class="browser-dots"><span></span><span></span><span></span></div>
           <div class="browser-url">
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            restaurante-ejemplo.vercel.app
+            demo-2.paginawebcreator.com
           </div>
         </div>
         <div class="browser-body">
@@ -1432,13 +1647,13 @@
             <div class="play-ring" onclick="playDemo(1)">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
             </div>
-            <p>Ver demo — Taberna</p>
+            <p>Ver Demo 2</p>
           </div>
         </div>
       </div>
       <div class="demo-caption">
         <div class="demo-caption-info">
-          <h4>Taberna — Madrid</h4>
+          <h4>Demo 2</h4>
           <p>Web con carta digital · reservas de mesa · asistente IA</p>
         </div>
         <span class="demo-badge">
@@ -1454,7 +1669,7 @@
           <div class="browser-dots"><span></span><span></span><span></span></div>
           <div class="browser-url">
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            clinica-ejemplo.vercel.app
+            demo-3.paginawebcreator.com
           </div>
         </div>
         <div class="browser-body">
@@ -1462,13 +1677,13 @@
             <div class="play-ring" onclick="playDemo(2)">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
             </div>
-            <p>Ver demo — Clínica</p>
+            <p>Ver Demo 3</p>
           </div>
         </div>
       </div>
       <div class="demo-caption">
         <div class="demo-caption-info">
-          <h4>Clínica — Ejemplo</h4>
+          <h4>Demo 3</h4>
           <p>Web médica · citas online · preguntas frecuentes automáticas</p>
         </div>
         <span class="demo-badge" style="background:rgba(249,115,22,0.04);border-color:var(--border);color:var(--text-3)">
@@ -1545,12 +1760,11 @@
             <h3>Web Básica</h3>
             <p class="pcard-sub">Presencia online profesional · 1–2 semanas</p>
             <div class="pcard-price-block">
-              <div class="pcard-setup">Configuración: <strong>199€</strong> pago único</div>
               <div class="pcard-monthly">
-                <span class="price-amount" data-monthly="15" data-annual="12">15€</span>
-                <span class="price-period">/mes mantenimiento</span>
+                <span class="price-amount" data-monthly="10" data-annual="8">10€</span>
+                <span class="price-period">/mes</span>
               </div>
-              <div class="price-save">Ahorra 36€ al año</div>
+              <div class="price-save">Ahorra 24€ al año con el plan anual</div>
             </div>
             <div class="pcard-divider"></div>
             <ul class="pcard-list">
@@ -1560,11 +1774,11 @@
               <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>SEO básico incluido</li>
               <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Hosting y dominio el 1er año</li>
             </ul>
-            <a href="#reservar" class="pcard-cta ghost">Empezar</a>
-            <button class="flip-info-btn" onclick="flipCard(this)">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
-              Ver detalles completos
-            </button>
+            <a href="#reservar" class="pcard-cta ghost" onclick="event.stopPropagation()">Empezar</a>
+            <div class="flip-hint">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+              Clic para ver qué incluye
+            </div>
           </div>
           <div class="pcard-back">
             <button class="flip-back-btn" onclick="flipCard(this)">
@@ -1582,7 +1796,7 @@
               <li><span>·</span>Hosting en CDN global (Vercel)</li>
               <li><span>·</span>Dominio .es o .com el primer año</li>
             </ul>
-            <div class="back-section">Mantenimiento mensual (15€)</div>
+            <div class="back-section">Mantenimiento mensual (10€)</div>
             <ul class="back-list">
               <li><span>·</span>Hosting incluido</li>
               <li><span>·</span>Actualizaciones de contenido (1/mes)</li>
@@ -1624,11 +1838,11 @@
               <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Disponible 24/7, sin descanso</li>
               <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Soporte mensual incluido</li>
             </ul>
-            <a href="#reservar" class="pcard-cta primary">Quiero este plan</a>
-            <button class="flip-info-btn" onclick="flipCard(this)">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
-              Ver detalles completos
-            </button>
+            <a href="#reservar" class="pcard-cta primary" onclick="event.stopPropagation()">Quiero este plan</a>
+            <div class="flip-hint">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+              Clic para ver qué incluye
+            </div>
           </div>
           <div class="pcard-back">
             <button class="flip-back-btn" onclick="flipCard(this)">
@@ -1685,11 +1899,11 @@
               <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Soporte prioritario</li>
               <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Actualizaciones trimestrales</li>
             </ul>
-            <a href="#reservar" class="pcard-cta ghost">Empezar</a>
-            <button class="flip-info-btn" onclick="flipCard(this)">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="8"/></svg>
-              Ver detalles completos
-            </button>
+            <a href="#reservar" class="pcard-cta ghost" onclick="event.stopPropagation()">Empezar</a>
+            <div class="flip-hint">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+              Clic para ver qué incluye
+            </div>
           </div>
           <div class="pcard-back">
             <button class="flip-back-btn" onclick="flipCard(this)">
@@ -1949,6 +2163,30 @@
     });
   });
 
+  async function submitHeroForm(e) {
+    e.preventDefault();
+    const btn    = e.target.querySelector('.hcard-btn');
+    const nombre = document.getElementById('hf-nombre').value.trim();
+    const tel    = document.getElementById('hf-tel').value.trim();
+    const email  = document.getElementById('hf-email').value.trim();
+    const tipo    = document.getElementById('hf-tipo').value || 'No especificado';
+    const mensaje = document.getElementById('hf-mensaje').value.trim();
+
+    btn.disabled = true;
+    btn.textContent = 'Enviando…';
+
+    try {
+      await fetch('https://n8n.srv1572708.hstgr.cloud/webhook/formulario-web', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nombre, tel, email, tipo, mensaje })
+      });
+    } catch (_) {}
+
+    btn.textContent = '✓ Recibido — te llamamos pronto';
+    e.target.reset();
+  }
+
   function setReady(s) {
     const b = document.getElementById('next-' + s);
     if (!b) return;
@@ -2020,9 +2258,14 @@
   }
 
   // ── Card flip ────────────────────────────────────────────────────
-  function flipCard(btn) {
-    btn.closest('.pcard').classList.toggle('flipped');
+  function flipCard(el) {
+    el.closest('.pcard').classList.toggle('flipped');
   }
+  document.querySelectorAll('.pcard-front').forEach(front => {
+    front.addEventListener('click', function(e) {
+      if (!e.target.closest('a, button')) flipCard(this);
+    });
+  });
 
   // ── Canvas flow field background (full page) ────────────────────
   (function() {
