@@ -1,2436 +1,653 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G00TCQQY14"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-G00TCQQY14');
-  </script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WEB-IA — Páginas web con IA para negocios locales</title>
-  <meta name="description" content="WEB-IA: webs profesionales con inteligencia artificial para negocios locales. Tu web atiende clientes y agenda citas 24/7. Primera consulta gratis. Madrid y toda España." />
-  <meta name="google-site-verification" content="N-nMWRoItJf7UJkpTNDFHOh5LKkkJV45Gb6LTDLopDE" />
-  <meta name="google-site-verification" content="RG1GCa9X8iX0cRjtRYejLO1hgtfebGz0P8L5Ah1J7dY" />
-  <link rel="canonical" href="https://paginawebcreator.com/" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@300;400;500&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:      #09080b;
-      --bg-1:    #110f14;
-      --bg-2:    #1a1720;
-      --bg-3:    #231f2c;
-      --border:  #26222f;
-      --border-2:#38334a;
-      --o:       #f97316;
-      --o2:      #ea580c;
-      --o-dim:   rgba(249,115,22,0.1);
-      --o-glow:  rgba(249,115,22,0.18);
-      --text:    #f5f2f0;
-      --text-2:  #9e99b0;
-      --text-3:  #5c5870;
-      --r:       8px;
-      --r-lg:    14px;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    /* Grain overlay */
-    body::after {
-      content: '';
-      position: fixed; inset: -50%; z-index: 1000; pointer-events: none;
-      opacity: 0.032;
-      background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='300' height='300' filter='url(%23n)'/></svg>");
-      animation: grain .4s steps(1) infinite;
-    }
-    @keyframes grain {
-      0%   { transform: translate(0,0); }
-      20%  { transform: translate(-2%,-3%); }
-      40%  { transform: translate(3%,1%); }
-      60%  { transform: translate(-1%,4%); }
-      80%  { transform: translate(2%,-2%); }
-      100% { transform: translate(-3%,2%); }
-    }
-
-    h1,h2,h3,h4,h5 { font-family: 'Bricolage Grotesque', sans-serif; }
-
-    /* ── NAVBAR ─────────────────────────────────────────────────── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
-      height: 58px;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 2rem;
-      background: rgba(9,8,11,0.85);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .logo {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 0.95rem; font-weight: 700; letter-spacing: -0.01em;
-      color: var(--text); text-decoration: none;
-      display: flex; align-items: center; gap: 0.6rem;
-      transition: transform .25s cubic-bezier(.34,1.56,.64,1), filter .25s;
-    }
-    .logo:hover {
-      transform: scale(1.08);
-      filter: drop-shadow(0 0 14px rgba(249,115,22,0.55));
-    }
-    .logo-mark {
-      width: 28px; height: 28px; border-radius: 7px;
-      background: var(--o);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; font-size: 0.8rem; font-weight: 800; color: #fff;
-      font-family: 'Bricolage Grotesque', sans-serif;
-      transition: background .25s, box-shadow .25s;
-    }
-    .logo:hover .logo-mark {
-      background: linear-gradient(135deg, #f97316, #fb923c, #fbbf24);
-      box-shadow: 0 0 22px rgba(249,115,22,0.55);
-    }
-    .logo-text { transition: color .2s, text-shadow .2s; }
-    .logo:hover .logo-text {
-      color: var(--o);
-      text-shadow: 0 0 18px rgba(249,115,22,0.5);
-    }
-
-    .nav-right { display: flex; gap: 0.2rem; align-items: center; }
-
-    .nav-link {
-      color: var(--text-2); text-decoration: none;
-      font-size: 0.85rem; font-weight: 400;
-      padding: 0.4rem 0.75rem; border-radius: var(--r);
-      transition: color .15s, background .15s, transform .18s cubic-bezier(.34,1.56,.64,1);
-    }
-    .nav-link:hover {
-      color: var(--text); background: var(--bg-2);
-      transform: translateY(-2px) scale(1.05);
-    }
-
-    .nav-cta {
-      background: var(--o); color: #fff;
-      font-weight: 500; font-size: 0.85rem;
-      padding: 0.45rem 1.1rem; border-radius: var(--r);
-      text-decoration: none;
-      transition: background .15s, transform .1s;
-    }
-    .nav-cta:hover { background: var(--o2); transform: translateY(-1px); }
-
-    /* ── PROGRESS BAR ────────────────────────────────────────────── */
-    .quiz-progress-bar {
-      position: fixed; top: 58px; left: 0; right: 0; z-index: 499;
-      height: 2px; background: var(--border);
-    }
-    .quiz-progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--o), #fb923c);
-      transition: width .5s cubic-bezier(.4,0,.2,1);
-      width: 0%;
-    }
-
-    /* ── HERO ────────────────────────────────────────────────────── */
-    #inicio {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 100px 2rem 5rem;
-      position: relative; overflow: hidden;
-    }
-
-    /* Atmospheric background */
-    #inicio::before {
-      content: '';
-      position: absolute; inset: 0; pointer-events: none; z-index: 0;
-      background:
-        radial-gradient(ellipse 70% 55% at 50% -5%, rgba(249,115,22,0.14) 0%, transparent 65%),
-        radial-gradient(ellipse 40% 30% at 75% 60%, rgba(234,88,12,0.07) 0%, transparent 55%),
-        radial-gradient(ellipse 35% 25% at 20% 70%, rgba(249,115,22,0.05) 0%, transparent 50%);
-    }
-
-    #inicio > * { position: relative; z-index: 1; }
-
-    /* Logo display */
-    .hero-brand {
-      display: flex; flex-direction: column; align-items: center;
-      text-align: center; margin-bottom: 1rem;
-    }
-
-    .hero-logo-mark {
-      width: 64px; height: 64px; border-radius: 16px;
-      background: var(--o);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 1.8rem; font-weight: 800; color: #fff;
-      margin-bottom: 1.25rem;
-      box-shadow: 0 0 60px rgba(249,115,22,0.3);
-    }
-
-    .hero-title {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: clamp(3rem, 9vw, 7rem);
-      font-weight: 800; letter-spacing: -0.04em;
-      line-height: 0.95; text-align: center;
-      margin-bottom: 1.25rem;
-    }
-
-    .hero-title .accent { color: var(--o); }
-
-    .hero-tagline {
-      font-size: clamp(1rem, 2.5vw, 1.3rem);
-      color: var(--text-2); font-weight: 300;
-      letter-spacing: 0.01em; margin-bottom: 3rem;
-      max-width: 480px; text-align: center;
-    }
-
-    .hero-divider {
-      width: 100%; max-width: 640px;
-      height: 1px; background: var(--border);
-      margin-bottom: 2.5rem;
-      position: relative;
-    }
-    .hero-divider::after {
-      content: 'CONFIGURA TU WEB';
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      background: var(--bg); padding: 0 1rem;
-      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em;
-      color: var(--text-3);
-      font-family: 'DM Sans', sans-serif;
-    }
-
-    /* ── QUIZ ────────────────────────────────────────────────────── */
-    .quiz-wrap { width: 100%; max-width: 640px; }
-
-    .quiz-step-indicator {
-      font-size: 0.78rem; color: var(--text-3);
-      margin-bottom: 1.75rem; text-align: center;
-      font-family: 'DM Sans', sans-serif; letter-spacing: 0.04em;
-    }
-
-    .quiz-step {
-      display: none;
-      animation: stepIn .3s cubic-bezier(.4,0,.2,1);
-    }
-    .quiz-step.active { display: block; }
-
-    @keyframes stepIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .quiz-question {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: clamp(1.4rem, 3.5vw, 2rem);
-      font-weight: 700; letter-spacing: -0.025em;
-      line-height: 1.2; margin-bottom: 0.4rem; text-align: center;
-    }
-
-    .quiz-sub {
-      font-size: 0.85rem; color: var(--text-3);
-      margin-bottom: 1.75rem; text-align: center;
-    }
-
-    .opts {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 0.6rem; margin-bottom: 2rem;
-    }
-    .opts.cols-3 { grid-template-columns: repeat(3, 1fr); }
-
-    .opt {
-      background: var(--bg-1);
-      border: 1.5px solid var(--border-2);
-      border-radius: var(--r-lg);
-      padding: 1rem 0.9rem;
-      cursor: pointer; text-align: left;
-      transition: all .15s cubic-bezier(.4,0,.2,1);
-      position: relative; user-select: none;
-    }
-    .opt:hover {
-      border-color: var(--o);
-      background: var(--o-dim);
-      transform: translateY(-2px);
-    }
-    .opt.selected {
-      border-color: var(--o);
-      background: rgba(249,115,22,0.12);
-    }
-    .opt.selected .opt-check { opacity: 1; transform: scale(1); }
-
-    .opt-check {
-      position: absolute; top: 0.55rem; right: 0.55rem;
-      width: 17px; height: 17px; border-radius: 50%;
-      background: var(--o);
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; transform: scale(0.4);
-      transition: all .18s cubic-bezier(.34,1.56,.64,1);
-    }
-    .opt-check svg { width: 9px; height: 9px; }
-
-    .opt-label {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 0.88rem; font-weight: 600; color: var(--text); line-height: 1.3;
-    }
-    .opt.selected .opt-label { color: var(--o); }
-    .opt-desc { font-size: 0.75rem; color: var(--text-3); margin-top: 0.2rem; }
-
-    .quiz-nav {
-      display: flex; align-items: center; justify-content: center; gap: 1rem;
-    }
-
-    .btn-quiz-next {
-      background: var(--o); color: #fff;
-      padding: 0.75rem 2rem; border-radius: var(--r);
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-weight: 700; font-size: 0.9rem;
-      border: none; cursor: pointer;
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      opacity: 0.35; pointer-events: none;
-      transition: background .15s, transform .15s, opacity .2s;
-    }
-    .btn-quiz-next.ready { opacity: 1; pointer-events: all; }
-    .btn-quiz-next.ready:hover { background: var(--o2); transform: translateY(-1px); }
-
-    .btn-quiz-back {
-      background: none; border: none; cursor: pointer;
-      color: var(--text-3); font-size: 0.82rem;
-      display: flex; align-items: center; gap: 0.3rem;
-      padding: 0.5rem; border-radius: var(--r);
-      transition: color .15s;
-      font-family: 'DM Sans', sans-serif;
-    }
-    .btn-quiz-back:hover { color: var(--text-2); }
-
-    /* ── RESULT ──────────────────────────────────────────────────── */
-    #quiz-result {
-      display: none;
-      animation: stepIn .4s cubic-bezier(.4,0,.2,1);
-    }
-    #quiz-result.active { display: block; }
-
-    .result-card {
-      background: var(--bg-1);
-      border: 1px solid var(--border-2);
-      border-radius: var(--r-lg);
-      padding: 1.75rem; margin-bottom: 1.5rem;
-      text-align: left;
-    }
-
-    .result-header {
-      display: flex; align-items: center; gap: 0.75rem;
-      margin-bottom: 1.25rem; padding-bottom: 1.25rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .result-icon {
-      width: 40px; height: 40px; border-radius: var(--r);
-      background: var(--o-dim); border: 1px solid rgba(249,115,22,0.25);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--o); flex-shrink: 0;
-    }
-
-    .result-header h3 {
-      font-size: 0.95rem; font-weight: 700; margin-bottom: 0.1rem;
-    }
-    .result-header p { font-size: 0.78rem; color: var(--text-3); }
-
-    .result-rows { display: flex; flex-direction: column; gap: 0.7rem; }
-
-    .result-row { display: flex; align-items: flex-start; gap: 0.75rem; }
-    .result-row-label {
-      font-size: 0.75rem; color: var(--text-3); width: 80px; flex-shrink: 0;
-      padding-top: 0.15rem; font-weight: 500;
-    }
-    .result-row-value {
-      font-size: 0.85rem; color: var(--text); font-weight: 500;
-      flex: 1; display: flex; flex-wrap: wrap; gap: 0.3rem;
-    }
-
-    .result-tag {
-      background: var(--o-dim); border: 1px solid rgba(249,115,22,0.2);
-      color: var(--o); font-size: 0.72rem; font-weight: 600;
-      padding: 0.18rem 0.55rem; border-radius: 999px;
-    }
-
-    .result-cta-wrap { text-align: center; }
-
-    .btn-hazlo {
-      background: var(--o);
-      color: #fff; padding: 0.9rem 2.5rem;
-      border-radius: var(--r);
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-weight: 700; font-size: 1rem;
-      text-decoration: none; display: inline-flex;
-      align-items: center; gap: 0.5rem;
-      border: none; cursor: pointer;
-      box-shadow: 0 0 50px rgba(249,115,22,0.25);
-      transition: transform .15s, background .15s, box-shadow .2s;
-    }
-    .btn-hazlo:hover {
-      background: var(--o2);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 50px rgba(249,115,22,0.4);
-    }
-
-    .result-restart {
-      margin-top: 1rem; font-size: 0.78rem; color: var(--text-3);
-    }
-    .result-restart button {
-      background: none; border: none; cursor: pointer;
-      color: var(--text-3); text-decoration: underline;
-      font-family: 'DM Sans', sans-serif; font-size: 0.78rem;
-    }
-    .result-restart button:hover { color: var(--text-2); }
-
-    /* ── SHARED LAYOUT ───────────────────────────────────────────── */
-    .container { max-width: 1080px; margin: 0 auto; }
-    section:not(#inicio) { padding: 5rem 2rem; }
-
-    .sec-label {
-      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--o);
-      margin-bottom: 0.6rem; display: block;
-    }
-    .sec-title {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
-      font-weight: 700; letter-spacing: -0.025em; line-height: 1.2;
-      margin-bottom: 0.75rem;
-    }
-    .sec-desc { color: var(--text-2); font-size: 0.93rem; max-width: 460px; line-height: 1.7; }
-    .sec-head { margin-bottom: 2.75rem; }
-
-    /* ── DEMOS ───────────────────────────────────────────────────── */
-    #demos {
-      background: var(--bg); border-top: 1px solid var(--border);
-    }
-
-    .demo-tabs {
-      display: flex; gap: 0.4rem;
-      margin-bottom: 2.25rem;
-    }
-    .demo-tab {
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--text-2);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.82rem; font-weight: 500;
-      padding: 0.45rem 1.1rem; border-radius: 999px;
-      cursor: pointer; transition: all .18s;
-    }
-    .demo-tab:hover { border-color: var(--border-2); color: var(--text); }
-    .demo-tab.active {
-      background: var(--o-dim);
-      border-color: rgba(249,115,22,0.35);
-      color: var(--o);
-    }
-
-    /* Browser mockup */
-    .browser-wrap {
-      border-radius: var(--r-lg);
-      overflow: hidden;
-      border: 1px solid var(--border-2);
-      box-shadow: 0 40px 80px rgba(0,0,0,0.55), 0 0 0 1px var(--border);
-      background: var(--bg-1);
-      position: relative;
-    }
-
-    .browser-chrome {
-      display: flex; align-items: center; gap: 0.9rem;
-      padding: 0 1rem;
-      height: 40px;
-      background: var(--bg-2);
-      border-bottom: 1px solid var(--border);
-      flex-shrink: 0;
-    }
-    .browser-dots { display: flex; gap: 5px; flex-shrink: 0; }
-    .browser-dots span {
-      width: 10px; height: 10px; border-radius: 50%;
-    }
-    .browser-dots span:nth-child(1) { background: #ff5f57; }
-    .browser-dots span:nth-child(2) { background: #febc2e; }
-    .browser-dots span:nth-child(3) { background: #28c840; }
-
-    .browser-url {
-      flex: 1; background: var(--bg-3);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      height: 24px; padding: 0 0.65rem;
-      display: flex; align-items: center; gap: 0.4rem;
-      font-size: 0.73rem; color: var(--text-3);
-      max-width: 360px; margin: 0 auto;
-    }
-    .browser-url svg { color: var(--text-3); flex-shrink: 0; }
-
-    .browser-body {
-      position: relative;
-      aspect-ratio: 16/9;
-      background: var(--bg-1);
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-    }
-
-    .demo-video-el {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-      cursor: pointer;
-    }
-
-    .video-placeholder {
-      position: absolute; inset: 0;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      background: var(--bg-1);
-      gap: 1rem;
-      transition: opacity .25s;
-    }
-    .video-placeholder.hidden { opacity: 0; pointer-events: none; }
-
-    .play-ring {
-      width: 72px; height: 72px; border-radius: 50%;
-      background: var(--o);
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-      transition: transform .2s, box-shadow .2s;
-      box-shadow: 0 0 40px rgba(249,115,22,0.35);
-    }
-    .play-ring:hover { transform: scale(1.08); box-shadow: 0 0 60px rgba(249,115,22,0.5); }
-
-    .play-ring svg { margin-left: 4px; } /* optical center */
-
-    .video-placeholder p {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 0.9rem; font-weight: 600;
-      color: var(--text-2); letter-spacing: 0.02em;
-    }
-
-    /* No-video empty state */
-    .demo-empty {
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 0.75rem;
-      color: var(--text-3);
-      font-size: 0.82rem; text-align: center;
-    }
-    .demo-empty-icon {
-      width: 48px; height: 48px; border-radius: 50%;
-      border: 1px dashed var(--border-2);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--text-3);
-    }
-
-    .demo-badge {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: rgba(249,115,22,0.08); border: 1px solid rgba(249,115,22,0.2);
-      color: var(--o); font-size: 0.75rem; font-weight: 600;
-      padding: 0.3rem 0.8rem; border-radius: 999px; flex-shrink: 0;
-    }
-    .demo-dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--o); animation: blink 2s infinite;
-    }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.35} }
-
-    .demo-caption {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-top: 1.25rem; flex-wrap: wrap; gap: 0.75rem;
-    }
-    .demo-caption-info h4 {
-      font-size: 0.93rem; font-weight: 700; margin-bottom: 0.2rem;
-    }
-    .demo-caption-info p { font-size: 0.78rem; color: var(--text-2); }
-
-    /* ── SERVICIOS ───────────────────────────────────────────────── */
-    #servicios { background: var(--bg); border-top: 1px solid var(--border); }
-
-    .cards-grid {
-      display: grid; grid-template-columns: repeat(3,1fr);
-      border: 1px solid var(--border);
-      border-radius: var(--r-lg); overflow: hidden;
-    }
-
-    .card {
-      background: var(--bg-1); padding: 2rem;
-      position: relative; transition: background .2s;
-      border-right: 1px solid var(--border);
-    }
-    .card:last-child { border-right: none; }
-    .card:hover { background: var(--bg-2); }
-    .card.featured { background: var(--bg-2); }
-
-    .card-top {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 1.4rem;
-    }
-
-    .card-icon {
-      width: 36px; height: 36px; border-radius: var(--r);
-      background: var(--bg); border: 1px solid var(--border-2);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--o);
-    }
-    .card.featured .card-icon { color: var(--o); }
-
-    .card-badge {
-      font-size: 0.66rem; font-weight: 700; letter-spacing: 0.06em;
-      text-transform: uppercase; color: var(--o);
-      background: var(--o-dim); border: 1px solid rgba(249,115,22,0.2);
-      padding: 0.18rem 0.55rem; border-radius: 999px;
-    }
-
-    .card h3 { font-size: 0.97rem; font-weight: 700; margin-bottom: 0.3rem; }
-    .card-price { font-size: 0.76rem; color: var(--text-3); margin-bottom: 0.9rem; }
-    .card p { color: var(--text-2); font-size: 0.84rem; line-height: 1.6; margin-bottom: 1.2rem; }
-
-    .card-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-    .card-list li {
-      font-size: 0.79rem; color: var(--text-2);
-      display: flex; align-items: flex-start; gap: 0.4rem;
-    }
-    .card-list li svg { color: var(--o); flex-shrink: 0; margin-top: 1px; opacity: 0.8; }
-
-    /* ── PROCESO ─────────────────────────────────────────────────── */
-    #proceso { background: var(--bg-1); border-top: 1px solid var(--border); }
-
-    .steps-grid {
-      display: grid; grid-template-columns: repeat(3,1fr);
-      border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden;
-    }
-    .step {
-      padding: 2rem; border-right: 1px solid var(--border);
-      transition: background .2s;
-      cursor: default;
-    }
-    .step:last-child { border-right: none; }
-    .step:hover { background: rgba(249,115,22,0.04); }
-    .step:hover .step-ico {
-      background: var(--o-dim);
-      border-color: rgba(249,115,22,0.35);
-      opacity: 1;
-    }
-    .step-n {
-      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--text-3);
-      margin-bottom: 1.25rem;
-      display: flex; align-items: center; gap: 0.5rem;
-    }
-    .step-n::after { content: ''; height: 1px; flex: 1; background: var(--border); }
-    .step-ico {
-      width: 36px; height: 36px;
-      background: var(--bg); border: 1px solid var(--border-2);
-      border-radius: var(--r);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--o); margin-bottom: 1rem; opacity: 0.85;
-    }
-    .step h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
-    .step p { color: var(--text-2); font-size: 0.82rem; line-height: 1.6; }
-
-    /* ── FAQ ─────────────────────────────────────────────────────── */
-    #faq { background: var(--bg); border-top: 1px solid var(--border); }
-
-    .faq-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      border: 1px solid var(--border); border-radius: var(--r-lg);
-      overflow: hidden; max-width: 900px; margin: 0 auto;
-    }
-    .faq-item {
-      border-right: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      transition: background .2s;
-    }
-    .faq-item:hover { background: rgba(249,115,22,0.03); }
-    .faq-item:nth-child(even) { border-right: none; }
-    .faq-item:nth-last-child(-n+2) { border-bottom: none; }
-    .faq-q {
-      width: 100%; padding: 1.4rem 1.5rem;
-      display: flex; justify-content: space-between; align-items: flex-start;
-      background: none; border: none; cursor: pointer;
-      color: var(--text); font-size: 0.85rem; font-weight: 500;
-      text-align: left; gap: 1rem; transition: background .15s;
-      font-family: 'DM Sans', sans-serif;
-    }
-    .faq-q:hover { background: var(--bg-1); }
-    .faq-chevron {
-      flex-shrink: 0; width: 15px; height: 15px;
-      color: var(--text-3); transition: transform .2s, color .2s; margin-top: 2px;
-    }
-    .faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--o); }
-    .faq-a { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
-    .faq-item.open .faq-a { max-height: 220px; }
-    .faq-a p {
-      padding: 0 1.5rem 1.4rem; border-top: 1px solid var(--border);
-      padding-top: 0.9rem; color: var(--text-2); font-size: 0.82rem; line-height: 1.65;
-    }
-
-    /* ── RESERVAR ────────────────────────────────────────────────── */
-    #reservar { background: var(--bg-1); border-top: 1px solid var(--border); }
-
-    .reservar-layout {
-      display: grid; grid-template-columns: 1fr 2fr;
-      gap: 4rem; align-items: start;
-    }
-    .reservar-copy h2 {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: clamp(1.3rem, 2.8vw, 1.8rem);
-      font-weight: 700; letter-spacing: -0.025em;
-      line-height: 1.25; margin-bottom: 1rem;
-    }
-    .reservar-copy p { color: var(--text-2); font-size: 0.85rem; line-height: 1.7; margin-bottom: 1.25rem; }
-    .reservar-items { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.5rem; }
-    .reservar-item {
-      display: flex; align-items: center; gap: 0.6rem;
-      font-size: 0.82rem; color: var(--text-2);
-    }
-    .reservar-item svg { color: var(--o); flex-shrink: 0; opacity: 0.85; }
-    .reservar-wa { font-size: 0.76rem; color: var(--text-3); }
-    .reservar-wa a { color: var(--o); text-decoration: none; }
-    .reservar-wa a:hover { text-decoration: underline; }
-
-    #chat-inline {
-      width: 100%; height: 620px;
-      border-radius: var(--r-lg); overflow: hidden;
-      border: 1px solid var(--border-2);
-      position: sticky; top: 70px;
-    }
-
-    /* ── CTA ─────────────────────────────────────────────────────── */
-    #cta {
-      background: var(--bg); border-top: 1px solid var(--border);
-      text-align: center; padding: 5rem 2rem;
-      position: relative; overflow: hidden;
-    }
-    #cta::before {
-      content: '';
-      position: absolute; inset: 0; pointer-events: none;
-      background: radial-gradient(ellipse 60% 60% at 50% 100%, rgba(249,115,22,0.08) 0%, transparent 65%);
-    }
-    #cta h2 {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
-      font-weight: 700; letter-spacing: -0.025em; margin-bottom: 0.75rem;
-      position: relative;
-    }
-    #cta p {
-      color: var(--text-2); font-size: 0.9rem; max-width: 380px;
-      margin: 0 auto 2rem; line-height: 1.7; position: relative;
-    }
-
-    /* ── BUTTONS ─────────────────────────────────────────────────── */
-    .btn-primary {
-      background: var(--o); color: #fff;
-      padding: 0.65rem 1.5rem; border-radius: var(--r);
-      font-weight: 500; font-size: 0.875rem; text-decoration: none;
-      border: none; cursor: pointer;
-      transition: background .15s, transform .15s;
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      font-family: 'DM Sans', sans-serif; position: relative;
-    }
-    .btn-primary:hover { background: var(--o2); transform: translateY(-1px); }
-
-    .btn-ghost {
-      background: transparent; color: var(--text-2);
-      padding: 0.65rem 1.5rem; border-radius: var(--r);
-      font-weight: 400; font-size: 0.875rem; text-decoration: none;
-      border: 1px solid var(--border-2);
-      transition: color .15s, background .15s;
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      font-family: 'DM Sans', sans-serif;
-    }
-    .btn-ghost:hover { color: var(--text); background: var(--bg-2); }
-
-    /* ── SOBRE MÍ ────────────────────────────────────────────────── */
-    #sobre-mi { background: var(--bg-1); border-top: 1px solid var(--border); }
-
-    .about-layout {
-      display: grid; grid-template-columns: 300px 1fr;
-      gap: 5rem; align-items: center;
-    }
-
-    .about-photo-wrap {
-      display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
-    }
-
-    .about-img-frame {
-      width: 220px; height: 220px; border-radius: 50%;
-      border: 2px solid var(--border-2);
-      box-shadow: 0 0 60px rgba(249,115,22,0.12);
-      overflow: hidden; flex-shrink: 0;
-      background: var(--bg-2);
-    }
-    .about-img-frame img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center top;
-      display: block;
-    }
-
-    .about-socials {
-      display: flex; gap: 0.6rem;
-    }
-    .about-social-btn {
-      width: 36px; height: 36px; border-radius: var(--r);
-      background: var(--bg-2); border: 1px solid var(--border-2);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--text-3); text-decoration: none;
-      transition: color .15s, border-color .15s, background .15s;
-    }
-    .about-social-btn:hover {
-      color: var(--text); border-color: var(--o);
-      background: var(--o-dim);
-    }
-
-    .about-content { max-width: 520px; }
-    .about-content h2 {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      font-weight: 700; letter-spacing: -0.03em;
-      line-height: 1.2; margin-bottom: 1.1rem;
-    }
-    .about-content h2 em {
-      font-style: normal; color: var(--o);
-    }
-    .about-content p {
-      color: var(--text-2); font-size: 0.9rem; line-height: 1.75;
-      margin-bottom: 0.9rem;
-    }
-    .about-tags {
-      display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.5rem;
-    }
-    .about-tag {
-      background: var(--bg-2); border: 1px solid var(--border);
-      color: var(--text-2); font-size: 0.75rem; font-weight: 500;
-      padding: 0.3rem 0.75rem; border-radius: 999px;
-      transition: background .18s, border-color .18s, color .18s, transform .18s;
-      cursor: default;
-    }
-    .about-tag:hover {
-      background: var(--o-dim);
-      border-color: rgba(249,115,22,0.4);
-      color: var(--o);
-      transform: translateY(-2px);
-    }
-
-    /* ── PRICING ─────────────────────────────────────────────────── */
-    #servicios { background: var(--bg); border-top: 1px solid var(--border); }
-
-    .pricing-toggle-wrap {
-      display: flex; align-items: center; gap: 0.85rem;
-      margin-bottom: 2.5rem; flex-wrap: wrap;
-    }
-    .pricing-toggle-label {
-      font-size: 0.84rem; color: var(--text-2); font-weight: 500;
-    }
-    .pricing-toggle-label.active { color: var(--text); }
-
-    .toggle-pill {
-      width: 44px; height: 24px; border-radius: 999px;
-      background: var(--bg-2); border: 1px solid var(--border-2);
-      position: relative; cursor: pointer;
-      transition: background .2s;
-    }
-    .toggle-pill.on { background: var(--o); border-color: var(--o); }
-    .toggle-knob {
-      position: absolute; top: 3px; left: 3px;
-      width: 16px; height: 16px; border-radius: 50%;
-      background: #fff; transition: transform .2s;
-    }
-    .toggle-pill.on .toggle-knob { transform: translateX(20px); }
-
-    .save-pill {
-      background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.25);
-      color: #4ade80; font-size: 0.7rem; font-weight: 600;
-      padding: 0.2rem 0.6rem; border-radius: 999px;
-    }
-
-    .pricing-grid {
-      display: grid; grid-template-columns: repeat(3,1fr);
-      border: 1px solid var(--border);
-      border-radius: var(--r-lg); overflow: hidden;
-    }
-
-    /* ── CARD FLIP ───────────────────────────────────────────────── */
-    .pcard {
-      padding: 0;
-      background: transparent;
-      border-right: 1px solid var(--border);
-      perspective: 1400px;
-      position: relative;
-    }
-    .pcard:last-child { border-right: none; }
-
-    .pcard-inner {
-      transform-style: preserve-3d;
-      transition: transform 0.65s cubic-bezier(.4,0,.2,1);
-      height: 100%; position: relative;
-    }
-    .pcard.flipped .pcard-inner { transform: rotateY(180deg); }
-
-    .pcard-front {
-      backface-visibility: hidden; -webkit-backface-visibility: hidden;
-      height: 100%; padding: 2rem;
-      background: var(--bg-1);
-      display: flex; flex-direction: column;
-    }
-    .pcard.featured .pcard-front {
-      background: var(--bg-2);
-      position: relative;
-    }
-    .pcard.featured .pcard-front::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, var(--o), #fb923c);
-    }
-
-    .pcard-back {
-      position: absolute; inset: 0;
-      backface-visibility: hidden; -webkit-backface-visibility: hidden;
-      transform: rotateY(180deg);
-      padding: 1.75rem; background: #1e1a2a;
-      display: flex; flex-direction: column;
-      overflow: hidden;
-    }
-    .pcard.featured .pcard-back { background: #231e30; }
-
-    .pcard-front { cursor: pointer; }
-    .flip-hint {
-      display: flex; align-items: center; gap: 0.4rem;
-      font-size: 0.69rem; color: var(--text-3);
-      margin-top: auto; padding-top: 0.9rem;
-      border-top: 1px solid var(--border);
-      user-select: none;
-    }
-    .flip-hint svg { opacity: 0.55; flex-shrink: 0; }
-
-    .flip-back-btn {
-      display: inline-flex; align-items: center; gap: 0.35rem;
-      background: transparent; border: none; color: var(--text-3);
-      font-size: 0.73rem; padding: 0; cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
-      margin-bottom: 1rem; transition: color .15s;
-    }
-    .flip-back-btn:hover { color: var(--text); }
-
-    .back-title {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 0.97rem; font-weight: 700; margin-bottom: 0.2rem;
-    }
-    .back-sub { font-size: 0.74rem; color: var(--text-3); margin-bottom: 1.1rem; }
-
-    .back-section {
-      font-size: 0.66rem; font-weight: 700; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--o); margin-bottom: 0.45rem;
-      margin-top: 0.85rem;
-    }
-    .back-list {
-      list-style: none; display: flex; flex-direction: column; gap: 0.35rem;
-    }
-    .back-list li {
-      font-size: 0.76rem; color: var(--text-2);
-      display: flex; gap: 0.4rem; line-height: 1.4;
-    }
-    .back-list li span { color: var(--o); flex-shrink: 0; }
-
-    .back-cta {
-      display: block; text-align: center; margin-top: auto; padding-top: 1rem;
-      padding-bottom: 0.55rem; border-radius: var(--r);
-      font-size: 0.8rem; font-weight: 500; text-decoration: none;
-      font-family: 'DM Sans', sans-serif; transition: all .15s;
-    }
-    .back-cta.primary { background: var(--o); color: #fff; }
-    .back-cta.primary:hover { background: var(--o2); }
-    .back-cta.ghost { border: 1px solid var(--border-2); color: var(--text-2); }
-    .back-cta.ghost:hover { border-color: var(--o); color: var(--o); }
-
-    .pcard-top {
-      display: flex; align-items: flex-start; justify-content: space-between;
-      margin-bottom: 1.5rem;
-    }
-    .pcard-icon {
-      width: 36px; height: 36px; border-radius: var(--r);
-      background: var(--bg); border: 1px solid var(--border-2);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--o);
-    }
-    .pcard-badge {
-      font-size: 0.66rem; font-weight: 700; letter-spacing: 0.06em;
-      text-transform: uppercase; color: var(--o);
-      background: var(--o-dim); border: 1px solid rgba(249,115,22,0.2);
-      padding: 0.18rem 0.55rem; border-radius: 999px;
-    }
-
-    .pcard h3 {
-      font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem;
-    }
-    .pcard-sub { font-size: 0.78rem; color: var(--text-3); margin-bottom: 1.4rem; }
-
-    .pcard-price-block { margin-bottom: 0.6rem; }
-    .pcard-setup {
-      font-size: 0.75rem; color: var(--text-3); margin-bottom: 0.4rem;
-    }
-    .pcard-setup strong { color: var(--text-2); }
-    .pcard-monthly {
-      display: flex; align-items: baseline; gap: 0.3rem;
-    }
-    .price-amount {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 2rem; font-weight: 800;
-      letter-spacing: -0.04em;
-      transition: opacity .2s;
-      background: linear-gradient(120deg, #f97316 0%, #fde68a 40%, #f97316 65%, #c2410c 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .price-period { font-size: 0.78rem; color: var(--text-3); }
-    .price-save {
-      font-size: 0.72rem; color: #4ade80;
-      margin-top: 0.25rem; display: none;
-    }
-    .annual-mode .price-save { display: block; }
-
-    .pcard-divider {
-      height: 1px; background: var(--border);
-      margin: 1.25rem 0;
-    }
-
-    .pcard-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
-    .pcard-list li {
-      font-size: 0.8rem; color: var(--text-2);
-      display: flex; align-items: flex-start; gap: 0.45rem; line-height: 1.4;
-    }
-    .pcard-list li svg { color: var(--o); flex-shrink: 0; margin-top: 1px; }
-
-    .pcard-cta {
-      display: block; text-align: center; margin-top: 1.75rem;
-      padding: 0.6rem; border-radius: var(--r);
-      font-size: 0.82rem; font-weight: 500;
-      text-decoration: none; font-family: 'DM Sans', sans-serif;
-      transition: all .15s;
-    }
-    .pcard-cta.primary {
-      background: var(--o); color: #fff;
-    }
-    .pcard-cta.primary:hover { background: var(--o2); }
-    .pcard-cta.ghost {
-      border: 1px solid var(--border-2); color: var(--text-2);
-    }
-    .pcard-cta.ghost:hover { border-color: var(--o); color: var(--o); }
-
-    .pricing-note {
-      text-align: center; margin-top: 1.5rem;
-      font-size: 0.75rem; color: var(--text-3);
-    }
-
-    /* ── WHATSAPP FLOAT ──────────────────────────────────────────── */
-    .wa-float {
-      position: fixed; bottom: 28px; left: 28px; z-index: 900;
-    }
-    .wa-float-btn {
-      width: 54px; height: 54px; border-radius: 50%;
-      background: #25D366;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 24px rgba(37,211,102,0.35);
-      cursor: pointer; text-decoration: none;
-      transition: transform .2s, box-shadow .2s;
-      border: none;
-    }
-    .wa-float-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 8px 32px rgba(37,211,102,0.5);
-    }
-    .wa-tooltip {
-      position: absolute; left: 64px; top: 50%;
-      transform: translateY(-50%);
-      background: var(--bg-2); border: 1px solid var(--border-2);
-      color: var(--text); font-size: 0.75rem; font-weight: 500;
-      padding: 0.4rem 0.75rem; border-radius: 8px;
-      white-space: nowrap;
-      opacity: 0; pointer-events: none;
-      transition: opacity .2s;
-    }
-    .wa-float:hover .wa-tooltip { opacity: 1; }
-
-    /* ── FOOTER ──────────────────────────────────────────────────── */
-    footer {
-      background: var(--bg-1); border-top: 1px solid var(--border);
-      padding: 0;
-    }
-    .footer-main {
-      padding: 2.5rem 2rem;
-      display: grid; grid-template-columns: 1fr auto 1fr;
-      align-items: start; gap: 2rem;
-    }
-    .footer-brand {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 0.9rem; font-weight: 700;
-      color: var(--text); display: flex; align-items: center; gap: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
-    .footer-brand .logo-mark { width: 24px; height: 24px; border-radius: 6px; font-size: 0.7rem; }
-    .footer-tagline { font-size: 0.77rem; color: var(--text-3); line-height: 1.5; }
-
-    .footer-links-col { display: flex; flex-direction: column; gap: 0.5rem; }
-    .footer-col-title {
-      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--text-3); margin-bottom: 0.25rem;
-    }
-    .footer-links-col a {
-      color: var(--text-3); text-decoration: none;
-      font-size: 0.78rem; transition: color .15s;
-    }
-    .footer-links-col a:hover { color: var(--text-2); }
-
-    .footer-socials { display: flex; gap: 0.5rem; }
-    .footer-social-icon {
-      width: 32px; height: 32px; border-radius: var(--r);
-      background: var(--bg-2); border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--text-3); text-decoration: none;
-      transition: color .15s, border-color .15s;
-    }
-    .footer-social-icon:hover { color: var(--text); border-color: var(--border-2); }
-
-    .footer-bottom {
-      padding: 1rem 2rem;
-      border-top: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 0.75rem;
-    }
-    .footer-copy { color: var(--text-3); font-size: 0.72rem; }
-    .footer-legal { display: flex; gap: 1.25rem; flex-wrap: wrap; }
-    .footer-legal a {
-      color: var(--text-3); text-decoration: none;
-      font-size: 0.72rem; transition: color .15s;
-    }
-    .footer-legal a:hover { color: var(--text-2); }
-
-    /* ── CANVAS BACKGROUND ──────────────────────────────────────── */
-    #hero-canvas {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      z-index: 998;
-      pointer-events: none;
-      mix-blend-mode: screen;
-    }
-
-    /* ── SCROLL REVEAL ───────────────────────────────────────────── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(26px);
-      transition: opacity .6s ease, transform .6s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ── ABOUT PHOTO FIX ─────────────────────────────────────────── */
-    .about-img-frame img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: center 15%;
-      display: block;
-    }
-
-    /* ── RESPONSIVE ──────────────────────────────────────────────── */
-    @media (max-width: 900px) {
-      .pricing-grid { grid-template-columns: 1fr; }
-      .pcard { border-right: none; border-bottom: 1px solid var(--border); }
-      .pcard:last-child { border-bottom: none; }
-      .about-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-      .about-photo-wrap { flex-direction: row; gap: 2rem; align-items: center; }
-      .steps-grid { grid-template-columns: 1fr; }
-      .step { border-right: none; border-bottom: 1px solid var(--border); }
-      .step:last-child { border-bottom: none; }
-      .faq-grid { grid-template-columns: 1fr; }
-      .faq-item { border-right: none; border-bottom: 1px solid var(--border) !important; }
-      .faq-item:last-child { border-bottom: none !important; }
-      .reservar-layout { grid-template-columns: 1fr; gap: 2rem; }
-      #chat-inline { height: 500px; position: static; }
-      .footer-main { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 600px) {
-      nav { padding: 0 1rem; }
-      .nav-link { display: none; }
-      .opts.cols-3 { grid-template-columns: 1fr 1fr; }
-      .opts { grid-template-columns: 1fr 1fr; }
-      .about-photo-wrap { flex-direction: column; }
-      .footer-bottom { flex-direction: column; gap: 0.5rem; }
-    }
-
-    /* ── HERO NEW LAYOUT ─────────────────────────────────────────── */
-    .hero-layout {
-      width: 100%; max-width: 1100px;
-      display: grid;
-      grid-template-columns: 1fr 400px;
-      gap: 5rem;
-      align-items: center;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      background: var(--o-dim);
-      border: 1px solid rgba(249,115,22,0.25);
-      color: var(--o);
-      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.3rem 0.85rem; border-radius: 999px;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-hl {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(1.75rem, 3.5vw, 2.8rem);
-      font-weight: 700; letter-spacing: -0.01em;
-      line-height: 1.2; margin-bottom: 1.25rem;
-    }
-    .hero-price {
-      display: block;
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: clamp(1.6rem, 3.2vw, 2.4rem);
-      font-weight: 800; letter-spacing: -0.03em;
-      margin-top: 0.55rem;
-      background: linear-gradient(120deg, #f97316 0%, #fde68a 40%, #f97316 65%, #c2410c 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-copy {
-      font-size: 1rem; color: var(--text-2);
-      line-height: 1.75; margin-bottom: 2rem; max-width: 480px;
-    }
-
-    .hero-feats {
-      list-style: none;
-      display: flex; flex-direction: column; gap: 0.7rem;
-    }
-    .hero-feats li {
-      display: flex; align-items: center; gap: 0.65rem;
-      font-size: 0.9rem; color: var(--text-2);
-    }
-    .hero-feats li svg { color: var(--o); flex-shrink: 0; }
-
-    /* Contact card */
-    .hero-card {
-      background: var(--bg-1);
-      border: 1px solid var(--border-2);
-      border-radius: var(--r-lg);
-      padding: 1.75rem;
-      box-shadow: 0 24px 64px rgba(0,0,0,0.4);
-    }
-
-    .hcard-phone {
-      display: flex; align-items: center; gap: 0.55rem;
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 1.35rem; font-weight: 700; color: var(--o);
-      margin-bottom: 0.35rem;
-    }
-
-    .hcard-sub {
-      font-size: 0.78rem; color: var(--text-3); margin-bottom: 1.5rem;
-    }
-
-    .hcard-field { margin-bottom: 0.7rem; }
-    .hcard-field input {
-      width: 100%;
-      background: var(--bg-2);
-      border: 1px solid var(--border-2);
-      border-radius: var(--r);
-      padding: 0.7rem 0.9rem;
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.875rem;
-      outline: none;
-      transition: border-color .15s;
-    }
-    .hcard-field input:focus { border-color: var(--o); }
-    .hcard-field input::placeholder { color: var(--text-3); }
-    .hcard-field select {
-      width: 100%;
-      background: var(--bg-2);
-      border: 1px solid var(--border-2);
-      border-radius: var(--r);
-      padding: 0.7rem 0.9rem;
-      color: var(--text-3);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.875rem;
-      outline: none;
-      appearance: none;
-      cursor: pointer;
-      transition: border-color .15s;
-    }
-    .hcard-field select:focus { border-color: var(--o); }
-    .hcard-field select option { background: var(--bg-2); color: var(--text); }
-    .hcard-field textarea {
-      width: 100%;
-      background: var(--bg-2);
-      border: 1px solid var(--border-2);
-      border-radius: var(--r);
-      padding: 0.7rem 0.9rem;
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.875rem;
-      outline: none;
-      resize: none;
-      transition: border-color .15s;
-      line-height: 1.5;
-    }
-    .hcard-field textarea:focus { border-color: var(--o); }
-    .hcard-field textarea::placeholder { color: var(--text-3); }
-
-    .hcard-check {
-      display: flex; align-items: flex-start; gap: 0.5rem;
-      font-size: 0.73rem; color: var(--text-3);
-      line-height: 1.55; margin-bottom: 1rem; cursor: pointer;
-    }
-    .hcard-check input { margin-top: 3px; flex-shrink: 0; accent-color: var(--o); }
-    .hcard-check a { color: var(--o); text-decoration: none; }
-    .hcard-check a:hover { text-decoration: underline; }
-
-    .hcard-btn {
-      width: 100%; background: var(--o); color: #fff;
-      border: none; cursor: pointer; border-radius: var(--r);
-      padding: 0.85rem 1.5rem;
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-weight: 700; font-size: 0.95rem;
-      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
-      transition: background .15s, transform .15s;
-      box-shadow: 0 0 40px rgba(249,115,22,0.2);
-    }
-    .hcard-btn:hover { background: var(--o2); transform: translateY(-1px); }
-
-    @media (max-width: 900px) {
-      .hero-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-      .hero-card { max-width: 480px; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add('js');</script>
+<title>Páginas web con IA para negocios locales en Madrid | paginawebcreator</title>
+<meta name="description" content="Tu negocio, pero ahora con página web. Webs para negocios locales con un agente de IA que contesta mensajes y reserva citas las 24 horas. Primera versión gratis en 72 horas. Desde 390 €.">
+<link rel="canonical" href="https://paginawebcreator.com/">
+<meta name="theme-color" content="#F4F6FB">
+<meta name="google-site-verification" content="N-nMWRoItJf7UJkpTNDFHOh5LKkkJV45Gb6LTDLopDE">
+<meta name="google-site-verification" content="RG1GCa9X8iX0cRjtRYejLO1hgtfebGz0P8L5Ah1J7dY">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="paginawebcreator">
+<meta property="og:url" content="https://paginawebcreator.com/">
+<meta property="og:title" content="Tu negocio, pero ahora con página web">
+<meta property="og:description" content="Webs y agentes de IA para negocios locales. Mira cómo quedaría la tuya y te la enseño gratis en 72 horas.">
+<meta property="og:image" content="https://paginawebcreator.com/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Tu negocio, pero ahora con página web. paginawebcreator.com">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/sitio.css">
+<script defer src="assets/js/sitio.js"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://paginawebcreator.com/#negocio",
+      "name": "Pagina-Web Creator",
+      "alternateName": "paginawebcreator",
+      "description": "Páginas web y agentes de inteligencia artificial para negocios locales: webs a medida con SEO local y asistentes que contestan mensajes y reservan citas las 24 horas.",
+      "url": "https://paginawebcreator.com/",
+      "logo": "https://paginawebcreator.com/android-chrome-512x512.png",
+      "image": "https://paginawebcreator.com/assets/og.png",
+      "telephone": "+34685101194",
+      "email": "miguelmartincaro@gmail.com",
+      "founder": { "@id": "https://paginawebcreator.com/#miguel" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Madrid", "addressRegion": "Comunidad de Madrid", "addressCountry": "ES" },
+      "areaServed": [{ "@type": "City", "name": "Madrid" }, { "@type": "Country", "name": "España" }],
+      "priceRange": "390 € - 1.290 €",
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "19:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "14:00" }
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/miguel-mart%C3%ADn-caro-mart%C3%ADn-402328208",
+        "https://www.google.com/maps?cid=7241256061988564343"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Planes",
+        "itemListElement": [
+          { "@type": "Offer", "name": "Web", "description": "Web a medida de hasta 5 secciones, SEO local, dominio, alojamiento y SSL. Publicada en 7 días. Cuota de 19 € al mes.", "price": "390", "priceCurrency": "EUR" },
+          { "@type": "Offer", "name": "Web + Agente IA", "description": "Web a medida más un agente de IA que contesta a tus clientes y reserva citas en tu Google Calendar las 24 horas. Cuota de 49 € al mes.", "price": "790", "priceCurrency": "EUR" },
+          { "@type": "Offer", "name": "Todo en WhatsApp", "description": "Web, agente de IA en la web y en WhatsApp, recordatorios automáticos y petición de reseñas en Google. Cuota de 89 € al mes.", "price": "1290", "priceCurrency": "EUR" }
+        ]
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://paginawebcreator.com/#miguel",
+      "name": "Miguel Martín-Caro Martín",
+      "alternateName": "Miguel Martín Caro",
+      "jobTitle": "Diseñador web y de agentes de IA",
+      "image": "https://paginawebcreator.com/assets/miguel-retrato.webp",
+      "sameAs": ["https://www.linkedin.com/in/miguel-mart%C3%ADn-caro-mart%C3%ADn-402328208"],
+      "worksFor": { "@id": "https://paginawebcreator.com/#negocio" },
+      "knowsAbout": ["Diseño web para negocios locales", "SEO local", "Agentes de inteligencia artificial", "Automatización con n8n", "GEO (Generative Engine Optimization)"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://paginawebcreator.com/#web",
+      "url": "https://paginawebcreator.com/",
+      "name": "paginawebcreator",
+      "inLanguage": "es-ES",
+      "publisher": { "@id": "https://paginawebcreator.com/#negocio" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "¿Qué pasa si la primera versión no me gusta?", "acceptedAnswer": { "@type": "Answer", "text": "Nada. Me dices qué no te convence y lo dejamos ahí, sin pagar nada. Si te gusta, seguimos y la ajustamos contigo hasta que quede como quieres." } },
+        { "@type": "Question", "name": "¿Tengo que saber algo de tecnología?", "acceptedAnswer": { "@type": "Answer", "text": "No. Me encargo del dominio, el alojamiento, los textos y la puesta en marcha. Tú solo me cuentas cómo es tu negocio y me mandas algunas fotos si las tienes." } },
+        { "@type": "Question", "name": "¿El agente de IA se puede inventar cosas?", "acceptedAnswer": { "@type": "Answer", "text": "Solo responde con la información que tú me das: servicios, precios, horarios y normas. Antes de activarlo lo pruebas tú. Si un cliente pregunta algo que no sabe, le dice que lo consulta y te avisa." } },
+        { "@type": "Question", "name": "¿Hay permanencia?", "acceptedAnswer": { "@type": "Answer", "text": "No. La cuota es mes a mes y puedes darte de baja cuando quieras. La web es tuya: si un día te vas, te doy los archivos y te ayudo a llevarte el dominio." } },
+        { "@type": "Question", "name": "¿Qué incluye la cuota mensual?", "acceptedAnswer": { "@type": "Answer", "text": "Dominio, alojamiento, certificado de seguridad, copias de seguridad, cambios pequeños como horarios, precios o fotos, y soporte por WhatsApp. En los planes con agente, también el coste de la IA y su mantenimiento." } },
+        { "@type": "Question", "name": "¿Voy a salir en Google? ¿Y en ChatGPT?", "acceptedAnswer": { "@type": "Answer", "text": "Todas las webs salen con SEO local: textos pensados para búsquedas de tu zona, datos estructurados y alta en Google Search Console. También las preparo para que asistentes como ChatGPT o Gemini entiendan tu negocio. Nadie honesto puede garantizarte el primer puesto, pero sí una web bien hecha para competir." } },
+        { "@type": "Question", "name": "Ya tengo web. ¿Me la puedes renovar?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, desde 390 € y sin perder tu dominio. Preparo la nueva versión en paralelo y hacemos el cambio sin que tu web deje de funcionar ni un día." } },
+        { "@type": "Question", "name": "¿Trabajas solo en Madrid?", "acceptedAnswer": { "@type": "Answer", "text": "Trabajo con negocios de toda España por videollamada y WhatsApp. Si estás en Madrid, también podemos vernos en persona." } }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
+<svg class="solo-lector" aria-hidden="true" focusable="false">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.290.18-1.41-.08-.13-.27-.2-.57-.35m-5.42 7.4h-.01a9.87 9.870 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.890-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.41z"/></symbol>
+  <symbol id="i-tel" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></g></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-candado" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></g></symbol>
+  <symbol id="i-calendario" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></g></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><g fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></g></symbol>
+  <symbol id="i-ordenador" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></g></symbol>
+  <symbol id="i-movil" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></g></symbol>
+  <symbol id="i-azulejo" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#2346E6"/><path fill="#fff" d="M16 5c2.6 5.4 5.6 8.4 11 11-5.4 2.6-8.4 5.6-11 11-2.6-5.4-5.6-8.4-11-11 5.4-2.6 8.4-5.6 11-11z"/><circle cx="16" cy="16" r="2.6" fill="#FFC53D"/></symbol>
+</svg>
 
-<!-- ── NAVBAR ─────────────────────────────────────────────────────── -->
-<nav>
-  <a href="#inicio" class="logo">
-    <span class="logo-text">WEB-IA</span>
-  </a>
-  <div class="nav-right">
-    <a href="#demos" class="nav-link">Demos</a>
-    <a href="#servicios" class="nav-link">Precios</a>
-    <a href="#sobre-mi" class="nav-link">Sobre mí</a>
-    <a href="#faq" class="nav-link">FAQ</a>
-    <a href="#reservar" class="nav-cta">Reservar gratis</a>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="cabecera tramo" data-scroll="no">
+  <div class="cabecera__fila">
+    <a class="marca" href="./" aria-label="paginawebcreator, inicio">
+      <svg aria-hidden="true"><use href="#i-azulejo"/></svg>
+      <span>paginawebcreator</span>
+    </a>
+    <nav class="cabecera__nav" id="menu-principal" aria-label="Principal" data-abierto="false">
+      <a href="#calculadora">Calculadora</a>
+      <a href="#agente">Agente IA</a>
+      <a href="#trabajos">Trabajos</a>
+      <a href="#precios">Precios</a>
+      <a href="#dudas">Dudas</a>
+    </nav>
+    <a class="boton boton--wa boton--pequeno cabecera__accion" href="https://wa.me/34685101194?text=Hola%20Miguel%2C%20quiero%20informaci%C3%B3n%20sobre%20una%20web%20para%20mi%20negocio." target="_blank" rel="noopener" data-evento="clic_whatsapp" data-ubicacion="cabecera" aria-label="Escríbeme por WhatsApp">
+      <svg aria-hidden="true"><use href="#i-wa"/></svg><span class="cabecera__accion-texto">Escríbeme</span>
+    </a>
+    <button class="cabecera__menu" type="button" aria-expanded="false" aria-controls="menu-principal">
+      <span class="solo-lector">Menú</span><span class="cabecera__hamburguesa" aria-hidden="true"></span>
+    </button>
   </div>
-</nav>
+</header>
 
-<!-- ── HERO ────────────────────────────────────────────────────────── -->
-<section id="inicio">
-  <div class="hero-layout">
+<main id="contenido">
 
-    <!-- Izquierda: copy -->
-    <div class="hero-left">
-      <span class="hero-badge">Madrid y toda España · Webs profesionales con IA</span>
-      <h1 class="hero-hl">
-        Diseñamos tu web profesional con <span class="accent">inteligencia artificial</span> integrada.
-        <span class="hero-price">desde 10 euros al mes</span>
-      </h1>
-      <p class="hero-copy">Hosting, dominio, SEO y un agente IA que atiende a tus clientes y agenda citas automáticamente, 24/7. Sin permanencia, cancela cuando quieras.</p>
-      <ul class="hero-feats">
-        <li>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          Diseño 100% personalizado para tu negocio
-        </li>
-        <li>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          Agente IA que responde y agenda citas 24/7
-        </li>
-        <li>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          Primera consulta gratuita sin compromiso
-        </li>
-      </ul>
-    </div>
-
-    <!-- Derecha: formulario de contacto -->
-    <div class="hero-card">
-      <div class="hcard-phone">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        +34 685 101 194
+  <section class="escaparate tramo" aria-labelledby="titulo-principal">
+    <div class="escaparate__rejilla">
+      <div class="escaparate__texto">
+        <h1 id="titulo-principal"><span class="escaparate__nombre" data-h1-nombre>Tu negocio</span>, pero ahora con página web.</h1>
+        <p class="escaparate__entrada">Te hago una web que te trae clientes, con un agente de IA que contesta y reserva por ti. Pruébalo: pon el nombre de tu negocio y mira cómo quedaría.</p>
       </div>
-      <p class="hcard-sub">Te llamamos gratis, sin compromiso</p>
-      <form id="hero-form" onsubmit="submitHeroForm(event)">
-        <div class="hcard-field">
-          <input type="text" id="hf-nombre" placeholder="Nombre o empresa" required>
+
+      <div class="escaparate__maqueta">
+        <div class="vista" role="group" aria-label="Ver la web de ejemplo en">
+          <button type="button" class="vista__boton" data-vista="ordenador" aria-pressed="true"><svg aria-hidden="true"><use href="#i-ordenador"/></svg>Ordenador</button>
+          <button type="button" class="vista__boton" data-vista="movil" aria-pressed="false"><svg aria-hidden="true"><use href="#i-movil"/></svg>Móvil</button>
         </div>
-        <div class="hcard-field">
-          <input type="tel" id="hf-tel" placeholder="Teléfono" required>
+
+        <div class="maqueta" data-sector="barberia" data-estilo="rotulo" data-vista="ordenador" aria-hidden="true">
+          <div class="maqueta__barra">
+            <span class="maqueta__puntos"><i></i><i></i><i></i></span>
+            <span class="maqueta__url"><svg><use href="#i-candado"/></svg><span data-m="url">barberiaramirez.es</span></span>
+          </div>
+          <div class="maqueta__pantalla">
+            <div class="maqueta__web" data-m="web">
+              <div class="maqueta__nav m-bloque" data-bloque="nav">
+                <span class="maqueta__logo" data-m="iniciales">BR</span>
+                <span class="maqueta__marca" data-m="marca">Barbería Ramírez</span>
+                <span class="maqueta__abierto">Abierto ahora</span>
+              </div>
+              <div class="maqueta__portada m-bloque" data-bloque="portada">
+                <div class="maqueta__texto">
+                  <p class="maqueta__titular" data-m="titular">Barbería Ramírez</p>
+                  <p class="maqueta__lema" data-m="lema">Degradados y barbas sin esperas en tu barrio.</p>
+                  <span class="maqueta__boton" data-m="cta">Reservar cita</span>
+                </div>
+                <div class="maqueta__foto"></div>
+              </div>
+              <div class="maqueta__seccion m-bloque" data-bloque="carta">
+                <p class="maqueta__apartado">Servicios</p>
+                <ul class="maqueta__carta" data-m="carta">
+                  <li><span>Corte degradado</span><span>14 €</span></li>
+                  <li><span>Arreglo de barba</span><span>9 €</span></li>
+                  <li><span>Corte + barba</span><span>20 €</span></li>
+                </ul>
+              </div>
+              <div class="maqueta__seccion maqueta__resenas m-bloque" data-bloque="resenas">
+                <span class="maqueta__estrellas">★★★★★</span>
+                <p>Aquí irán las opiniones de tus clientes en Google.</p>
+              </div>
+              <div class="maqueta__seccion maqueta__ubicacion m-bloque" data-bloque="ubicacion">
+                <div class="maqueta__mapa"><span class="maqueta__pin"></span></div>
+                <div>
+                  <p class="maqueta__apartado">Cómo llegar</p>
+                  <p class="maqueta__zona" data-m="zona">En tu barrio</p>
+                  <p class="maqueta__horario" data-m="horario">Hoy de 10:00 a 20:30</p>
+                </div>
+              </div>
+            </div>
+            <div class="maqueta__chat m-bloque" data-bloque="chat">
+              <p data-m="saludo">¡Hola! ¿Te busco hueco para hoy o mañana?</p>
+              <span class="maqueta__avatar">IA</span>
+            </div>
+            <div class="obra-panel" data-obra hidden>
+              <div class="obra-panel__cabeza">
+                <span class="obra-panel__giro" data-obra-icono></span>
+                <strong data-obra-titulo>Creando tu web</strong>
+                <span class="obra-panel__cuenta" data-obra-cuenta>0/6</span>
+              </div>
+              <div class="obra-panel__barra"><span data-obra-progreso></span></div>
+              <ol class="obra-panel__pasos" data-obra-pasos></ol>
+            </div>
+            <canvas class="confeti" data-confeti></canvas>
+            <div class="persiana"></div>
+          </div>
         </div>
-        <div class="hcard-field">
-          <input type="email" id="hf-email" placeholder="Correo electrónico">
+
+        <div class="lista-web" data-lista hidden>
+          <p><strong data-lista-dominio>tunegocio.es</strong> ya tiene su primera versión.<span>La de verdad te la preparo en 72 horas, gratis.</span></p>
+          <a class="boton boton--wa" id="cta-lista" href="https://wa.me/34685101194" target="_blank" rel="noopener" data-evento="clic_whatsapp" data-ubicacion="web_creada"><svg aria-hidden="true"><use href="#i-wa"/></svg>Quiero esta web</a>
         </div>
-        <div class="hcard-field">
-          <select id="hf-tipo">
-            <option value="" disabled selected>Tipo de negocio</option>
-            <option value="Peluquería / Estética">Peluquería / Estética</option>
-            <option value="Restaurante / Bar">Restaurante / Bar</option>
-            <option value="Clínica / Salud">Clínica / Salud</option>
-            <option value="Tienda / Comercio">Tienda / Comercio</option>
-            <option value="Consultoría / Servicios">Consultoría / Servicios</option>
-            <option value="Otro">Otro</option>
-          </select>
+        <p class="solo-lector" aria-live="polite" data-aviso-lector></p>
+      </div>
+
+      <form class="probador" data-probador novalidate>
+        <div class="probador__paso">
+          <label class="probador__etiqueta" for="nombre-negocio"><span class="probador__num">1</span>¿Cómo se llama tu negocio?</label>
+          <div class="probador__campos">
+            <input class="campo" id="nombre-negocio" name="nombre" type="text" maxlength="32" autocomplete="organization" placeholder="Ej.: Barbería Ramírez" enterkeyhint="next">
+            <label class="solo-lector" for="zona-negocio">Barrio o ciudad (opcional)</label>
+            <input class="campo campo--zona" id="zona-negocio" name="zona" type="text" maxlength="28" autocomplete="address-level2" placeholder="Barrio o ciudad (opcional)" enterkeyhint="done">
+          </div>
         </div>
-        <div class="hcard-field">
-          <textarea id="hf-mensaje" rows="3" placeholder="Cuéntanos algo sobre tu negocio (opcional)"></textarea>
+        <fieldset class="probador__paso">
+          <legend class="probador__etiqueta"><span class="probador__num">2</span>¿A qué se dedica?</legend>
+          <div class="sectores">
+            <label class="sector"><input type="radio" name="sector" value="barberia" checked><span>Barbería</span></label>
+            <label class="sector"><input type="radio" name="sector" value="peluqueria"><span>Peluquería</span></label>
+            <label class="sector"><input type="radio" name="sector" value="restaurante"><span>Restaurante</span></label>
+            <label class="sector"><input type="radio" name="sector" value="clinica"><span>Clínica</span></label>
+            <label class="sector"><input type="radio" name="sector" value="taller"><span>Taller</span></label>
+            <label class="sector"><input type="radio" name="sector" value="panaderia"><span>Panadería</span></label>
+            <label class="sector"><input type="radio" name="sector" value="fontaneria"><span>Fontanería</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="probador__paso">
+          <legend class="probador__etiqueta"><span class="probador__num">3</span>Elige estilo y color</legend>
+          <div class="probador__gusto">
+            <div class="segmentos">
+              <label><input type="radio" name="estilo" value="clasico"><span>Clásico</span></label>
+              <label><input type="radio" name="estilo" value="moderno"><span>Moderno</span></label>
+              <label><input type="radio" name="estilo" value="rotulo" checked><span>Rótulo</span></label>
+            </div>
+            <div class="colores" data-colores>
+              <label class="color"><input type="radio" name="color" value="0" checked><span class="color__muestra" style="--c1:#16130F;--c2:#C9A55A"></span><span class="solo-lector">Negro y oro</span></label>
+              <label class="color"><input type="radio" name="color" value="1"><span class="color__muestra" style="--c1:#F7F2EA;--c2:#B3261E"></span><span class="solo-lector">Rojo barbero</span></label>
+              <label class="color"><input type="radio" name="color" value="2"><span class="color__muestra" style="--c1:#0E1726;--c2:#5B8DEF"></span><span class="solo-lector">Azul noche</span></label>
+              <label class="color"><input type="radio" name="color" value="3"><span class="color__muestra" style="--c1:#0F2A22;--c2:#D4A94F"></span><span class="solo-lector">Verde botella</span></label>
+            </div>
+          </div>
+        </fieldset>
+        <div class="probador__acciones">
+          <button type="submit" class="boton boton--cobalto" data-crear>Crear mi web</button>
+          <a class="probador__directo" href="https://wa.me/34685101194?text=Hola%20Miguel%2C%20quiero%20informaci%C3%B3n%20sobre%20una%20web%20para%20mi%20negocio." target="_blank" rel="noopener" data-evento="clic_whatsapp" data-ubicacion="probador">o escríbeme por WhatsApp</a>
         </div>
-        <label class="hcard-check">
-          <input type="checkbox" required>
-          <span>He leído y acepto la <a href="#">política de privacidad</a> y el posible envío de comunicaciones comerciales</span>
-        </label>
-        <button type="submit" class="hcard-btn">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          Te llamamos
-        </button>
+        <figure class="resena-mini">
+          <span class="estrellas" role="img" aria-label="5 de 5 estrellas">★★★★★</span>
+          <blockquote>«Todo genial y como lo acordado. Miguel un auténtico profesional.»</blockquote>
+          <figcaption>Fernando, en Google</figcaption>
+        </figure>
       </form>
     </div>
+  </section>
 
-  </div>
-
-  <!-- Placeholder para que el quiz-wrap quede oculto -->
-  <div class="quiz-wrap" style="display:none">
-    <div class="quiz-step-indicator" id="stepIndicator">Paso 1 de 3</div>
-
-    <!-- Step 1 -->
-    <div class="quiz-step active" id="step-1">
-      <h2 class="quiz-question">¿Qué tipo de negocio tienes?</h2>
-      <p class="quiz-sub">Elige la opción que más se acerque</p>
-      <div class="opts" data-step="1" data-type="single">
-        <div class="opt" data-value="Restaurante / Bar">
-          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
-          <div class="opt-label">Restaurante / Bar</div>
-        </div>
-        <div class="opt" data-value="Peluquería / Estética">
-          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
-          <div class="opt-label">Peluquería / Estética</div>
-        </div>
-        <div class="opt" data-value="Tienda / Comercio">
-          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
-          <div class="opt-label">Tienda / Comercio</div>
-        </div>
-        <div class="opt" data-value="Clínica / Salud">
-          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
-          <div class="opt-label">Clínica / Salud</div>
-        </div>
-        <div class="opt" data-value="Fitness / Deporte">
-          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
-          <div class="opt-label">Fitness / Deporte</div>
-        </div>
-        <div class="opt" data-value="Servicios profesionales">
-          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
-          <div class="opt-label">Servicios profesionales</div>
-        </div>
-        <div class="opt" data-value="Otro tipo de negocio">
-          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
-          <div class="opt-label">Otro</div>
-        </div>
+  <section class="fugas tramo" id="calculadora" aria-labelledby="titulo-fugas">
+    <div class="fugas__rejilla">
+      <div class="fugas__intro">
+        <h2 id="titulo-fugas" data-persiana>¿Cuánto dinero pierdes por no contestar?</h2>
+        <p data-revelar>Cada mensaje sin respuesta es un cliente que reserva en el sitio de al lado. Elige tu negocio, ajusta los números y te hago la cuenta. Siempre a la baja.</p>
       </div>
-      <div class="quiz-nav">
-        <button class="btn-quiz-next" id="next-1" onclick="goNext(1)">
-          Siguiente <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
+
+      <form class="fugas__controles" data-calculadora data-revelar onsubmit="return false">
+        <fieldset class="fugas__sectores">
+          <legend class="fugas__etiqueta">Tu negocio</legend>
+          <div class="sectores">
+            <label class="sector"><input type="radio" name="calc-sector" value="barberia" checked><span>Barbería</span></label>
+            <label class="sector"><input type="radio" name="calc-sector" value="peluqueria"><span>Peluquería</span></label>
+            <label class="sector"><input type="radio" name="calc-sector" value="restaurante"><span>Restaurante</span></label>
+            <label class="sector"><input type="radio" name="calc-sector" value="clinica"><span>Clínica</span></label>
+            <label class="sector"><input type="radio" name="calc-sector" value="taller"><span>Taller</span></label>
+            <label class="sector"><input type="radio" name="calc-sector" value="panaderia"><span>Panadería</span></label>
+            <label class="sector"><input type="radio" name="calc-sector" value="fontaneria"><span>Fontanería</span></label>
+          </div>
+        </fieldset>
+        <div class="deslizador">
+          <label class="fugas__etiqueta" for="perdidos">Mensajes y llamadas sin contestar a la semana</label>
+          <output for="perdidos" data-salida="perdidos">10</output>
+          <input id="perdidos" name="perdidos" type="range" min="1" max="50" step="1" value="10">
+          <p class="deslizador__pista">Los que llegan mientras atiendes, de noche o en festivo.</p>
+        </div>
+        <div class="deslizador">
+          <label class="fugas__etiqueta" for="ticket">Lo que gasta un cliente cada vez</label>
+          <output for="ticket" data-salida="ticket">20 €</output>
+          <input id="ticket" name="ticket" type="range" min="5" max="300" step="5" value="20">
+        </div>
+        <div class="deslizador">
+          <label class="fugas__etiqueta" for="visitas">Veces que vuelve un cliente al año</label>
+          <output for="visitas" data-salida="visitas">10</output>
+          <input id="visitas" name="visitas" type="range" min="1" max="52" step="1" value="10">
+        </div>
+        <fieldset class="fugas__fuga">
+          <legend class="fugas__etiqueta">Si no contestas, ¿cuántos se van a otro sitio?</legend>
+          <div class="segmentos">
+            <label><input type="radio" name="fuga" value="4"><span>1 de cada 4</span></label>
+            <label><input type="radio" name="fuga" value="3" checked><span>1 de cada 3</span></label>
+            <label><input type="radio" name="fuga" value="2"><span>1 de cada 2</span></label>
+          </div>
+        </fieldset>
+        <p class="fugas__mini" aria-hidden="true">Pierdes <strong data-salida="mini">190 €</strong> al mes</p>
+      </form>
+
+      <div class="fugas__resultado" data-revelar aria-live="polite">
+        <p class="fugas__antetitulo">Se te escapan cada mes</p>
+        <p class="fugas__cifra"><span data-salida="mes">190</span> €</p>
+        <p class="fugas__clientes"><strong data-salida="clientes">14 clientes</strong> que acaban reservando en la competencia.</p>
+
+        <div class="comparativa" role="img" data-comparativa aria-label="Pierdes 190 € al mes. El agente de IA cuesta 49 € al mes.">
+          <div class="comparativa__fila">
+            <span class="comparativa__nombre">Lo que pierdes</span>
+            <span class="comparativa__valor" data-salida="barra-perdida">190 €/mes</span>
+            <span class="comparativa__pista"><i class="comparativa__barra comparativa__barra--perdida" data-barra="perdida"></i></span>
+          </div>
+          <div class="comparativa__fila">
+            <span class="comparativa__nombre" data-salida="barra-nombre">Lo que cuesta el agente</span>
+            <span class="comparativa__valor" data-salida="barra-cuota">49 €/mes</span>
+            <span class="comparativa__pista"><i class="comparativa__barra comparativa__barra--agente" data-barra="agente"></i></span>
+          </div>
+        </div>
+
+        <dl class="fugas__datos">
+          <div><dt>En un año</dt><dd><span data-salida="anio">2.280</span> €</dd></div>
+          <div><dt>Cada cliente perdido valía</dt><dd><span data-salida="valor-cliente">200</span> € al año</dd></div>
+          <div><dt>El agente se paga con</dt><dd data-salida="recuperar">3 clientes al mes</dd></div>
+        </dl>
+
+        <div class="fugas__plan">
+          <p>Con estos números te encaja el plan <strong data-salida="plan">Web + Agente IA</strong>.</p>
+          <a class="boton boton--yema" data-calc-cta href="https://wa.me/34685101194" target="_blank" rel="noopener" data-evento="clic_whatsapp" data-ubicacion="calculadora"><svg aria-hidden="true"><use href="#i-wa"/></svg>Quiero recuperar esos clientes</a>
+        </div>
+        <p class="fugas__formula">La cuenta: <span data-salida="formula">10 mensajes × 4,33 semanas × 1 de cada 3 × 20 €</span>.</p>
       </div>
     </div>
+  </section>
 
-    <!-- Step 2 -->
-    <div class="quiz-step" id="step-2">
-      <h2 class="quiz-question">¿Qué necesita tu web?</h2>
-      <p class="quiz-sub">Puedes elegir varias opciones</p>
-      <div class="opts" data-step="2" data-type="multi">
-        <div class="opt" data-value="Mostrar servicios y precios">
-          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
-          <div class="opt-label">Mostrar servicios y precios</div>
-          <div class="opt-desc">Página clara y visual</div>
-        </div>
-        <div class="opt" data-value="Reservas online">
-          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
-          <div class="opt-label">Reservas online</div>
-          <div class="opt-desc">Los clientes agendan solos</div>
-        </div>
-        <div class="opt" data-value="Chatbot IA 24/7">
-          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
-          <div class="opt-label">Chatbot IA 24/7</div>
-          <div class="opt-desc">Atiende preguntas solo</div>
-        </div>
-        <div class="opt" data-value="Tienda online">
-          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
-          <div class="opt-label">Tienda online</div>
-          <div class="opt-desc">Vende desde la web</div>
-        </div>
-        <div class="opt" data-value="Galería de fotos">
-          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
-          <div class="opt-label">Galería de fotos</div>
-          <div class="opt-desc">Muestra tu trabajo</div>
-        </div>
-        <div class="opt" data-value="Blog / Noticias">
-          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
-          <div class="opt-label">Blog / Noticias</div>
-          <div class="opt-desc">Posicionarte en Google</div>
-        </div>
+  <section class="turno-noche tramo" id="agente" aria-labelledby="titulo-agente">
+    <div class="turno-noche__rejilla">
+      <div class="turno-noche__texto">
+        <p class="reloj" aria-hidden="true" data-revelar><span data-h>23</span><span class="reloj__puntos">:</span><span data-m-reloj>47</span></p>
+        <h2 id="titulo-agente" data-franja data-persiana>Tu negocio está cerrado. Y te acaba de escribir un cliente.</h2>
+        <p class="turno-noche__bajada" data-revelar>Si nadie contesta, reserva en el sitio de al lado. Tu agente de IA responde en segundos con tus precios y tus horarios, y apunta la cita en tu calendario.</p>
+        <ul class="tareas" data-escalonado>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Resuelve dudas: precios, horarios, cómo llegar.</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Reserva en tu Google Calendar, sin citas dobles.</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Te avisa al móvil con cada reserva.</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Si no sabe algo, te pasa la conversación.</li>
+        </ul>
       </div>
-      <div class="quiz-nav">
-        <button class="btn-quiz-back" onclick="goBack(2)">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Atrás
-        </button>
-        <button class="btn-quiz-next" id="next-2" onclick="goNext(2)">
-          Siguiente <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
+      <div class="movil-marco" data-revelar>
+        <p class="solo-lector">Ejemplo de conversación: un cliente escribe fuera de horario, el agente le ofrece dos horas libres y le reserva la cita.</p>
+        <div class="movil" aria-hidden="true">
+          <div class="movil__cabecera">
+            <span class="movil__avatar" data-chat-inicial>B</span>
+            <span class="movil__quien"><strong data-chat-nombre>Barbería Ramírez</strong><small>en línea</small></span>
+          </div>
+          <div class="movil__conversacion" data-conversacion>
+            <div class="mensaje mensaje--cliente"><p>¿Tenéis hueco mañana por la tarde?</p><time>23:47</time></div>
+            <div class="mensaje mensaje--agente"><p>¡Claro! Mañana tengo libre a las 17:30 y a las 18:15. ¿Cuál te va mejor?</p><time>23:47</time></div>
+            <div class="mensaje mensaje--cliente"><p>A las 17:30</p><time>23:47</time></div>
+            <div class="mensaje mensaje--agente"><p>Hecho ✅ Te espero mañana a las 17:30 para un corte degradado. Te mando un recordatorio 2 horas antes.</p><time>23:47</time></div>
+          </div>
+          <div class="aviso-cita" data-aviso>
+            <svg><use href="#i-calendario"/></svg>
+            <span><strong data-aviso-titulo>Nueva cita en tu calendario</strong><small data-aviso-detalle>Mañana a las 17:30, corte degradado</small></span>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- Step 3 -->
-    <div class="quiz-step" id="step-3">
-      <h2 class="quiz-question">¿Cuándo quieres empezar?</h2>
-      <p class="quiz-sub">Sin compromiso, solo para orientarme</p>
-      <div class="opts cols-3" data-step="3" data-type="single">
-        <div class="opt" data-value="Lo antes posible">
-          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
-          <div class="opt-label">Lo antes posible</div>
-          <div class="opt-desc">Esta semana</div>
-        </div>
-        <div class="opt" data-value="En 1–2 meses">
-          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
-          <div class="opt-label">En 1–2 meses</div>
-          <div class="opt-desc">Estoy planificando</div>
-        </div>
-        <div class="opt" data-value="Solo explorando">
-          <span class="opt-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2.5"><polyline points="1 5 3.5 7.5 9 2"/></svg></span>
-          <div class="opt-label">Solo explorando</div>
-          <div class="opt-desc">Quiero saber más</div>
-        </div>
-      </div>
-      <div class="quiz-nav">
-        <button class="btn-quiz-back" onclick="goBack(3)">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Atrás
-        </button>
-        <button class="btn-quiz-next" id="next-3" onclick="showResult()">
-          Ver mi propuesta <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
-      </div>
+  <section class="obra tramo" id="trabajos" aria-labelledby="titulo-obra">
+    <div class="obra__cabecera">
+      <h2 id="titulo-obra" data-persiana>Así quedan las webs que hago.</h2>
+      <p data-revelar>Más de 8 negocios de Madrid ya tienen la suya. Estas son tres, y puedes abrirlas ahora mismo.<span class="solo-raton"> Pasa el ratón por encima para recorrerlas.</span></p>
     </div>
+    <div class="obra__rejilla" data-escalonado>
+      <a class="trabajo trabajo--grande" href="https://xn--panaderialapequea-uxb.es" target="_blank" rel="noopener">
+        <div class="trabajo__pantalla"><img src="assets/trabajos/panaderia.webp" alt="Página de inicio de Panadería La Pequeña" width="960" height="2700" loading="lazy" decoding="async"></div>
+        <div class="trabajo__pie">
+          <h3>Panadería La Pequeña</h3>
+          <p>Chamberí, Madrid. Encargos por WhatsApp y dominio propio.</p>
+          <span class="trabajo__enlace">panaderialapequeña.es</span>
+        </div>
+      </a>
+      <a class="trabajo" href="https://barberia-ussama.vercel.app" target="_blank" rel="noopener">
+        <div class="trabajo__pantalla"><img src="assets/trabajos/barberia.webp" alt="Página de inicio de Barbería Ussama" width="960" height="2509" loading="lazy" decoding="async"></div>
+        <div class="trabajo__pie">
+          <h3>Barbería Ussama</h3>
+          <p>Puente de Vallecas. Carta de servicios y reserva de cita en un toque.</p>
+          <span class="trabajo__enlace">Ver la web</span>
+        </div>
+      </a>
+      <a class="trabajo" href="https://fontaneria-rubio-demo.vercel.app" target="_blank" rel="noopener">
+        <div class="trabajo__pantalla"><img src="assets/trabajos/fontaneria.webp" alt="Página de inicio de Fontanería Reformas Rubio" width="960" height="2197" loading="lazy" decoding="async"></div>
+        <div class="trabajo__pie">
+          <h3>Fontanería Reformas Rubio</h3>
+          <p>Móstoles. Propuesta de rediseño con urgencias y presupuesto a mano.</p>
+          <span class="trabajo__enlace">Ver la propuesta</span>
+        </div>
+      </a>
+    </div>
+  </section>
 
-    <!-- Result -->
-    <div id="quiz-result">
-      <h2 class="quiz-question" style="margin-bottom:.4rem">Tu web está lista para construirse</h2>
-      <p class="quiz-sub" style="margin-bottom:1.5rem">Esto es lo que haremos juntos</p>
-      <div class="result-card">
-        <div class="result-header">
-          <div class="result-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          </div>
-          <div>
-            <h3>Propuesta personalizada</h3>
-            <p style="font-size:.76rem;color:var(--text-3)">Basada en tu negocio y necesidades</p>
-          </div>
-        </div>
-        <div class="result-rows">
-          <div class="result-row">
-            <span class="result-row-label">Negocio</span>
-            <span class="result-row-value" id="res-tipo">—</span>
-          </div>
-          <div class="result-row">
-            <span class="result-row-label">Incluye</span>
-            <span class="result-row-value" id="res-features">—</span>
-          </div>
-          <div class="result-row">
-            <span class="result-row-label">Inicio</span>
-            <span class="result-row-value" id="res-plazo">—</span>
-          </div>
-        </div>
-      </div>
-      <div class="result-cta-wrap">
-        <a href="#reservar" class="btn-hazlo" onclick="scrollToReserva()">
-          Hazlo realidad
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <p class="result-restart">
-          ¿Quieres cambiar algo?
-          <button onclick="restartQuiz()">Volver a empezar</button>
+  <section class="tarifas tramo" id="precios" aria-labelledby="titulo-tarifas">
+    <div class="tarifas__cabecera">
+      <h2 id="titulo-tarifas" data-persiana>Precios claros, sin letra pequeña.</h2>
+      <p data-revelar>Pagas una vez por crear la web y una cuota al mes que lo cubre todo: dominio, alojamiento, cambios y soporte. Sin permanencia.</p>
+    </div>
+    <div class="tarifas__rejilla" data-escalonado>
+      <article class="tarifa">
+        <h3 class="tarifa__nombre">Web</h3>
+        <p class="tarifa__para">Para que te encuentren en Google y te escriban.</p>
+        <p class="tarifa__precio"><strong>390 €</strong><span>una vez</span></p>
+        <p class="tarifa__cuota"><strong>+ 19 €</strong> al mes</p>
+        <ul class="tarifa__incluye">
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Diseño a medida, hasta 5 secciones</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Perfecta en el móvil</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Botón de WhatsApp y formulario</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>SEO local, lista para Google y ChatGPT</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Dominio, alojamiento y SSL</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Publicada en 7 días</li>
+        </ul>
+        <a class="boton boton--linea" href="https://wa.me/34685101194?text=Hola%20Miguel%2C%20me%20interesa%20el%20plan%20Web%20(390%20%E2%82%AC)." target="_blank" rel="noopener" data-evento="clic_whatsapp" data-ubicacion="plan_web"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir este plan</a>
+      </article>
+      <article class="tarifa tarifa--recomendada">
+        <p class="tarifa__sello">Recomendado</p>
+        <h3 class="tarifa__nombre">Web + Agente IA</h3>
+        <p class="tarifa__para">Para que te atienda y te reserve citas mientras trabajas.</p>
+        <p class="tarifa__precio"><strong>790 €</strong><span>una vez</span></p>
+        <p class="tarifa__cuota"><strong>+ 49 €</strong> al mes <small>menos de 2 € al día</small></p>
+        <ul class="tarifa__incluye">
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Todo lo del plan Web</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Agente de IA en tu web, 24 horas</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Contesta con tus precios y horarios</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Reservas en tu Google Calendar</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Aviso a tu móvil con cada reserva</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Funcionando en 2 semanas</li>
+        </ul>
+        <a class="boton boton--yema" href="https://wa.me/34685101194?text=Hola%20Miguel%2C%20me%20interesa%20el%20plan%20Web%20%2B%20Agente%20IA%20(790%20%E2%82%AC)." target="_blank" rel="noopener" data-evento="clic_whatsapp" data-ubicacion="plan_agente"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir este plan</a>
+      </article>
+      <article class="tarifa">
+        <h3 class="tarifa__nombre">Todo en WhatsApp</h3>
+        <p class="tarifa__para">Para no perder ni un mensaje, estés donde estés.</p>
+        <p class="tarifa__precio"><strong>1.290 €</strong><span>una vez</span></p>
+        <p class="tarifa__cuota"><strong>+ 89 €</strong> al mes</p>
+        <ul class="tarifa__incluye">
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Todo lo del plan Web + Agente IA</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>El agente contesta también tu WhatsApp</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Recordatorios para evitar plantones</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Pide reseñas en Google tras cada visita</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Atención prioritaria</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Funcionando en 3 o 4 semanas</li>
+        </ul>
+        <a class="boton boton--linea" href="https://wa.me/34685101194?text=Hola%20Miguel%2C%20me%20interesa%20el%20plan%20Todo%20en%20WhatsApp%20(1.290%20%E2%82%AC)." target="_blank" rel="noopener" data-evento="clic_whatsapp" data-ubicacion="plan_whatsapp"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir este plan</a>
+      </article>
+    </div>
+    <ul class="tarifas__notas" data-escalonado>
+      <li><strong>¿Ya tienes web?</strong> La renuevo desde 390 € y conservas tu dominio.</li>
+      <li><strong>Pago en dos partes.</strong> El 50 % al empezar y el 50 % al publicar.</li>
+      <li><strong>Pago anual.</strong> Si pagas la cuota del año por adelantado, te regalo 2 meses.</li>
+    </ul>
+  </section>
+
+  <section class="pasos tramo" aria-labelledby="titulo-pasos">
+    <h2 id="titulo-pasos" data-persiana>Primero la ves. Luego decides.</h2>
+    <ol class="pasos__lista" data-escalonado>
+      <li class="paso">
+        <span class="paso__cuando">Hoy</span>
+        <h3>Me escribes</h3>
+        <p>Por WhatsApp o por teléfono. En 15 minutos me cuentas cómo es tu negocio.</p>
+      </li>
+      <li class="paso">
+        <span class="paso__cuando">En 72 horas</span>
+        <h3>Te enseño tu web</h3>
+        <p>Una primera versión real, con tu nombre y tus servicios. Gratis.</p>
+      </li>
+      <li class="paso">
+        <span class="paso__cuando">Si te gusta</span>
+        <h3>La terminamos juntos</h3>
+        <p>Pagas el 50 % y la ajustamos contigo hasta que quede como quieres.</p>
+      </li>
+      <li class="paso">
+        <span class="paso__cuando">Día del estreno</span>
+        <h3>La publicamos</h3>
+        <p>Pagas el resto, la ponemos en marcha y me quedo pendiente de que todo funcione.</p>
+      </li>
+    </ol>
+    <p class="pasos__nota" data-revelar>Si la primera versión no te convence, lo dejamos ahí y no pagas nada.</p>
+  </section>
+
+  <section class="quien tramo" aria-labelledby="titulo-quien">
+    <div class="quien__rejilla">
+      <figure class="quien__foto" data-persiana>
+        <img src="assets/miguel-retrato.webp" alt="Miguel Martín-Caro sonriendo, con traje azul marino" width="450" height="562" loading="lazy" decoding="async">
+      </figure>
+      <div class="quien__texto">
+        <h2 id="titulo-quien" data-persiana>Hablas conmigo. No con una agencia.</h2>
+        <p data-revelar>Soy Miguel Martín-Caro. Diseño webs y monto agentes de IA para negocios de barrio: barberías, panaderías, talleres, clínicas… Trabajo solo, así que quien te atiende es quien hace tu web.</p>
+        <p data-revelar>Estudio Business Analytics y ADE, y se nota: me importa menos que la web gane premios y más que te traiga clientes. Por eso mido lo que pasa en ella y te lo cuento claro.</p>
+        <figure class="resena" data-revelar>
+          <span class="estrellas" role="img" aria-label="5 de 5 estrellas">★★★★★</span>
+          <blockquote>«Todo genial y como lo acordado. Miguel un auténtico profesional.»</blockquote>
+          <figcaption>Fernando Olivares, reseña en Google</figcaption>
+        </figure>
+        <p class="quien__enlaces" data-revelar>
+          <a href="https://www.google.com/maps?cid=7241256061988564343" target="_blank" rel="noopener">Ver mi ficha en Google</a>
+          <a href="https://www.linkedin.com/in/miguel-mart%C3%ADn-caro-mart%C3%ADn-402328208" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn</a>
         </p>
       </div>
     </div>
+  </section>
 
-  </div>
-</section>
-
-<!-- ── DEMOS ────────────────────────────────────────────────────────── -->
-<section id="demos">
-  <div class="container">
-    <div class="sec-head">
-      <span class="sec-label">Demos reales</span>
-      <h2 class="sec-title">Mira cómo queda el producto final</h2>
-      <p class="sec-desc">Webs reales con IA integrada, creadas para negocios locales. Cada una con su propio asistente y sistema de reservas.</p>
-    </div>
-
-    <!-- Tab switcher -->
-    <div class="demo-tabs" id="demo-tabs">
-      <button class="demo-tab active" onclick="switchDemo(0)">DEMO 1</button>
-      <button class="demo-tab" onclick="switchDemo(1)">DEMO 2</button>
-      <button class="demo-tab" onclick="switchDemo(2)">DEMO 3</button>
-    </div>
-
-    <!-- Demo 0: Peluquería -->
-    <div class="demo-item" id="demo-item-0">
-      <div class="browser-wrap">
-        <div class="browser-chrome">
-          <div class="browser-dots"><span></span><span></span><span></span></div>
-          <div class="browser-url">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            demo-1.paginawebcreator.com
-          </div>
-        </div>
-        <div class="browser-body">
-          <!-- Cuando tengas el vídeo: <video class="demo-video-el" id="vid-0" src="demos/peluqueria.mp4" playsinline></video> -->
-          <div class="video-placeholder" id="vp-0">
-            <div class="play-ring" onclick="playDemo(0)">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
-            </div>
-            <p>Ver Demo 1</p>
-          </div>
-          <div class="demo-empty" id="ve-0" style="display:none">
-            <div class="demo-empty-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
-            </div>
-            <span>Vídeo próximamente</span>
-          </div>
-        </div>
+  <section class="dudas tramo" id="dudas" aria-labelledby="titulo-dudas">
+    <div class="dudas__rejilla">
+      <div class="dudas__intro">
+        <h2 id="titulo-dudas" data-persiana>Lo que me suelen preguntar.</h2>
+        <p data-revelar>¿No está tu duda? <a href="https://wa.me/34685101194?text=Hola%20Miguel%2C%20tengo%20una%20pregunta%20sobre%20las%20webs." target="_blank" rel="noopener" data-evento="clic_whatsapp" data-ubicacion="dudas">Pregúntame por WhatsApp</a> y te contesto hoy.</p>
       </div>
-      <div class="demo-caption">
-        <div class="demo-caption-info">
-          <h4>Demo 1</h4>
-          <p>Web con chatbot IA · reservas automáticas · integración WhatsApp</p>
-        </div>
-        <span class="demo-badge">
-          <span class="demo-dot"></span> Agente activo
-        </span>
+      <div class="dudas__lista" data-escalonado>
+        <details class="duda" name="dudas">
+          <summary>¿Qué pasa si la primera versión no me gusta?</summary>
+          <div class="duda__respuesta"><p>Nada. Me dices qué no te convence y lo dejamos ahí, sin pagar nada. Si te gusta, seguimos y la ajustamos contigo hasta que quede como quieres.</p></div>
+        </details>
+        <details class="duda" name="dudas">
+          <summary>¿Tengo que saber algo de tecnología?</summary>
+          <div class="duda__respuesta"><p>No. Me encargo del dominio, el alojamiento, los textos y la puesta en marcha. Tú solo me cuentas cómo es tu negocio y me mandas algunas fotos si las tienes.</p></div>
+        </details>
+        <details class="duda" name="dudas">
+          <summary>¿El agente de IA se puede inventar cosas?</summary>
+          <div class="duda__respuesta"><p>Solo responde con la información que tú me das: servicios, precios, horarios y normas. Antes de activarlo lo pruebas tú. Si un cliente pregunta algo que no sabe, le dice que lo consulta y te avisa.</p></div>
+        </details>
+        <details class="duda" name="dudas">
+          <summary>¿Hay permanencia?</summary>
+          <div class="duda__respuesta"><p>No. La cuota es mes a mes y puedes darte de baja cuando quieras. La web es tuya: si un día te vas, te doy los archivos y te ayudo a llevarte el dominio.</p></div>
+        </details>
+        <details class="duda" name="dudas">
+          <summary>¿Qué incluye la cuota mensual?</summary>
+          <div class="duda__respuesta"><p>Dominio, alojamiento, certificado de seguridad, copias de seguridad, cambios pequeños como horarios, precios o fotos, y soporte por WhatsApp. En los planes con agente, también el coste de la IA y su mantenimiento.</p></div>
+        </details>
+        <details class="duda" name="dudas">
+          <summary>¿Voy a salir en Google? ¿Y en ChatGPT?</summary>
+          <div class="duda__respuesta"><p>Todas las webs salen con SEO local: textos pensados para búsquedas de tu zona, datos estructurados y alta en Google Search Console. También las preparo para que asistentes como ChatGPT o Gemini entiendan tu negocio. Nadie honesto puede garantizarte el primer puesto, pero sí una web bien hecha para competir.</p></div>
+        </details>
+        <details class="duda" name="dudas">
+          <summary>Ya tengo web. ¿Me la puedes renovar?</summary>
+          <div class="duda__respuesta"><p>Sí, desde 390 € y sin perder tu dominio. Preparo la nueva versión en paralelo y hacemos el cambio sin que tu web deje de funcionar ni un día.</p></div>
+        </details>
+        <details class="duda" name="dudas">
+          <summary>¿Trabajas solo en Madrid?</summary>
+          <div class="duda__respuesta"><p>Trabajo con negocios de toda España por videollamada y WhatsApp. Si estás en Madrid, también podemos vernos en persona.</p></div>
+        </details>
       </div>
     </div>
+  </section>
 
-    <!-- Demo 1: Restaurante -->
-    <div class="demo-item" id="demo-item-1" style="display:none">
-      <div class="browser-wrap">
-        <div class="browser-chrome">
-          <div class="browser-dots"><span></span><span></span><span></span></div>
-          <div class="browser-url">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            demo-2.paginawebcreator.com
-          </div>
-        </div>
-        <div class="browser-body">
-          <div class="video-placeholder" id="vp-1">
-            <div class="play-ring" onclick="playDemo(1)">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
-            </div>
-            <p>Ver Demo 2</p>
-          </div>
-        </div>
+  <section class="mostrador tramo" id="contacto" aria-labelledby="titulo-mostrador">
+    <div class="mostrador__caja">
+      <div>
+        <h2 id="titulo-mostrador" data-persiana>¿Vemos cómo quedaría la tuya?</h2>
+        <p data-revelar>Escríbeme hoy y en 72 horas te enseño la primera versión de tu web. Gratis y sin compromiso.</p>
       </div>
-      <div class="demo-caption">
-        <div class="demo-caption-info">
-          <h4>Demo 2</h4>
-          <p>Web con carta digital · reservas de mesa · asistente IA</p>
-        </div>
-        <span class="demo-badge">
-          <span class="demo-dot"></span> Agente activo
-        </span>
+      <div class="mostrador__acciones" data-escalonado>
+        <a class="boton boton--wa" href="https://wa.me/34685101194?text=Hola%20Miguel%2C%20quiero%20ver%20c%C3%B3mo%20quedar%C3%ADa%20la%20web%20de%20mi%20negocio." target="_blank" rel="noopener" data-evento="clic_whatsapp" data-ubicacion="mostrador"><svg aria-hidden="true"><use href="#i-wa"/></svg>Escribir por WhatsApp</a>
+        <a class="boton boton--vidrio" href="tel:+34685101194" data-evento="clic_telefono" data-ubicacion="mostrador"><svg aria-hidden="true"><use href="#i-tel"/></svg>Llamar al 685 101 194</a>
+        <a class="mostrador__correo" href="mailto:miguelmartincaro@gmail.com" data-evento="clic_email" data-ubicacion="mostrador"><svg aria-hidden="true"><use href="#i-mail"/></svg>miguelmartincaro@gmail.com</a>
+        <p class="mostrador__horario">Te contesto de lunes a viernes de 9:00 a 19:00 y los sábados de 9:00 a 14:00.</p>
       </div>
     </div>
+  </section>
 
-    <!-- Demo 2: Clínica -->
-    <div class="demo-item" id="demo-item-2" style="display:none">
-      <div class="browser-wrap">
-        <div class="browser-chrome">
-          <div class="browser-dots"><span></span><span></span><span></span></div>
-          <div class="browser-url">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            demo-3.paginawebcreator.com
-          </div>
-        </div>
-        <div class="browser-body">
-          <div class="video-placeholder" id="vp-2">
-            <div class="play-ring" onclick="playDemo(2)">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
-            </div>
-            <p>Ver Demo 3</p>
-          </div>
-        </div>
-      </div>
-      <div class="demo-caption">
-        <div class="demo-caption-info">
-          <h4>Demo 3</h4>
-          <p>Web médica · citas online · preguntas frecuentes automáticas</p>
-        </div>
-        <span class="demo-badge" style="background:rgba(249,115,22,0.04);border-color:var(--border);color:var(--text-3)">
-          Próximamente
-        </span>
-      </div>
-    </div>
+</main>
 
-  </div>
-</section>
-
-<!-- ── SOBRE MÍ ─────────────────────────────────────────────────────── -->
-<section id="sobre-mi">
-  <div class="container">
-    <div class="about-layout">
-      <div class="about-photo-wrap">
-        <div class="about-img-frame">
-          <img src="assets/miguel.jpg" alt="Miguel Martín" />
-        </div>
-        <div class="about-socials">
-          <a href="https://www.linkedin.com/in/miguel-mart%C3%ADn-caro-mart%C3%ADn-402328208" target="_blank" class="about-social-btn" title="LinkedIn" aria-label="LinkedIn">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
-          <a href="#" class="about-social-btn" title="Instagram" aria-label="Instagram">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-          </a>
-        </div>
-      </div>
-      <div class="about-content">
-        <span class="sec-label">Quién hay detrás</span>
-        <h2>Hola, soy <em>Miguel</em></h2>
-        <p>Desarrollador y consultor especializado en webs con IA para negocios locales. Trabajo con negocios reales en Madrid y toda España para que su presencia online les genere clientes de forma automática, sin que tengan que hacer nada técnico.</p>
-        <p>Combino diseño limpio con automatización real: tu web no solo tiene buena pinta, también trabaja por ti cuando estás cerrado.</p>
-        <div class="about-tags">
-          <span class="about-tag">Diseño web</span>
-          <span class="about-tag">Agentes IA</span>
-          <span class="about-tag">Automatización</span>
-          <span class="about-tag">WhatsApp API</span>
-          <span class="about-tag">Google Calendar</span>
-          <span class="about-tag">n8n · Claude AI</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── SERVICIOS / PRECIOS ─────────────────────────────────────────── -->
-<section id="servicios">
-  <div class="container">
-    <div class="sec-head">
-      <span class="sec-label">Planes y precios</span>
-      <h2 class="sec-title">Precio claro desde el principio</h2>
-      <p class="sec-desc">Sin letra pequeña. Pago único de configuración + mantenimiento mensual opcional. Cancela cuando quieras.</p>
-    </div>
-
-    <!-- Billing toggle -->
-    <div class="pricing-toggle-wrap">
-      <span class="pricing-toggle-label active" id="lbl-monthly">Mensual</span>
-      <div class="toggle-pill" id="billingToggle" onclick="toggleBilling()">
-        <div class="toggle-knob"></div>
-      </div>
-      <span class="pricing-toggle-label" id="lbl-annual">Anual <span class="save-pill">2 meses gratis</span></span>
-    </div>
-
-    <div class="pricing-grid" id="pricingGrid">
-
-      <!-- ── Plan Básico ── -->
-      <div class="pcard">
-        <div class="pcard-inner">
-          <div class="pcard-front">
-            <div class="pcard-top">
-              <div class="pcard-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-            </div>
-            <h3>Web Básica</h3>
-            <p class="pcard-sub">Presencia online profesional · 1–2 semanas</p>
-            <div class="pcard-price-block">
-              <div class="pcard-monthly">
-                <span class="price-amount" data-monthly="10" data-annual="8">10€</span>
-                <span class="price-period">/mes</span>
-              </div>
-              <div class="price-save">Ahorra 24€ al año con el plan anual</div>
-            </div>
-            <div class="pcard-divider"></div>
-            <ul class="pcard-list">
-              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Hasta 5 secciones personalizadas</li>
-              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Diseño adaptado a móvil</li>
-              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Formulario de contacto</li>
-              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>SEO básico incluido</li>
-              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Hosting y dominio el 1er año</li>
-            </ul>
-            <a href="#reservar" class="pcard-cta ghost" onclick="event.stopPropagation()">Empezar</a>
-            <div class="flip-hint">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
-              Clic para ver qué incluye
-            </div>
-          </div>
-          <div class="pcard-back">
-            <button class="flip-back-btn" onclick="flipCard(this)">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Volver
-            </button>
-            <div class="back-title">Web Básica — Detalles</div>
-            <div class="back-sub">Todo lo que incluye este plan</div>
-            <div class="back-section">Qué recibes</div>
-            <ul class="back-list">
-              <li><span>·</span>Reunión de briefing para entender tu negocio</li>
-              <li><span>·</span>Diseño 100% personalizado, sin plantillas</li>
-              <li><span>·</span>Mobile-first y carga rápida (&lt;2s)</li>
-              <li><span>·</span>Google Analytics configurado</li>
-              <li><span>·</span>Formulario de contacto a tu email</li>
-              <li><span>·</span>Hosting en CDN global (Vercel)</li>
-              <li><span>·</span>Dominio .es o .com el primer año</li>
-            </ul>
-            <div class="back-section">Mantenimiento mensual (10€)</div>
-            <ul class="back-list">
-              <li><span>·</span>Hosting incluido</li>
-              <li><span>·</span>Actualizaciones de contenido (1/mes)</li>
-              <li><span>·</span>Soporte técnico por WhatsApp</li>
-            </ul>
-            <div class="back-section">Plazo</div>
-            <ul class="back-list">
-              <li><span>·</span>Entrega en 1–2 semanas desde el briefing</li>
-              <li><span>·</span>Sin permanencia — cancela cuando quieras</li>
-            </ul>
-            <a href="#reservar" class="back-cta ghost">Empezar con este plan</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── Plan Profesional ── -->
-      <div class="pcard featured">
-        <div class="pcard-inner">
-          <div class="pcard-front">
-            <div class="pcard-top">
-              <div class="pcard-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></div>
-              <span class="pcard-badge">Más popular</span>
-            </div>
-            <h3>Web + Agente IA</h3>
-            <p class="pcard-sub">Tu web trabaja 24/7 · 2–4 semanas</p>
-            <div class="pcard-price-block">
-              <div class="pcard-setup">Configuración: <strong>499€</strong> pago único</div>
-              <div class="pcard-monthly">
-                <span class="price-amount" data-monthly="39" data-annual="32">39€</span>
-                <span class="price-period">/mes mantenimiento</span>
-              </div>
-              <div class="price-save">Ahorra 84€ al año</div>
-            </div>
-            <div class="pcard-divider"></div>
-            <ul class="pcard-list">
-              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Todo lo del plan básico</li>
-              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Chatbot IA personalizado para tu negocio</li>
-              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Reservas automáticas en Google Calendar</li>
-              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Disponible 24/7, sin descanso</li>
-              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Soporte mensual incluido</li>
-            </ul>
-            <a href="#reservar" class="pcard-cta primary" onclick="event.stopPropagation()">Quiero este plan</a>
-            <div class="flip-hint">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
-              Clic para ver qué incluye
-            </div>
-          </div>
-          <div class="pcard-back">
-            <button class="flip-back-btn" onclick="flipCard(this)">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Volver
-            </button>
-            <div class="back-title">Web + Agente IA — Detalles</div>
-            <div class="back-sub">El plan más completo para empezar</div>
-            <div class="back-section">El agente IA sabe</div>
-            <ul class="back-list">
-              <li><span>·</span>Tus servicios, precios y horarios</li>
-              <li><span>·</span>Cómo responder preguntas frecuentes</li>
-              <li><span>·</span>Cuándo hay disponibilidad real en tu calendario</li>
-              <li><span>·</span>Cómo agendar citas automáticamente</li>
-            </ul>
-            <div class="back-section">Mantenimiento mensual (39€)</div>
-            <ul class="back-list">
-              <li><span>·</span>Hosting + API de IA incluidos</li>
-              <li><span>·</span>Hasta 2 actualizaciones de contenido/mes</li>
-              <li><span>·</span>Monitorización del agente</li>
-              <li><span>·</span>Soporte técnico prioritario</li>
-            </ul>
-            <div class="back-section">Plazo</div>
-            <ul class="back-list">
-              <li><span>·</span>Entrega en 2–4 semanas desde el briefing</li>
-              <li><span>·</span>Sin permanencia — cancela cuando quieras</li>
-            </ul>
-            <a href="#reservar" class="back-cta primary">Quiero este plan</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── Plan Completo ── -->
-      <div class="pcard">
-        <div class="pcard-inner">
-          <div class="pcard-front">
-            <div class="pcard-top">
-              <div class="pcard-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-            </div>
-            <h3>Sistema Completo</h3>
-            <p class="pcard-sub">IA + WhatsApp + Notificaciones · 4–6 sem.</p>
-            <div class="pcard-price-block">
-              <div class="pcard-setup">Configuración: <strong>799€</strong> pago único</div>
-              <div class="pcard-monthly">
-                <span class="price-amount" data-monthly="69" data-annual="57">69€</span>
-                <span class="price-period">/mes mantenimiento</span>
-              </div>
-              <div class="price-save">Ahorra 144€ al año</div>
-            </div>
-            <div class="pcard-divider"></div>
-            <ul class="pcard-list">
-              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Todo lo del plan profesional</li>
-              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Agente IA también en WhatsApp</li>
-              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Notificaciones automáticas al reservar</li>
-              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Soporte prioritario</li>
-              <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Actualizaciones trimestrales</li>
-            </ul>
-            <a href="#reservar" class="pcard-cta ghost" onclick="event.stopPropagation()">Empezar</a>
-            <div class="flip-hint">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
-              Clic para ver qué incluye
-            </div>
-          </div>
-          <div class="pcard-back">
-            <button class="flip-back-btn" onclick="flipCard(this)">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Volver
-            </button>
-            <div class="back-title">Sistema Completo — Detalles</div>
-            <div class="back-sub">La solución más automatizada</div>
-            <div class="back-section">Adicional al plan profesional</div>
-            <ul class="back-list">
-              <li><span>·</span>El agente también atiende por WhatsApp</li>
-              <li><span>·</span>Te llega un WhatsApp cuando alguien reserva</li>
-              <li><span>·</span>El cliente recibe confirmación automática por WA</li>
-              <li><span>·</span>Integración con Meta WhatsApp Cloud API</li>
-            </ul>
-            <div class="back-section">Mantenimiento mensual (69€)</div>
-            <ul class="back-list">
-              <li><span>·</span>Hosting + API IA + WhatsApp API incluidos</li>
-              <li><span>·</span>Hasta 3 actualizaciones de contenido/mes</li>
-              <li><span>·</span>Soporte técnico prioritario (&lt;12h respuesta)</li>
-              <li><span>·</span>Revisión trimestral del agente IA</li>
-            </ul>
-            <div class="back-section">Plazo</div>
-            <ul class="back-list">
-              <li><span>·</span>Entrega en 4–6 semanas desde el briefing</li>
-              <li><span>·</span>Sin permanencia — cancela cuando quieras</li>
-            </ul>
-            <a href="#reservar" class="back-cta ghost">Empezar con este plan</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <p class="pricing-note">El mantenimiento es opcional. Incluye hosting, API de IA, actualizaciones y soporte. Sin permanencia.</p>
-  </div>
-</section>
-
-<!-- ── PROCESO ────────────────────────────────────────────────────── -->
-<section id="proceso">
-  <div class="container">
-    <div class="sec-head">
-      <span class="sec-label">Cómo funciona</span>
-      <h2 class="sec-title">De cero a web en 3 pasos</h2>
-      <p class="sec-desc">Un proceso simple y claro. Sin tecnicismos ni sorpresas.</p>
-    </div>
-    <div class="steps-grid">
-      <div class="step">
-        <div class="step-n">01</div>
-        <div class="step-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg></div>
-        <h3>Reunión gratuita</h3>
-        <p>1 hora para entender tu negocio, tus clientes y lo que necesitas. Sin coste ni compromiso.</p>
-      </div>
-      <div class="step">
-        <div class="step-n">02</div>
-        <div class="step-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-        <h3>Propuesta a medida</h3>
-        <p>Plan claro: qué incluye, cuánto cuesta y cuándo estará listo. Precio cerrado desde el principio.</p>
-      </div>
-      <div class="step">
-        <div class="step-n">03</div>
-        <div class="step-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <h3>Entrega y soporte</h3>
-        <p>Tu web lista y funcionando. Te explico cómo usarla y me quedo disponible para cualquier ajuste.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── FAQ ────────────────────────────────────────────────────────── -->
-<section id="faq">
-  <div class="container">
-    <div class="sec-head">
-      <span class="sec-label">Preguntas frecuentes</span>
-      <h2 class="sec-title">Resuelve tus dudas</h2>
-    </div>
-    <div class="faq-grid">
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          ¿Cuánto cuesta una web?
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="faq-a"><p>Depende de lo que necesites. La reunión inicial es gratis y al acabar te doy un precio cerrado y claro.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          ¿Necesito saber de tecnología?
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="faq-a"><p>No. Solo tienes que contarme cómo funciona tu negocio. El resto lo configuro yo y lo entrego funcionando.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          ¿Solo trabajas en Madrid?
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="faq-a"><p>Trabajo con clientes de toda España de forma online. Si estás en Madrid también podemos vernos en persona.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          ¿Puedo ver algún ejemplo real?
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="faq-a"><p>Esta misma página es un ejemplo: el chat de abajo es un asistente real que responde y agenda reuniones.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── RESERVAR ───────────────────────────────────────────────────── -->
-<section id="reservar">
-  <div class="container">
-    <div class="reservar-layout">
-      <div class="reservar-copy">
-        <span class="sec-label">Reunión gratuita</span>
-        <h2>Reserva tu consulta en 2 minutos</h2>
-        <p>Habla con el asistente. Te buscará un hueco y lo confirmará en tu calendario al instante.</p>
-        <div class="reservar-items">
-          <div class="reservar-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            1 hora, sin compromiso
-          </div>
-          <div class="reservar-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Online o presencial (Madrid)
-          </div>
-          <div class="reservar-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            Confirmación inmediata
-          </div>
-        </div>
-        <p class="reservar-wa">
-          ¿Prefieres escribir directamente?<br />
-          <a href="https://wa.me/34685101194" target="_blank">WhatsApp +34 685 101 194</a>
-        </p>
-      </div>
-      <div id="chat-inline"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ── CTA ────────────────────────────────────────────────────────── -->
-<section id="cta">
-  <div class="container">
-    <h2>¿Hablamos de tu proyecto?</h2>
-    <p>La reunión es gratis y sin compromiso. En 1 hora sabes qué necesitas y cuánto cuesta.</p>
-    <a href="#reservar" class="btn-primary">
-      Reservar reunión gratuita
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
-  </div>
-</section>
-
-<!-- ── FOOTER ─────────────────────────────────────────────────────── -->
-<footer>
-  <div class="footer-main">
+<footer class="pie tramo">
+  <div class="pie__rejilla">
     <div>
-      <div class="footer-brand">
-        <span class="logo-mark">M</span>
-        WEB-IA
-      </div>
-      <p class="footer-tagline">Webs profesionales con IA integrada<br>para negocios locales. Madrid · España.</p>
-      <div class="footer-socials" style="margin-top:1rem">
-        <a href="https://www.linkedin.com/in/miguel-mart%C3%ADn-caro-mart%C3%ADn-402328208" target="_blank" class="footer-social-icon" title="LinkedIn">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-        </a>
-        <a href="#" class="footer-social-icon" title="Instagram">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-        </a>
-      </div>
+      <a class="marca" href="./"><svg aria-hidden="true"><use href="#i-azulejo"/></svg><span>paginawebcreator</span></a>
+      <p class="pie__lema">Tu negocio, pero ahora con página web. Webs y agentes de IA para negocios locales de Madrid y toda España.</p>
     </div>
-
-    <div class="footer-links-col">
-      <span class="footer-col-title">Servicios</span>
-      <a href="#servicios">Web Básica</a>
-      <a href="#servicios">Web + Agente IA</a>
-      <a href="#servicios">Sistema Completo</a>
-      <a href="#reservar">Consulta gratuita</a>
-    </div>
-
-    <div class="footer-links-col">
-      <span class="footer-col-title">Contacto</span>
-      <a href="https://wa.me/34685101194" target="_blank">+34 685 101 194</a>
-      <a href="mailto:miguelmartincaro@gmail.com">miguelmartincaro@gmail.com</a>
-      <a href="#demos">Ver demos</a>
-      <a href="#proceso">Cómo funciona</a>
+    <nav aria-label="Secciones">
+      <a href="#calculadora">Calculadora</a>
+      <a href="#agente">Agente IA</a>
+      <a href="#trabajos">Trabajos</a>
+      <a href="#precios">Precios</a>
+      <a href="#dudas">Dudas</a>
+    </nav>
+    <div class="pie__contacto">
+      <a href="https://wa.me/34685101194" target="_blank" rel="noopener" data-evento="clic_whatsapp" data-ubicacion="pie">WhatsApp: 685 101 194</a>
+      <a href="mailto:miguelmartincaro@gmail.com" data-evento="clic_email" data-ubicacion="pie">miguelmartincaro@gmail.com</a>
+      <a href="https://www.linkedin.com/in/miguel-mart%C3%ADn-caro-mart%C3%ADn-402328208" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </div>
-
-  <div class="footer-bottom">
-    <span class="footer-copy">© 2025 WEB-IA · Miguel Martín Caro · Madrid, España</span>
-    <div class="footer-legal">
-      <a href="#">Política de privacidad</a>
-      <a href="#">Aviso legal</a>
-      <a href="#">Política de cookies</a>
-      <a href="#">Condiciones de uso</a>
-    </div>
+  <div class="pie__legal">
+    <p>© <span data-anio>2026</span> Miguel Martín-Caro Martín</p>
+    <p class="pie__enlaces-legales">
+      <a href="privacidad.html#privacidad">Privacidad</a>
+      <a href="privacidad.html#aviso-legal">Aviso legal</a>
+      <a href="privacidad.html#cookies">Cookies</a>
+      <button type="button" class="pie__cookies" data-cookies="configurar">Configurar cookies</button>
+    </p>
   </div>
 </footer>
 
-<!-- ── WHATSAPP FLOTANTE ───────────────────────────────────────────── -->
-<div class="wa-float">
-  <span class="wa-tooltip">Escríbeme por WhatsApp</span>
-  <a href="https://wa.me/34685101194?text=Hola%20Miguel%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20tu%20servicio%20de%20webs%20con%20IA" target="_blank" class="wa-float-btn" aria-label="WhatsApp">
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-  </a>
+<div class="barra-contacto" data-visible="no">
+  <a class="boton boton--wa" href="https://wa.me/34685101194?text=Hola%20Miguel%2C%20quiero%20informaci%C3%B3n%20sobre%20una%20web%20para%20mi%20negocio." target="_blank" rel="noopener" data-evento="clic_whatsapp" data-ubicacion="barra_movil"><svg aria-hidden="true"><use href="#i-wa"/></svg>Escríbeme</a>
+  <a class="boton boton--vidrio" href="tel:+34685101194" data-evento="clic_telefono" data-ubicacion="barra_movil" aria-label="Llamar al 685 101 194"><svg aria-hidden="true"><use href="#i-tel"/></svg>Llamar</a>
 </div>
 
-<!-- ── CHAT WIDGET ────────────────────────────────────────────────── -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" />
-<style>
-  #chat-inline .n8n-chat { height: 100% !important; }
-  :root {
-    --chat--color-primary: #f97316;
-    --chat--color-primary-shade-50: #ea580c;
-    --chat--color-secondary: #f97316;
-    --chat--color-background: #110f14;
-    --chat--color-font: #f5f2f0;
-    --chat--color-font-light: #9e99b0;
-    --chat--border-radius: 10px;
-    --chat--header-background: #1a1720;
-    --chat--message-bot-background: #1a1720;
-    --chat--message-user-background: #f97316;
-    --chat--input-background: #1a1720;
-    --chat--input-border-color: #26222f;
-  }
-</style>
-<script type="module">
-  import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
-  const WH = 'https://n8n.srv1572708.hstgr.cloud/webhook/4231de75-fa03-45ab-a576-a7228895d25f/chat';
-  const MS = ['Hola, soy el asistente de WEB-IA.', '¿En qué puedo ayudarte? Puedo informarte sobre los servicios o reservarte una reunión inicial gratuita.'];
-  const I18 = { en: { title: 'WEB-IA', subtitle: 'Asistente virtual', inputPlaceholder: 'Escribe tu mensaje...', getStarted: 'Iniciar conversación', footer: '' }};
-  createChat({ webhookUrl: WH, target: '#chat-inline', mode: 'fullscreen', showWelcomeScreen: false, chatInputKey: 'chatInput', chatSessionKey: 'sessionId', initialMessages: MS, i18n: I18 });
-  createChat({ webhookUrl: WH, mode: 'window', showWelcomeScreen: false, chatInputKey: 'chatInput', chatSessionKey: 'sessionId', initialMessages: MS, i18n: I18 });
-</script>
+<div class="aviso-cookies" role="dialog" aria-labelledby="titulo-cookies" hidden>
+  <p class="aviso-cookies__titulo" id="titulo-cookies">¿Me dejas medir las visitas?</p>
+  <p>Uso Google Analytics para saber qué partes de la web funcionan. Solo se activa si aceptas. <a href="privacidad.html#cookies">Más información</a></p>
+  <div class="aviso-cookies__ajustes" data-cookies-ajustes hidden>
+    <label class="interruptor">
+      <input type="checkbox" checked disabled>
+      <span class="interruptor__texto"><strong>Necesarias</strong><small>Guardan tu elección. Siempre activas.</small></span>
+      <span class="interruptor__pista" aria-hidden="true"></span>
+    </label>
+    <label class="interruptor">
+      <input type="checkbox" data-cookies-analitica>
+      <span class="interruptor__texto"><strong>Analítica</strong><small>Google Analytics: visitas y uso de la web.</small></span>
+      <span class="interruptor__pista" aria-hidden="true"></span>
+    </label>
+  </div>
+  <div class="aviso-cookies__botones">
+    <button type="button" class="boton boton--linea boton--pequeno" data-cookies="rechazar">Rechazar</button>
+    <button type="button" class="boton boton--linea boton--pequeno" data-cookies="aceptar">Aceptar</button>
+  </div>
+  <button type="button" class="aviso-cookies__configurar" data-cookies="ajustes" aria-expanded="false">Configurar</button>
+</div>
 
-<canvas id="hero-canvas"></canvas>
-
-<!-- ── JS ────────────────────────────────────────────────────────── -->
-<script>
-  const A = { tipo: null, features: [], plazo: null };
-
-  document.querySelectorAll('.opts').forEach(g => {
-    const type = g.dataset.type;
-    g.querySelectorAll('.opt').forEach(o => {
-      o.addEventListener('click', () => {
-        const step = g.dataset.step;
-        if (type === 'single') {
-          g.querySelectorAll('.opt').forEach(x => x.classList.remove('selected'));
-          o.classList.add('selected');
-          if (step === '1') A.tipo = o.dataset.value;
-          if (step === '3') A.plazo = o.dataset.value;
-        } else {
-          o.classList.toggle('selected');
-          A.features = Array.from(g.querySelectorAll('.opt.selected')).map(x => x.dataset.value);
-        }
-        setReady(parseInt(step));
-      });
-    });
-  });
-
-  async function submitHeroForm(e) {
-    e.preventDefault();
-    const btn    = e.target.querySelector('.hcard-btn');
-    const nombre = document.getElementById('hf-nombre').value.trim();
-    const tel    = document.getElementById('hf-tel').value.trim();
-    const email  = document.getElementById('hf-email').value.trim();
-    const tipo    = document.getElementById('hf-tipo').value || 'No especificado';
-    const mensaje = document.getElementById('hf-mensaje').value.trim();
-
-    btn.disabled = true;
-    btn.textContent = 'Enviando…';
-
-    try {
-      await fetch('https://n8n.srv1572708.hstgr.cloud/webhook/formulario-web', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nombre, tel, email, tipo, mensaje })
-      });
-    } catch (_) {}
-
-    btn.textContent = '✓ Recibido — te llamamos pronto';
-    e.target.reset();
-  }
-
-  function setReady(s) {
-    const b = document.getElementById('next-' + s);
-    if (!b) return;
-    const ok = s===1 ? !!A.tipo : s===2 ? A.features.length>0 : !!A.plazo;
-    b.classList.toggle('ready', ok);
-  }
-
-  function goNext(s) {
-    document.getElementById('step-' + s).classList.remove('active');
-    document.getElementById('step-' + (s+1)).classList.add('active');
-    setProgress(s+1); setIndicator(s+1);
-  }
-
-  function goBack(s) {
-    document.getElementById('step-' + s).classList.remove('active');
-    document.getElementById('step-' + (s-1)).classList.add('active');
-    setProgress(s-1); setIndicator(s-1);
-  }
-
-  function showResult() {
-    document.getElementById('step-3').classList.remove('active');
-    document.getElementById('quiz-result').classList.add('active');
-    setProgress(4);
-    document.getElementById('stepIndicator').style.opacity = '0';
-    document.getElementById('res-tipo').textContent = A.tipo || '—';
-    const fe = document.getElementById('res-features');
-    fe.innerHTML = A.features.length
-      ? A.features.map(f => `<span class="result-tag">${f}</span>`).join('')
-      : '<span style="color:var(--text-3)">—</span>';
-    document.getElementById('res-plazo').textContent = A.plazo || '—';
-  }
-
-  function scrollToReserva() {
-    setTimeout(() => document.getElementById('reservar').scrollIntoView({ behavior: 'smooth' }), 100);
-  }
-
-  function restartQuiz() {
-    A.tipo = null; A.features = []; A.plazo = null;
-    document.querySelectorAll('.opt.selected').forEach(o => o.classList.remove('selected'));
-    [1,2,3].forEach(i => { const b = document.getElementById('next-'+i); if(b) b.classList.remove('ready'); });
-    document.getElementById('quiz-result').classList.remove('active');
-    document.getElementById('step-1').classList.add('active');
-    setProgress(1); setIndicator(1);
-    document.getElementById('stepIndicator').style.opacity = '1';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  function setProgress(s) {
-    document.getElementById('progressFill').style.width = (s===4 ? 100 : (s-1)/3*100) + '%';
-  }
-
-  function setIndicator(s) {
-    if (s <= 3) document.getElementById('stepIndicator').textContent = 'Paso ' + s + ' de 3';
-  }
-
-  // Prevent page scroll on Enter in chat
-  document.getElementById('chat-inline').addEventListener('keydown', e => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      const y = window.scrollY;
-      requestAnimationFrame(() => window.scrollTo({ top: y, behavior: 'instant' }));
-    }
-  }, true);
-
-  function toggleFaq(btn) {
-    const item = btn.closest('.faq-item');
-    const open = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
-    if (!open) item.classList.add('open');
-  }
-
-  // ── Card flip ────────────────────────────────────────────────────
-  function flipCard(el) {
-    el.closest('.pcard').classList.toggle('flipped');
-  }
-  document.querySelectorAll('.pcard-front').forEach(front => {
-    front.addEventListener('click', function(e) {
-      if (!e.target.closest('a, button')) flipCard(this);
-    });
-  });
-
-  // ── Canvas flow field background (full page) ────────────────────
-  (function() {
-    const canvas = document.getElementById('hero-canvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let W, H, particles, mouse = { x: -9999, y: -9999 };
-    let scrollVel = 0, lastScrollY = window.scrollY;
-
-    function noise(x, y, t) {
-      return Math.sin(x * 0.007 + t * 0.35) * Math.cos(y * 0.007 + t * 0.28) * Math.PI * 2.5
-           + Math.sin(x * 0.013 - y * 0.011 + t * 0.18) * Math.PI
-           + Math.cos(x * 0.004 + y * 0.009 - t * 0.12) * 0.8;
-    }
-
-    function init() {
-      W = canvas.width  = window.innerWidth;
-      H = canvas.height = window.innerHeight;
-      particles = Array.from({ length: 200 }, () => ({
-        x: Math.random() * W,   y: Math.random() * H,
-        vx: 0,                   vy: 0,
-        life: Math.random(),
-        speed: 0.4 + Math.random() * 0.7,
-        size:  0.8  + Math.random() * 1.6,
-        hue:   18   + Math.random() * 24
-      }));
-    }
-
-    let t = 0;
-    function draw() {
-      ctx.fillStyle = 'rgba(0,0,0,0.18)';
-      ctx.fillRect(0, 0, W, H);
-      t += 0.0038;
-      scrollVel *= 0.9;
-
-      for (const p of particles) {
-        const angle = noise(p.x, p.y, t);
-        const dx = p.x - mouse.x, dy = p.y - mouse.y;
-        const dist = Math.sqrt(dx*dx + dy*dy) || 1;
-        const pull = dist < 130 ? (1 - dist/130) * 0.9 : 0;
-
-        p.vx = p.vx * 0.87 + Math.cos(angle) * p.speed * 0.13 + (dx/dist) * pull * 0.35;
-        p.vy = p.vy * 0.87 + Math.sin(angle) * p.speed * 0.13 + (dy/dist) * pull * 0.35 + scrollVel;
-        p.x += p.vx;  p.y += p.vy;
-        p.life -= 0.0025;
-
-        if (p.life <= 0 || p.x < -5 || p.x > W+5 || p.y < -5 || p.y > H+5) {
-          p.x = Math.random() * W;  p.y = Math.random() * H;
-          p.vx = 0;  p.vy = 0;
-          p.life = 0.5 + Math.random() * 0.5;
-        }
-
-        const alpha = Math.min(p.life, 0.65) * 0.85;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${p.hue}, 92%, 62%, ${alpha})`;
-        ctx.fill();
-      }
-      requestAnimationFrame(draw);
-    }
-
-    document.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
-    document.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
-    window.addEventListener('scroll', () => {
-      const sy = window.scrollY;
-      scrollVel += (sy - lastScrollY) * 0.045;
-      lastScrollY = sy;
-    }, { passive: true });
-
-    let raf;
-    window.addEventListener('resize', () => { clearTimeout(raf); raf = setTimeout(init, 150); });
-    init(); draw();
-  })();
-
-  // ── Scroll reveal (IntersectionObserver) ─────────────────────────
-  (function() {
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
-      });
-    }, { threshold: 0.1 });
-
-    // Stagger pricing cards
-    document.querySelectorAll('.pricing-grid .pcard').forEach((el, i) => {
-      el.style.transitionDelay = `${i * 110}ms`;
-    });
-    // Stagger steps
-    document.querySelectorAll('.steps-grid .step').forEach((el, i) => {
-      el.style.transitionDelay = `${i * 90}ms`;
-    });
-
-    // Add .reveal first so browser paints hidden state, then start observing
-    const revealEls = document.querySelectorAll('section:not(#inicio), .step, .pcard, .faq-item, .demo-item, .browser-wrap');
-    revealEls.forEach(el => el.classList.add('reveal'));
-    requestAnimationFrame(() => {
-      revealEls.forEach(el => obs.observe(el));
-    });
-  })();
-
-  // ── Billing toggle ───────────────────────────────────────────────
-  let isAnnual = false;
-  function toggleBilling() {
-    isAnnual = !isAnnual;
-    const grid = document.getElementById('pricingGrid');
-    const toggle = document.getElementById('billingToggle');
-    const lblM = document.getElementById('lbl-monthly');
-    const lblA = document.getElementById('lbl-annual');
-
-    toggle.classList.toggle('on', isAnnual);
-    grid.classList.toggle('annual-mode', isAnnual);
-    lblM.classList.toggle('active', !isAnnual);
-    lblA.classList.toggle('active', isAnnual);
-
-    document.querySelectorAll('.price-amount').forEach(el => {
-      const val = isAnnual ? el.dataset.annual : el.dataset.monthly;
-      el.textContent = val + '€';
-    });
-  }
-
-  // ── Demo switcher ─────────────────────────────────────────────────
-  function switchDemo(idx) {
-    document.querySelectorAll('.demo-item').forEach((el, i) => {
-      el.style.display = i === idx ? 'block' : 'none';
-    });
-    document.querySelectorAll('.demo-tab').forEach((t, i) => {
-      t.classList.toggle('active', i === idx);
-    });
-  }
-
-  // Video playback — replace placeholder with actual video
-  // To add a real video: put the file in /demos/peluqueria.mp4
-  // and uncomment the <video> tag in the HTML
-  function playDemo(idx) {
-    const vp = document.getElementById('vp-' + idx);
-    const item = document.getElementById('demo-item-' + idx);
-    const videoSrc = ['demos/peluqueria.mp4', 'demos/restaurante.mp4', 'demos/clinica.mp4'][idx];
-
-    // Try to create/find a video element
-    let vid = item.querySelector('video.demo-video-el');
-    if (!vid) {
-      vid = document.createElement('video');
-      vid.className = 'demo-video-el';
-      vid.controls = true;
-      vid.playsinline = true;
-      vid.autoplay = true;
-      vid.src = videoSrc;
-      item.querySelector('.browser-body').insertBefore(vid, vp);
-    }
-
-    vp.classList.add('hidden');
-    vid.style.display = 'block';
-    vid.play().catch(() => {
-      // No video file yet — show friendly message
-      vp.classList.remove('hidden');
-      vp.querySelector('p').textContent = 'Vídeo próximamente — reserva una llamada para verlo en vivo';
-    });
-  }
-</script>
-
-
-
-  <!-- Vercel Speed Insights -->
-  <script>
-    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-  </script>
-  <script defer src="/_vercel/speed-insights/script.js"></script>
+<script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
 </body>
 </html>

@@ -1,0 +1,14 @@
+{
+  "name": "paginawebcreator",
+  "short_name": "paginawebcreator",
+  "description": "Webs y agentes de IA para negocios locales.",
+  "start_url": "/",
+  "display": "browser",
+  "lang": "es",
+  "background_color": "#F4F6FB",
+  "theme_color": "#2346E6",
+  "icons": [
+    { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

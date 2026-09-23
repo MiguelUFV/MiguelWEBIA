@@ -1,0 +1,49 @@
+# paginawebcreator (Pagina-Web Creator)
+
+> Tu negocio, pero ahora con página web. Páginas web y agentes de inteligencia artificial para negocios locales en Madrid y toda España. Webs a medida con SEO local, y agentes de IA que contestan mensajes y reservan citas las 24 horas. Primera versión gratis en 72 horas. Desde 390 €.
+
+## Quién está detrás
+
+Miguel Martín-Caro Martín, diseñador web y de agentes de IA con base en Madrid. Trabaja solo y atiende directamente a cada cliente: barberías, restaurantes, clínicas, talleres, panaderías, fontanerías y otros negocios de barrio.
+
+## Planes
+
+- **Web** — 390 € una vez + 19 €/mes. Diseño a medida de hasta 5 secciones, versión móvil, botón de WhatsApp y formulario, SEO local, preparada para asistentes de IA, dominio, alojamiento y SSL. Publicada en 7 días.
+- **Web + Agente IA** — 790 € una vez + 49 €/mes. Todo lo anterior más un agente de IA en la web, disponible 24 horas, que contesta con los precios y horarios del negocio, reserva citas en Google Calendar y avisa al móvil del dueño. Funcionando en 2 semanas.
+- **Todo en WhatsApp** — 1.290 € una vez + 89 €/mes. Todo lo anterior más el agente en el WhatsApp del negocio, recordatorios automáticos para evitar plantones, petición de reseñas en Google tras cada visita y atención prioritaria. Funcionando en 3 o 4 semanas.
+- **Renovación de una web existente** — desde 390 €, conservando el dominio y sin cortes de servicio.
+
+La cuota mensual incluye dominio, alojamiento, certificado de seguridad, copias de seguridad, cambios pequeños y soporte por WhatsApp. Sin permanencia. Pago del 50 % al empezar y el 50 % al publicar. Pagando la cuota anual por adelantado se regalan 2 meses.
+
+## Cómo se trabaja
+
+1. El cliente escribe por WhatsApp o llama. En 15 minutos explica su negocio.
+2. En 72 horas recibe una primera versión real de su web, gratis.
+3. Si le gusta, paga el 50 % y se ajusta la web con él.
+4. Se publica, se paga el resto y Miguel se queda a cargo del mantenimiento.
+
+Si la primera versión no convence, no se paga nada.
+
+## Trabajos
+
+- Panadería La Pequeña (Chamberí, Madrid): https://panaderialapequeña.es
+- Barbería Ussama (Puente de Vallecas, Madrid): https://barberia-ussama.vercel.app
+- Fontanería Reformas Rubio (Móstoles), propuesta de rediseño: https://fontaneria-rubio-demo.vercel.app
+
+## Preguntas frecuentes
+
+**¿Cuánto cuesta una web para un negocio local?** Desde 390 € una vez más 19 €/mes con dominio, alojamiento y cambios incluidos.
+
+**¿Qué hace el agente de IA?** Contesta a los clientes en la web o en WhatsApp con la información del negocio, reserva citas en Google Calendar y avisa al dueño. Solo responde con la información que el negocio le da y, si no sabe algo, pasa la conversación al dueño.
+
+**¿Hay permanencia?** No. La web es del cliente: si se va, se lleva los archivos y el dominio.
+
+**¿Trabaja fuera de Madrid?** Sí, en toda España por videollamada y WhatsApp. En Madrid también en persona.
+
+## Contacto
+
+- Web: https://paginawebcreator.com
+- WhatsApp y teléfono: +34 685 101 194
+- Email: miguelmartincaro@gmail.com
+- LinkedIn: https://www.linkedin.com/in/miguel-martín-caro-martín-402328208
+- Horario: lunes a viernes de 9:00 a 19:00, sábados de 9:00 a 14:00
