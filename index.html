@@ -115,6 +115,7 @@
   <symbol id="i-linkedin" viewBox="0 0 24 24"><g fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></g></symbol>
   <symbol id="i-ordenador" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></g></symbol>
   <symbol id="i-movil" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></g></symbol>
+  <symbol id="i-renovar" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 12a8.5 8.5 0 0 1-14.9 5.6"/><path d="M3.5 12A8.5 8.5 0 0 1 18.4 6.4"/><path d="M19 2.5v4.2h-4.2M5 21.5v-4.2h4.2"/></g></symbol>
   <symbol id="i-azulejo" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#2346E6"/><path fill="#fff" d="M16 5c2.6 5.4 5.6 8.4 11 11-5.4 2.6-8.4 5.6-11 11-2.6-5.4-5.6-8.4-11-11 5.4-2.6 8.4-5.6 11-11z"/><circle cx="16" cy="16" r="2.6" fill="#FFC53D"/></symbol>
 </svg>
 
@@ -264,6 +265,10 @@
           <button type="submit" class="boton boton--cobalto" data-crear>Crear mi web</button>
           <a class="probador__directo" href="https://wa.me/34685101194?text=Hola%20Miguel%2C%20quiero%20informaci%C3%B3n%20sobre%20una%20web%20para%20mi%20negocio." target="_blank" rel="noopener" data-evento="clic_whatsapp" data-ubicacion="probador">o escríbeme por WhatsApp</a>
         </div>
+        <a class="renovar-atajo" href="renovar.html" target="_blank" rel="noopener" data-evento="clic_renovar" data-ubicacion="escaparate">
+          <span class="renovar-atajo__texto"><strong>¿Ya tienes web?</strong> Te digo gratis qué le falla y cómo la dejaría.</span>
+          <span class="renovar-atajo__boton"><svg aria-hidden="true"><use href="#i-renovar"/></svg>Quiero renovar mi página web<span class="solo-lector"> (se abre en otra pestaña)</span></span>
+        </a>
         <figure class="resena-mini">
           <span class="estrellas" role="img" aria-label="5 de 5 estrellas">★★★★★</span>
           <blockquote>«Todo genial y como lo acordado. Miguel un auténtico profesional.»</blockquote>
@@ -277,58 +282,34 @@
     <div class="fugas__rejilla">
       <div class="fugas__intro">
         <h2 id="titulo-fugas" data-persiana>¿Cuánto dinero pierdes por no contestar?</h2>
-        <p data-revelar>Cada mensaje sin respuesta es un cliente que reserva en el sitio de al lado. Elige tu negocio, ajusta los números y te hago la cuenta. Siempre a la baja.</p>
+        <p data-revelar>Cada mensaje sin respuesta es un cliente que reserva en el sitio de al lado. Mueve estos dos números y te hago la cuenta. Siempre a la baja.</p>
       </div>
 
       <form class="fugas__controles" data-calculadora data-revelar onsubmit="return false">
-        <fieldset class="fugas__sectores">
-          <legend class="fugas__etiqueta">Tu negocio</legend>
-          <div class="sectores">
-            <label class="sector"><input type="radio" name="calc-sector" value="barberia" checked><span>Barbería</span></label>
-            <label class="sector"><input type="radio" name="calc-sector" value="peluqueria"><span>Peluquería</span></label>
-            <label class="sector"><input type="radio" name="calc-sector" value="restaurante"><span>Restaurante</span></label>
-            <label class="sector"><input type="radio" name="calc-sector" value="clinica"><span>Clínica</span></label>
-            <label class="sector"><input type="radio" name="calc-sector" value="taller"><span>Taller</span></label>
-            <label class="sector"><input type="radio" name="calc-sector" value="panaderia"><span>Panadería</span></label>
-            <label class="sector"><input type="radio" name="calc-sector" value="fontaneria"><span>Fontanería</span></label>
-          </div>
-        </fieldset>
         <div class="deslizador">
-          <label class="fugas__etiqueta" for="perdidos">Mensajes y llamadas sin contestar a la semana</label>
+          <label class="fugas__etiqueta" for="perdidos"><span class="probador__num">1</span>Mensajes y llamadas sin contestar a la semana</label>
           <output for="perdidos" data-salida="perdidos">10</output>
           <input id="perdidos" name="perdidos" type="range" min="1" max="50" step="1" value="10">
           <p class="deslizador__pista">Los que llegan mientras atiendes, de noche o en festivo.</p>
         </div>
         <div class="deslizador">
-          <label class="fugas__etiqueta" for="ticket">Lo que gasta un cliente cada vez</label>
+          <label class="fugas__etiqueta" for="ticket"><span class="probador__num">2</span>Lo que gasta un cliente cada vez</label>
           <output for="ticket" data-salida="ticket">20 €</output>
           <input id="ticket" name="ticket" type="range" min="5" max="300" step="5" value="20">
+          <p class="deslizador__pista">Un corte, un menú, una limpieza dental…</p>
         </div>
-        <div class="deslizador">
-          <label class="fugas__etiqueta" for="visitas">Veces que vuelve un cliente al año</label>
-          <output for="visitas" data-salida="visitas">10</output>
-          <input id="visitas" name="visitas" type="range" min="1" max="52" step="1" value="10">
-        </div>
-        <fieldset class="fugas__fuga">
-          <legend class="fugas__etiqueta">Si no contestas, ¿cuántos se van a otro sitio?</legend>
-          <div class="segmentos">
-            <label><input type="radio" name="fuga" value="4"><span>1 de cada 4</span></label>
-            <label><input type="radio" name="fuga" value="3" checked><span>1 de cada 3</span></label>
-            <label><input type="radio" name="fuga" value="2"><span>1 de cada 2</span></label>
-          </div>
-        </fieldset>
-        <p class="fugas__mini" aria-hidden="true">Pierdes <strong data-salida="mini">190 €</strong> al mes</p>
+        <p class="fugas__mini" aria-hidden="true">Pierdes <strong data-salida="mini">290 €</strong> al mes</p>
       </form>
 
       <div class="fugas__resultado" data-revelar aria-live="polite">
         <p class="fugas__antetitulo">Se te escapan cada mes</p>
-        <p class="fugas__cifra"><span data-salida="mes">190</span> €</p>
+        <p class="fugas__cifra"><span data-salida="mes">290</span> €</p>
         <p class="fugas__clientes"><strong data-salida="clientes">14 clientes</strong> que acaban reservando en la competencia.</p>
 
-        <div class="comparativa" role="img" data-comparativa aria-label="Pierdes 190 € al mes. El agente de IA cuesta 49 € al mes.">
+        <div class="comparativa" role="img" data-comparativa aria-label="Pierdes 290 € al mes. El agente de IA cuesta 49 € al mes.">
           <div class="comparativa__fila">
             <span class="comparativa__nombre">Lo que pierdes</span>
-            <span class="comparativa__valor" data-salida="barra-perdida">190 €/mes</span>
+            <span class="comparativa__valor" data-salida="barra-perdida">290 €/mes</span>
             <span class="comparativa__pista"><i class="comparativa__barra comparativa__barra--perdida" data-barra="perdida"></i></span>
           </div>
           <div class="comparativa__fila">
@@ -339,8 +320,7 @@
         </div>
 
         <dl class="fugas__datos">
-          <div><dt>En un año</dt><dd><span data-salida="anio">2.280</span> €</dd></div>
-          <div><dt>Cada cliente perdido valía</dt><dd><span data-salida="valor-cliente">200</span> € al año</dd></div>
+          <div><dt>En un año</dt><dd><span data-salida="anio">3.480</span> €</dd></div>
           <div><dt>El agente se paga con</dt><dd data-salida="recuperar">3 clientes al mes</dd></div>
         </dl>
 
@@ -348,7 +328,7 @@
           <p>Con estos números te encaja el plan <strong data-salida="plan">Web + Agente IA</strong>.</p>
           <a class="boton boton--yema" data-calc-cta href="https://wa.me/34685101194" target="_blank" rel="noopener" data-evento="clic_whatsapp" data-ubicacion="calculadora"><svg aria-hidden="true"><use href="#i-wa"/></svg>Quiero recuperar esos clientes</a>
         </div>
-        <p class="fugas__formula">La cuenta: <span data-salida="formula">10 mensajes × 4,33 semanas × 1 de cada 3 × 20 €</span>.</p>
+        <p class="fugas__formula">La cuenta: <span data-salida="formula">10 mensajes × 4,33 semanas × 20 €</span>, contando que solo 1 de cada 3 se va a otro sitio.</p>
       </div>
     </div>
   </section>
@@ -563,7 +543,7 @@
         </details>
         <details class="duda" name="dudas">
           <summary>Ya tengo web. ¿Me la puedes renovar?</summary>
-          <div class="duda__respuesta"><p>Sí, desde 390 € y sin perder tu dominio. Preparo la nueva versión en paralelo y hacemos el cambio sin que tu web deje de funcionar ni un día.</p></div>
+          <div class="duda__respuesta"><p>Sí, desde 390 € y sin perder tu dominio. Preparo la nueva versión en paralelo y hacemos el cambio sin que tu web deje de funcionar ni un día. <a href="renovar.html" target="_blank" rel="noopener" data-evento="clic_renovar" data-ubicacion="dudas">Mira gratis qué le falla a la tuya</a>.</p></div>
         </details>
         <details class="duda" name="dudas">
           <summary>¿Trabajas solo en Madrid?</summary>

@@ -35,7 +35,7 @@
       carta: [['Corte degradado', '14 €'], ['Arreglo de barba', '9 €'], ['Corte + barba', '20 €']],
       saludo: '¡Hola! ¿Te busco hueco para hoy o mañana?',
       paletas: [['Negro y oro', '#16130F', '#F3EDE2', '#C9A55A', '#16130F'], ['Rojo barbero', '#F7F2EA', '#1D1A16', '#B3261E', '#FFFFFF'], ['Azul noche', '#0E1726', '#E9EEF7', '#5B8DEF', '#0E1726'], ['Verde botella', '#0F2A22', '#EAF2EC', '#D4A94F', '#0F2A22']],
-      calc: { perdidos: 10, ticket: 20, visitas: 10 },
+      calc: { perdidos: 10, ticket: 20 },
       chat: [
         ['cliente', '¿Tenéis hueco mañana por la tarde?'],
         ['agente', '¡Claro! Mañana tengo libre a las 17:30 y a las 18:15. ¿Cuál te va mejor?'],
@@ -51,7 +51,7 @@
       carta: [['Corte y peinado', '28 €'], ['Mechas balayage', '85 €'], ['Tratamiento de keratina', '120 €']],
       saludo: '¡Hola! ¿Qué te hacemos y cuándo te viene bien?',
       paletas: [['Rosa empolvado', '#FFF4F4', '#3D1F2B', '#C2527A', '#FFFFFF'], ['Negro elegante', '#141414', '#F5EFEA', '#D8B07A', '#141414'], ['Salvia', '#F2F5F0', '#23321F', '#5E7A55', '#FFFFFF'], ['Lavanda', '#F6F2FB', '#2E2442', '#8A63C9', '#FFFFFF']],
-      calc: { perdidos: 10, ticket: 35, visitas: 6 },
+      calc: { perdidos: 10, ticket: 35 },
       chat: [
         ['cliente', 'Hola, ¿tenéis hueco el viernes para mechas?'],
         ['agente', '¡Hola! El viernes tengo a las 11:00 o a las 16:30. Las mechas llevan unas dos horas y media. ¿Cuál te va mejor?'],
@@ -67,7 +67,7 @@
       carta: [['Menú del día', '14,50 €'], ['Cochinillo asado', '24 €'], ['Tarta de queso', '6,50 €']],
       saludo: '¡Hola! ¿Para cuántos te reservo mesa?',
       paletas: [['Mantel rojo', '#FFF7EC', '#3A1D12', '#B7322A', '#FFFFFF'], ['Aceituna', '#F4F1E6', '#2C3317', '#5B6B2E', '#FFFFFF'], ['Noche', '#1C1512', '#F4E8DA', '#E0874B', '#1C1512'], ['Mar', '#EEF5F7', '#0F2F3A', '#1F7A8C', '#FFFFFF']],
-      calc: { perdidos: 15, ticket: 30, visitas: 4 },
+      calc: { perdidos: 15, ticket: 30 },
       chat: [
         ['cliente', '¿Tenéis mesa para 4 el sábado a las 21:30?'],
         ['agente', '¡Sí! Me queda una mesa para 4 a las 21:30 en la terraza, o a las 22:00 dentro. ¿Cuál prefieres?'],
@@ -83,7 +83,7 @@
       carta: [['Primera visita', 'Gratis'], ['Limpieza dental', '45 €'], ['Blanqueamiento', '190 €']],
       saludo: '¡Hola! ¿Te busco cita para esta semana?',
       paletas: [['Menta', '#F1FAF7', '#0E3B43', '#0E8C78', '#FFFFFF'], ['Azul clínico', '#F2F6FD', '#0F2A4A', '#2563EB', '#FFFFFF'], ['Lavanda', '#F6F4FB', '#2B2350', '#6D5BD0', '#FFFFFF'], ['Arena', '#FBF7F1', '#3B2F24', '#B7793A', '#FFFFFF']],
-      calc: { perdidos: 8, ticket: 60, visitas: 2 },
+      calc: { perdidos: 8, ticket: 60 },
       chat: [
         ['cliente', 'Hola, ¿me podéis ver esta semana para una limpieza?'],
         ['agente', '¡Hola! Tengo hueco el jueves a las 10:00 o el viernes a las 16:30. ¿Te reservo alguno?'],
@@ -99,7 +99,7 @@
       carta: [['Cambio de aceite', '49 €'], ['Pre-ITV', '35 €'], ['Diagnosis', '30 €']],
       saludo: '¡Hola! Dime tu coche y te doy precio al momento.',
       paletas: [['Amarillo', '#1B1D22', '#F2F2EE', '#F5C518', '#1B1D22'], ['Rojo racing', '#151515', '#F5F5F5', '#E53935', '#FFFFFF'], ['Azul mono', '#EEF2F7', '#0D1B2A', '#1B4DDB', '#FFFFFF'], ['Naranja', '#202020', '#F6F1EA', '#FF7A1A', '#202020']],
-      calc: { perdidos: 6, ticket: 120, visitas: 2 },
+      calc: { perdidos: 6, ticket: 120 },
       chat: [
         ['cliente', '¿Cuánto cuesta cambiar el aceite a un Golf de 2016?'],
         ['agente', 'Para tu Golf sale en 49 €, filtro incluido. Mañana tengo hueco a las 9:00 o a las 12:30. ¿Te lo apunto?'],
@@ -115,7 +115,7 @@
       carta: [['Barra de masa madre', '1,60 €'], ['Palmeritas (docena)', '6 €'], ['Roscón por encargo', '22 €']],
       saludo: '¡Hola! ¿Te guardo algo para mañana?',
       paletas: [['Horno', '#2B1B11', '#F7EBDD', '#E4A857', '#2B1B11'], ['Harina', '#FBF6EE', '#3E2A1C', '#B8742F', '#FFFFFF'], ['Pistacho', '#F3F4EA', '#2F3A1F', '#7A8F3A', '#FFFFFF'], ['Frambuesa', '#FFF5F6', '#4A1C27', '#C2415B', '#FFFFFF']],
-      calc: { perdidos: 8, ticket: 10, visitas: 30 },
+      calc: { perdidos: 8, ticket: 10 },
       chat: [
         ['cliente', '¿Puedo encargar un roscón para el domingo?'],
         ['agente', '¡Claro! ¿Lo quieres de nata, de trufa o sin relleno? Lo tendrás listo el domingo desde las 8:00.'],
@@ -131,7 +131,7 @@
       carta: [['Desatasco', 'desde 60 €'], ['Cambio de grifo', 'desde 45 €'], ['Revisión de caldera', '70 €']],
       saludo: '¡Hola! ¿Es una urgencia? Te mando a alguien.',
       paletas: [['Azul agua', '#EAF2FF', '#0B2A55', '#1560D6', '#FFFFFF'], ['Urgencia', '#FFFFFF', '#1A1A1A', '#E11D2E', '#FFFFFF'], ['Marino', '#0B1B33', '#E8EFFA', '#38BDF8', '#0B1B33'], ['Cobre', '#F7F3EE', '#2A2320', '#B45F2B', '#FFFFFF']],
-      calc: { perdidos: 12, ticket: 90, visitas: 1 },
+      calc: { perdidos: 12, ticket: 90 },
       chat: [
         ['cliente', 'Se me ha roto una tubería y sale agua. ¿Podéis venir hoy?'],
         ['agente', 'Cierra la llave de paso general mientras tanto. Puedo mandarte un técnico en unos 40 minutos. ¿Me pasas tu dirección?'],
@@ -164,7 +164,7 @@
     const form = $('[data-calculadora]');
     const panel = $('.fugas__resultado');
     if (!form || !panel) return { sugerirSector() {} };
-    const { perdidos, ticket, visitas } = form.elements;
+    const { perdidos, ticket } = form.elements;
     const escribir = (nombre, valor) => $$(`[data-salida="${nombre}"]`).forEach((n) => { n.textContent = valor; });
     const cifra = $('[data-salida="mes"]', panel);
     const barraPerdida = $('[data-barra="perdida"]', panel);
@@ -172,7 +172,7 @@
     const comparativa = $('[data-comparativa]', panel);
     const cta = $('[data-calc-cta]', panel);
     const PLANES = { agente: ['Web + Agente IA', 49], whatsapp: ['Todo en WhatsApp', 89] };
-    const FUGAS = { 4: '1 de cada 4', 3: '1 de cada 3', 2: '1 de cada 2' };
+    const SE_VA = 3; // de cada 3 que no reciben respuesta, 1 reserva en otro sitio
     let tocada = false;
     let mostrado = 0;
     let objetivo = 0;
@@ -200,9 +200,7 @@
     const calcular = () => {
       const p = Number(perdidos.value);
       const t = Number(ticket.value);
-      const v = Number(visitas.value);
-      const divisor = Number(form.elements.fuga.value) || 3;
-      const clientes = (p * 4.33) / divisor;
+      const clientes = (p * 4.33) / SE_VA;
       const mes = Math.round((clientes * t) / 10) * 10;
       const [plan, cuota] = p >= 20 ? PLANES.whatsapp : PLANES.agente;
       const recuperar = Math.max(1, Math.ceil(cuota / t));
@@ -211,7 +209,6 @@
 
       escribir('perdidos', p);
       escribir('ticket', `${t} €`);
-      escribir('visitas', v);
       contar(mes);
       escribir('mini', `${miles(mes)} €`);
       escribir('clientes', redondos === 1 ? '1 cliente' : `${redondos} clientes`);
@@ -219,28 +216,17 @@
       escribir('barra-nombre', `Cuota del plan ${plan}`);
       escribir('barra-cuota', `${cuota} €/mes`);
       escribir('anio', miles(mes * 12));
-      escribir('valor-cliente', miles(t * v));
       escribir('recuperar', recuperar === 1 ? '1 cliente al mes' : `${recuperar} clientes al mes`);
       escribir('plan', plan);
-      escribir('formula', `${p} mensajes × 4,33 semanas × ${FUGAS[divisor]} × ${t} €`);
+      escribir('formula', `${p} mensajes × 4,33 semanas × ${t} €`);
       barraPerdida.style.setProperty('--ancho', `${Math.max(2, (mes / maximo) * 100)}%`);
       barraCuota.style.setProperty('--ancho', `${Math.max(2, (cuota / maximo) * 100)}%`);
       comparativa.setAttribute('aria-label', `Pierdes unos ${miles(mes)} € al mes. El plan ${plan} cuesta ${cuota} € al mes.`);
       cta.href = enlaceWa(`Hola Miguel, he usado tu calculadora: con unos ${p} mensajes sin contestar a la semana pierdo unos ${miles(mes)} € al mes. Me interesa el plan ${plan}.`);
-      [perdidos, ticket, visitas].forEach(relleno);
+      [perdidos, ticket].forEach(relleno);
     };
 
-    const aplicarSector = (clave) => {
-      const { calc } = SECTORES[clave];
-      perdidos.value = calc.perdidos;
-      ticket.value = calc.ticket;
-      visitas.value = calc.visitas;
-      calcular();
-    };
-
-    $$('input[name="calc-sector"]', form).forEach((r) => r.addEventListener('change', () => { tocada = true; aplicarSector(r.value); }));
-    [perdidos, ticket, visitas].forEach((i) => i.addEventListener('input', () => { tocada = true; calcular(); }));
-    $$('input[name="fuga"]', form).forEach((r) => r.addEventListener('change', () => { tocada = true; calcular(); }));
+    [perdidos, ticket].forEach((i) => i.addEventListener('input', () => { tocada = true; calcular(); }));
 
     calcular();
     cancelAnimationFrame(animacion);
@@ -255,11 +241,13 @@
     }, { threshold: 0.4 }).observe(panel);
 
     return {
+      // Si el visitante eligió sector en el simulador y no ha tocado la calculadora, se adaptan los números.
       sugerirSector(clave) {
         if (tocada) return;
-        const radio = $(`input[name="calc-sector"][value="${clave}"]`, form);
-        if (radio) radio.checked = true;
-        aplicarSector(clave);
+        const { calc } = SECTORES[clave];
+        perdidos.value = calc.perdidos;
+        ticket.value = calc.ticket;
+        calcular();
       },
     };
   })();
