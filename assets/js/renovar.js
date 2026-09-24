@@ -145,8 +145,20 @@
     return informe;
   };
 
+  // Un dominio mal escrito tardaría ~20 s en fallar en PageSpeed; el DNS lo sabe al instante. Si la consulta falla, se sigue.
+  const comprobarDominio = async (url) => {
+    try {
+      const respuesta = await fetch(`https://dns.google/resolve?name=${encodeURIComponent(url.hostname)}&type=A`);
+      const { Status } = await respuesta.json();
+      if (Status === 3) throw new ErrorRadiografia('web');
+    } catch (error) {
+      if (error instanceof ErrorRadiografia) throw error;
+    }
+  };
+
   // El límite por minuto de Google (429) suele pasar enseguida: un reintento antes de rendirse.
   const pedirConReintento = async (url) => {
+    await comprobarDominio(url);
     try {
       return await pedirInforme(url);
     } catch (error) {
