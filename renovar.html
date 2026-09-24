@@ -15,9 +15,10 @@
 <meta property="og:url" content="https://paginawebcreator.com/renovar">
 <meta property="og:title" content="Tu web, pero como tendría que estar">
 <meta property="og:description" content="Radiografía gratis de tu web: velocidad en el móvil, cómo la ve Google y qué le falla.">
-<meta property="og:image" content="https://paginawebcreator.com/assets/og.png">
+<meta property="og:image" content="https://paginawebcreator.com/assets/og-renovar.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Tu web, pero como tendría que estar. Radiografía gratis de tu web en paginawebcreator.com">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -63,7 +64,7 @@
           <label class="escaner__etiqueta" for="web">Dirección de tu web</label>
           <div class="escaner__fila">
             <input class="escaner__campo" id="web" name="web" type="text" inputmode="url" autocomplete="url" autocapitalize="off" spellcheck="false" placeholder="tunegocio.es" enterkeyhint="go" required>
-            <button class="boton boton--yema" type="submit" data-escanear data-evento="radiografia_web" data-ubicacion="renovar">Hacer la radiografía</button>
+            <button class="boton boton--yema" type="submit" data-escanear>Hacer la radiografía</button>
           </div>
           <p class="escaner__aviso" data-aviso-campo role="alert"></p>
           <p class="escaner__nota">La analiza PageSpeed Insights, la herramienta de Google. Yo no guardo nada.</p>
@@ -110,7 +111,10 @@
     <div class="plan-b__caja">
       <h2 id="titulo-plan-b">Esta vez no he podido hacer la radiografía.</h2>
       <p data-plan-b-motivo></p>
-      <a class="boton boton--wa" data-plan-b-cta href="https://wa.me/34685101194" target="_blank" rel="noopener" data-evento="clic_whatsapp" data-ubicacion="renovar_plan_b"><svg aria-hidden="true"><use href="#i-wa"/></svg>Mándamela y te la reviso yo</a>
+      <div class="plan-b__acciones">
+        <a class="boton boton--wa" data-plan-b-cta href="https://wa.me/34685101194" target="_blank" rel="noopener" data-evento="clic_whatsapp" data-ubicacion="renovar_plan_b"><svg aria-hidden="true"><use href="#i-wa"/></svg>Mándamela y te la reviso yo</a>
+        <button type="button" class="boton boton--linea" data-plan-b-otra>Probar otra vez</button>
+      </div>
     </div>
   </section>
 
@@ -203,7 +207,7 @@
 
 <div class="aviso-cookies" role="dialog" aria-labelledby="titulo-cookies" hidden>
   <p class="aviso-cookies__titulo" id="titulo-cookies">¿Me dejas medir las visitas?</p>
-  <p>Uso Google Analytics para saber qué partes de la web funcionan. Solo se activa si aceptas. <a href="privacidad.html#cookies">Más información</a></p>
+  <p>Uso Google Analytics para saber qué partes de la web funcionan. Solo se activa si aceptas. <a href="privacidad.html#cookies">Cómo uso las cookies</a></p>
   <div class="aviso-cookies__ajustes" data-cookies-ajustes hidden>
     <label class="interruptor">
       <input type="checkbox" checked disabled>

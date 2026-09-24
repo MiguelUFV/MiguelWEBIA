@@ -24,6 +24,8 @@
     activa: false,
     evento(nombre, datos = {}) { if (this.activa && window.gtag) window.gtag('event', nombre, datos); },
   };
+  // Para que otras páginas (renovar.js) midan sus pasos con el mismo consentimiento.
+  window.paginawebcreator = { evento: (nombre, datos) => analitica.evento(nombre, datos) };
 
   const ESTILOS = { clasico: 'Clásico', moderno: 'Moderno', rotulo: 'Rótulo' };
 

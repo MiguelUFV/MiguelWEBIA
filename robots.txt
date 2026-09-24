@@ -20,4 +20,3 @@ User-agent: Applebot-Extended
 Allow: /
 
 Sitemap: https://paginawebcreator.com/sitemap.xml
-Llms: https://paginawebcreator.com/llms.txt

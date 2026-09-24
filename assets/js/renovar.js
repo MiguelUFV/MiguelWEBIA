@@ -37,9 +37,10 @@
     [['is-crawlable', 'robots-txt', 'http-status-code'], 'Google tiene problemas para entrar', 'La dejo abierta a Google y bien indexada.'],
     [['viewport-insight', 'viewport'], 'No está bien adaptada al móvil', 'La diseño primero para el móvil, que es desde donde te buscan.'],
     [['image-delivery-insight', 'uses-optimized-images', 'modern-image-formats', 'uses-responsive-images', 'offscreen-images'], 'Las fotos pesan más de lo necesario', 'Las comprimo y las sirvo al tamaño justo de cada pantalla, sin perder calidad.'],
-    [['render-blocking-insight', 'render-blocking-resources', 'lcp-discovery-insight', 'network-dependency-tree-insight'], 'Hay archivos que frenan la carga', 'Ordeno la carga para que lo importante salga primero.'],
+    [['render-blocking-insight', 'render-blocking-resources', 'lcp-discovery-insight'], 'Hay archivos que frenan la carga', 'Ordeno la carga para que lo importante salga primero.'],
     [['meta-description', 'document-title'], 'A Google le falta la descripción de tu negocio', 'Escribo títulos y descripciones pensados para búsquedas de tu zona.'],
-    [['unused-javascript', 'unused-css-rules', 'legacy-javascript-insight', 'duplicated-javascript-insight', 'total-byte-weight', 'mainthread-work-breakdown', 'bootup-time'], 'Carga código que no usa', 'La nueva lleva solo lo necesario: pesa menos y va más fluida.'],
+    [['total-byte-weight'], 'La web pesa demasiado', 'La dejo ligera para que abra rápido aunque haya poca cobertura.'],
+    [['unused-javascript', 'unused-css-rules', 'legacy-javascript-insight', 'duplicated-javascript-insight', 'mainthread-work-breakdown', 'bootup-time'], 'Tiene más código del que necesita', 'La nueva lleva solo lo necesario y va más fluida.'],
     [['cumulative-layout-shift', 'cls-culprits-insight', 'unsized-images'], 'Las cosas se mueven mientras carga', 'Cada elemento aparece ya en su sitio, sin saltos.'],
     [['document-latency-insight', 'server-response-time'], 'El servidor tarda en responder', 'La alojo en servidores rápidos, cerca de tus clientes.'],
     [['cache-insight', 'uses-long-cache-ttl'], 'Cada visita descarga todo otra vez', 'Configuro la caché para que la segunda visita sea instantánea.'],
@@ -53,11 +54,22 @@
     [['image-aspect-ratio', 'image-size-responsive'], 'Hay fotos deformadas o borrosas', 'Fotos nítidas y con su proporción.'],
   ];
   const MAX_ARREGLOS = 6;
-  const falla = (auditoria) => auditoria && typeof auditoria.score === 'number' && auditoria.score < 0.9
-    && !['informative', 'notApplicable', 'manual', 'error'].includes(auditoria.scoreDisplayMode);
+  // Las auditorías de ahorro solo cuentan si el ahorro se nota: medio segundo, un bloqueo claro, saltos visibles o 100 KB.
+  const AHORRO_MINIMO = { LCP: 500, FCP: 500, TBT: 150, CLS: 0.05 };
+  const BYTES_MINIMOS = 100 * 1024;
+  const falla = (auditoria) => {
+    if (!auditoria || typeof auditoria.score !== 'number' || auditoria.score >= 0.9) return false;
+    if (['informative', 'notApplicable', 'manual', 'error'].includes(auditoria.scoreDisplayMode)) return false;
+    if (auditoria.scoreDisplayMode !== 'metricSavings') return true;
+    const ahorro = auditoria.metricSavings || {};
+    const elementos = auditoria.details?.items;
+    const bytes = auditoria.details?.overallSavingsBytes
+      ?? (Array.isArray(elementos) ? elementos.reduce((suma, e) => suma + (e.wastedBytes || 0), 0) : 0);
+    return Object.entries(AHORRO_MINIMO).some(([metrica, minimo]) => (ahorro[metrica] || 0) >= minimo) || bytes >= BYTES_MINIMOS;
+  };
 
   const MENSAJES_ESPERA = [
-    'Abriendo tu web en un móvil…',
+    'Abriendo tu web en un móvil… Suele tardar unos 20 segundos.',
     'Midiendo cuánto tarda en verse…',
     'Revisando lo que lee Google…',
     'Comprobando si se usa bien con el dedo…',
@@ -79,16 +91,26 @@
   const TEXTO_BOTON = boton.textContent;
   const TEXTO_REPOSO = estadoTexto.textContent;
 
+  const evento = (nombre, datos) => window.paginawebcreator?.evento(nombre, datos);
+  const CORREO_PERSONAL = /^(gmail|googlemail|hotmail|outlook|live|msn|yahoo|icloud|me|aol|proton(mail)?)\./i;
+
+  // Devuelve la URL que se analiza y el nombre tal y como lo escribió el visitante (con su ñ, sin «https://www.»).
   const normalizar = (texto) => {
-    const limpio = texto.trim().replace(/\s+/g, '');
+    let limpio = texto.trim().replace(/\s+/g, '');
+    const correo = limpio.match(/^[^@/]+@([^@/]+)$/); // si pegan su correo, se usa el dominio
+    if (correo) {
+      if (CORREO_PERSONAL.test(correo[1])) return null;
+      [, limpio] = correo;
+    }
     if (!limpio) return null;
     try {
       const url = new URL(/^https?:\/\//i.test(limpio) ? limpio : `https://${limpio}`);
-      if (!url.hostname.includes('.') || url.hostname.endsWith('.local')) return null;
-      return url;
+      if (url.username || url.password || !url.hostname.includes('.') || url.hostname.endsWith('.local')) return null;
+      url.hash = '';
+      const nombre = limpio.replace(/^https?:\/\//i, '').replace(/^www\./i, '').replace(/[?#].*$/, '').replace(/\/+$/, '').toLowerCase();
+      return { url, nombre };
     } catch { return null; }
   };
-  const nombreVisible = (url) => `${url.hostname.replace(/^www\./, '')}${url.pathname === '/' ? '' : url.pathname}`;
 
   class ErrorRadiografia extends Error {
     constructor(tipo) { super(tipo); this.tipo = tipo; }
@@ -118,7 +140,20 @@
     const informe = datos.lighthouseResult;
     if (!informe?.categories) throw new ErrorRadiografia('google');
     if (informe.runtimeError && informe.runtimeError.code !== 'NO_ERROR') throw new ErrorRadiografia('web');
+    // Google analiza también las páginas de error: si la dirección da 404, no tiene sentido enseñar notas.
+    if (informe.audits['http-status-code']?.score === 0) throw new ErrorRadiografia('no-existe');
     return informe;
+  };
+
+  // El límite por minuto de Google (429) suele pasar enseguida: un reintento antes de rendirse.
+  const pedirConReintento = async (url) => {
+    try {
+      return await pedirInforme(url);
+    } catch (error) {
+      if (error.tipo !== 'cuota') throw error;
+      await esperar(6000);
+      return pedirInforme(url);
+    }
   };
 
   /* ── Estados del escáner ── */
@@ -127,6 +162,7 @@
 
   const empezarEscaneo = () => {
     seccion.dataset.estado = 'escaneando';
+    delete seccion.dataset.nivel;
     boton.setAttribute('aria-busy', 'true');
     boton.textContent = 'Analizando…';
     fotograma.hidden = true;
@@ -257,9 +293,9 @@
         : 'Funciona, pero tiene varias cosas que mejorar.';
   };
 
-  const mostrarInforme = (informe, url) => {
-    const dominio = nombreVisible(url);
+  const mostrarInforme = (informe, dominio) => {
     $('[data-dominio]').textContent = dominio;
+    fotograma.alt = `Captura de ${dominio} en un móvil`;
     pintarVeredicto(informe);
     pintarEspera(informe);
     pintarArreglos(informe);
@@ -287,34 +323,44 @@
   const MOTIVOS = {
     cuota: 'Google está recibiendo demasiadas consultas ahora mismo. Prueba otra vez en un rato o mándamela y la reviso yo hoy mismo.',
     web: 'No he podido abrir esa dirección. Revisa que esté bien escrita o mándamela y la miro yo.',
+    'no-existe': 'Esa dirección da error: la página no existe o no está publicada. Prueba con la dirección principal de tu web, sin nada detrás de la barra.',
     red: 'Se ha cortado la conexión o Google ha tardado demasiado. Prueba otra vez o mándamela y la reviso yo.',
     google: 'La herramienta de Google ha dado un error. Prueba otra vez o mándamela y la reviso yo.',
   };
-  const mostrarPlanB = (tipo, url) => {
+  const SE_CORRIGE_ESCRIBIENDO = ['web', 'no-existe'];
+  const botonOtraVez = $('[data-plan-b-otra]');
+  let ultimo = null;
+
+  const mostrarPlanB = (tipo, objetivo) => {
     seccion.dataset.estado = 'reposo';
     estadoTexto.textContent = TEXTO_REPOSO;
     $('[data-plan-b-motivo]').textContent = MOTIVOS[tipo] || MOTIVOS.google;
-    const dominio = nombreVisible(url);
-    $('[data-plan-b-cta]').href = enlaceWa(`Hola Miguel, quiero renovar mi web ${dominio}. ¿Me haces la radiografía?`);
-    ctaRenovar.href = enlaceWa(`Hola Miguel, quiero renovar mi web ${dominio}.`);
+    $('[data-plan-b-cta]').href = enlaceWa(`Hola Miguel, quiero renovar mi web ${objetivo.nombre}. ¿Me haces la radiografía?`);
+    ctaRenovar.href = enlaceWa(`Hola Miguel, quiero renovar mi web ${objetivo.nombre}.`);
+    botonOtraVez.textContent = SE_CORRIGE_ESCRIBIENDO.includes(tipo) ? 'Corregir la dirección' : 'Probar otra vez';
+    botonOtraVez.dataset.accion = SE_CORRIGE_ESCRIBIENDO.includes(tipo) ? 'corregir' : 'repetir';
     planB.hidden = false;
     planB.scrollIntoView({ behavior: reducir ? 'auto' : 'smooth', block: 'center' });
   };
 
   let enCurso = false;
-  const radiografia = async (url) => {
+  const radiografia = async (objetivo, origen) => {
     if (enCurso) return;
     enCurso = true;
+    ultimo = objetivo;
+    evento('radiografia_inicio', { origen });
     empezarEscaneo();
     try {
-      const informe = await pedirInforme(url);
+      const informe = await pedirConReintento(objetivo.url);
       terminarEscaneo();
       await reproducirCarga(informe);
-      mostrarInforme(informe, url);
-      history.replaceState(null, '', `?web=${encodeURIComponent(nombreVisible(url))}`);
+      mostrarInforme(informe, objetivo.nombre);
+      history.replaceState(null, '', `?web=${encodeURIComponent(objetivo.nombre)}`);
+      evento('radiografia_ok', { nota_velocidad: Math.round((informe.categories.performance?.score ?? 0) * 100) });
     } catch (error) {
       terminarEscaneo();
-      mostrarPlanB(error.tipo, url);
+      mostrarPlanB(error.tipo, objetivo);
+      evento('radiografia_error', { tipo: error.tipo || 'desconocido' });
     } finally {
       enCurso = false;
     }
@@ -322,8 +368,8 @@
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const url = normalizar(campo.value);
-    if (!url) {
+    const objetivo = normalizar(campo.value);
+    if (!objetivo) {
       avisoCampo.textContent = 'Escribe la dirección de tu web, por ejemplo tunegocio.es';
       campo.setAttribute('aria-invalid', 'true');
       campo.focus();
@@ -331,8 +377,14 @@
     }
     avisoCampo.textContent = '';
     campo.removeAttribute('aria-invalid');
-    campo.value = nombreVisible(url);
-    radiografia(url);
+    campo.value = objetivo.nombre;
+    radiografia(objetivo, 'formulario');
+  });
+  botonOtraVez.addEventListener('click', () => {
+    if (botonOtraVez.dataset.accion === 'repetir' && ultimo) { radiografia(ultimo, 'reintento'); return; }
+    campo.scrollIntoView({ behavior: reducir ? 'auto' : 'smooth', block: 'center' });
+    campo.focus({ preventScroll: true });
+    campo.select();
   });
   campo.addEventListener('input', () => {
     if (!campo.hasAttribute('aria-invalid')) return;
@@ -343,7 +395,7 @@
   // renovar?web=tunegocio.es abre la página con la radiografía ya en marcha (útil para mandársela a un cliente).
   const inicial = normalizar(new URLSearchParams(location.search).get('web') || '');
   if (inicial) {
-    campo.value = nombreVisible(inicial);
-    radiografia(inicial);
+    campo.value = inicial.nombre;
+    radiografia(inicial, 'enlace');
   }
 })();

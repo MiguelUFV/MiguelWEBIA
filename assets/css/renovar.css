@@ -225,6 +225,7 @@
 }
 .plan-b h2 { font-size: var(--t-xl); font-stretch: 108%; }
 .plan-b p { max-width: 52ch; }
+.plan-b__acciones { display: flex; flex-wrap: wrap; gap: var(--sp-3); }
 .plan-b .boton { white-space: normal; text-align: center; }
 
 /* ── REFORMA (OFERTA) ── */
