@@ -2,9 +2,9 @@
   'use strict';
 
   const TELEFONO_WA = '34685101194';
-  // Clave de la API de PageSpeed Insights, restringida a paginawebcreator.com. Sin clave, Google comparte
-  // una cuota diaria entre todo el mundo y la radiografía falla a menudo (error 429).
-  const CLAVE_PSI = '';
+  // Clave de la API de PageSpeed Insights (proyecto "paginawebcreator" de Google Cloud). Es pública a propósito:
+  // solo funciona desde paginawebcreator.com y solo para PageSpeed. Sin clave, la cuota compartida de Google se agota (429).
+  const CLAVE_PSI = 'AIzaSyDtzwzb5EOtqSdy9shfD7e1VSLxSvkGNmw';
   const API_PSI = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed';
   const LIMITE_ESPERA = 90000;
   const LCP_RAPIDO = 2500;
